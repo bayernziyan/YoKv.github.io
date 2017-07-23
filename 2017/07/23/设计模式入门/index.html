@@ -99,18 +99,18 @@
 
 
 
-<meta name="description" content="观察者模式">
+<meta name="description" content="设计模式入门本文为Head First设计模式第一章阅读笔记，以抽象类，接口的形式实现了“找出应用中可能需要变化之处，独立出来，不要和那些不需要变化的代码混在一起”,做到了一个易拓展，弹性的设计。">
 <meta name="keywords" content="设计模式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="观察者模式">
-<meta property="og:url" content="http://blog/aiyo.space/2017/07/21/观察者模式/index.html">
+<meta property="og:title" content="设计模式入门">
+<meta property="og:url" content="http://blog/aiyo.space/2017/07/23/设计模式入门/index.html">
 <meta property="og:site_name" content="技术杂记">
-<meta property="og:description" content="观察者模式">
+<meta property="og:description" content="设计模式入门本文为Head First设计模式第一章阅读笔记，以抽象类，接口的形式实现了“找出应用中可能需要变化之处，独立出来，不要和那些不需要变化的代码混在一起”,做到了一个易拓展，弹性的设计。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-07-23T08:00:44.676Z">
+<meta property="og:updated_time" content="2017-07-23T07:54:18.164Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="观察者模式">
-<meta name="twitter:description" content="观察者模式">
+<meta name="twitter:title" content="设计模式入门">
+<meta name="twitter:description" content="设计模式入门本文为Head First设计模式第一章阅读笔记，以抽象类，接口的形式实现了“找出应用中可能需要变化之处，独立出来，不要和那些不需要变化的代码混在一起”,做到了一个易拓展，弹性的设计。">
 
 
 
@@ -138,13 +138,13 @@
 
 
 
-  <link rel="canonical" href="http://blog/aiyo.space/2017/07/21/观察者模式/"/>
+  <link rel="canonical" href="http://blog/aiyo.space/2017/07/23/设计模式入门/"/>
 
 
 
 
 
-  <title>观察者模式 | 技术杂记</title>
+  <title>设计模式入门 | 技术杂记</title>
   
 
 
@@ -273,7 +273,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog/aiyo.space/2017/07/21/观察者模式/">
+    <link itemprop="mainEntityOfPage" href="http://blog/aiyo.space/2017/07/23/设计模式入门/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="YoKv">
@@ -290,7 +290,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">观察者模式</h2>
+          <h2 class="post-title" itemprop="name headline">设计模式入门</h2>
         
 
         <div class="post-meta">
@@ -302,8 +302,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-21T21:19:10+08:00">
-                2017-07-21
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-23T14:46:07+08:00">
+                2017-07-23
               </time>
             
 
@@ -359,20 +359,17 @@
       
 
       
-        <h2 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h2><a id="more"></a>
-<p>TODO</p>
-<h3 id="OOP原则"><a href="#OOP原则" class="headerlink" title="OOP原则"></a>OOP原则</h3><h4 id="遵循的原则"><a href="#遵循的原则" class="headerlink" title="遵循的原则"></a>遵循的原则</h4><ul>
-<li>依赖倒置原则（主题类依赖于抽象观察者而非具体观察者）</li>
-<li>迪米特法则</li>
-<li>里氏替换原则</li>
-<li>接口隔离原则</li>
-<li>单一职责原则</li>
-<li>开闭原则</li>
-</ul>
-<h4 id="未遵循的原则"><a href="#未遵循的原则" class="headerlink" title="未遵循的原则"></a>未遵循的原则</h4><ul>
-<li>NA</li>
-</ul>
-<h2 id="读书笔记系列"><a href="#读书笔记系列" class="headerlink" title="读书笔记系列"></a>读书笔记系列</h2><p><a href="https://git.coding.net/YoKv/readingNotes.git" target="_blank" rel="external">相关项目代码</a></p>
+        <h2 id="设计模式入门"><a href="#设计模式入门" class="headerlink" title="设计模式入门"></a>设计模式入门</h2><p>本文为Head First设计模式第一章阅读笔记，以抽象类，接口的形式实现了“找出应用中可能需要变化之处，独立出来，不要和那些不需要变化的代码混在一起”,做到了一个易拓展，弹性的设计。<br><a id="more"></a><br>本文案例，动物有名字，要吃饭，要睡觉。<br>首先第一直觉是建立一个抽象类或接口:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">public abstract class Animal &#123;</div><div class="line">    </div><div class="line">    public abstract void name();</div><div class="line"></div><div class="line">    public abstract void eat();</div><div class="line"></div><div class="line">    public abstract void sleep();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这样做遇到的问题：一只动物今天吃这个，明天吃那个，今天睡这，明天睡那（一个方法实现不同），就要在动物子类中做一些冗余，而这些方法部分是可以被其他动物使用的，完全可以封装起来，这些就是上面提到的需要变化的代码。而动物的名字的实现不会被其他动物使用。所以把吃饭和睡觉提取出来，做成接口，这样一个动物可以有多个吃饭，睡觉实现，动物可以方便地动态改变吃饭，睡觉，提升代码灵活性。在拓展性方面，新增一个动物类，需要同时增加其吃饭，睡觉行为的实现，而大部分实现已经在之前实现了，只需增加这个动物特殊的实现。</p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p><strong>动物超类：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">public abstract class Animal &#123;</div><div class="line">    protected EatBehavior eatBehavior;</div><div class="line">    protected SleepBehavior sleepBehavior;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 名字</div><div class="line">     */</div><div class="line">    public abstract void name();</div><div class="line"></div><div class="line">    public void eat() &#123;</div><div class="line">        eatBehavior.eat();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void sleep()&#123;</div><div class="line">        sleepBehavior.sleep();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void setEatBehavior(EatBehavior eatBehavior) &#123;</div><div class="line">        this.eatBehavior = eatBehavior;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void setSleepBehavior(SleepBehavior sleepBehavior) &#123;</div><div class="line">        this.sleepBehavior = sleepBehavior;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>吃饭行为接口：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public interface EatBehavior &#123;</div><div class="line">    void eat();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>睡觉行为接口：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public interface SleepBehavior &#123;</div><div class="line">    void sleep();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>猫：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">public class Cat extends Animal &#123;</div><div class="line">    public Cat() &#123;</div><div class="line">        this.eatBehavior = new CatEat();</div><div class="line">        this.sleepBehavior = new CatSleep();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void name() &#123;</div><div class="line">        System.out.println(&quot;My name is cat.&quot;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>吃饭行为接口实现：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">public class CatEat implements EatBehavior &#123;</div><div class="line">    @Override</div><div class="line">    public void eat() &#123;</div><div class="line">        System.out.println(&quot;eat fish.&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>睡觉行为接口：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">public class CatSleep implements SleepBehavior &#123;</div><div class="line">    @Override</div><div class="line">    public void sleep() &#123;</div><div class="line">        System.out.println(&quot;sleep everywhere.&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>测试：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">public class AnimalTest &#123;</div><div class="line">    @Test</div><div class="line">    public void test()&#123;</div><div class="line">        Animal cat = new Cat();</div><div class="line">        cat.name();</div><div class="line">        cat.eat();</div><div class="line">        cat.sleep();</div><div class="line">        cat.setEatBehavior(new CatEat2());</div><div class="line">        cat.eat();</div><div class="line"></div><div class="line">        Animal viking = new Viking();</div><div class="line">        viking.name();</div><div class="line">        viking.eat();</div><div class="line">        viking.sleep();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="代码地址"><a href="#代码地址" class="headerlink" title="代码地址"></a>代码地址</h2><p><a href="https://coding.net/u/YoKv/p/readingNotes/git/tree/master/design-patterns/src/main/java/space/aiyo/gettingStarted" target="_blank" rel="external">代码地址</a>  </p>
 
       
     </div>
@@ -431,15 +428,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/07/22/记一次千万级数据库迁移/" rel="next" title="记一次千万级数据库迁移">
+                <i class="fa fa-chevron-left"></i> 记一次千万级数据库迁移
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/07/22/OOP原则/" rel="prev" title="OOP原则">
-                OOP原则 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -591,7 +588,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#观察者模式"><span class="nav-number">1.</span> <span class="nav-text">观察者模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#OOP原则"><span class="nav-number">1.1.</span> <span class="nav-text">OOP原则</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#遵循的原则"><span class="nav-number">1.1.1.</span> <span class="nav-text">遵循的原则</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#未遵循的原则"><span class="nav-number">1.1.2.</span> <span class="nav-text">未遵循的原则</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#读书笔记系列"><span class="nav-number">2.</span> <span class="nav-text">读书笔记系列</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#设计模式入门"><span class="nav-number">1.</span> <span class="nav-text">设计模式入门</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码实现"><span class="nav-number">2.</span> <span class="nav-text">代码实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码地址"><span class="nav-number">3.</span> <span class="nav-text">代码地址</span></a></li></ol></div>
             
 
           </div>

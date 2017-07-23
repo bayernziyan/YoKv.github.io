@@ -99,18 +99,18 @@
 
 
 
-<meta name="description" content="开放-关闭原则介绍    类应该对扩展开放，对修改关闭。 允许类容易扩展，在不修改代码的情况下，就可以应用于新的行为。这样的设计具有弹性，可以应对改变，可以接受新的功能来应对改变的需求。 典型应用：装饰者模式  依赖倒置原则介绍    要依赖抽象，不要依赖具体类。不能让高层组件依赖低层组件，而且，不管高层组件还是低层组件，都要依赖抽象。相比于针对接口编程，不针对实现编程而言，更强调抽象性。   典">
+<meta name="description" content="开放-关闭原则介绍    类应该对扩展开放，对修改关闭。 允许类容易扩展，在不修改代码的情况下，就可以应用于新的行为。这样的设计具有弹性，可以应对改变，可以接受新的功能来应对改变的需求。 典型应用：装饰者模式">
 <meta name="keywords" content="设计模式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OOP原则">
 <meta property="og:url" content="http://blog/aiyo.space/2017/07/22/OOP原则/index.html">
 <meta property="og:site_name" content="技术杂记">
-<meta property="og:description" content="开放-关闭原则介绍    类应该对扩展开放，对修改关闭。 允许类容易扩展，在不修改代码的情况下，就可以应用于新的行为。这样的设计具有弹性，可以应对改变，可以接受新的功能来应对改变的需求。 典型应用：装饰者模式  依赖倒置原则介绍    要依赖抽象，不要依赖具体类。不能让高层组件依赖低层组件，而且，不管高层组件还是低层组件，都要依赖抽象。相比于针对接口编程，不针对实现编程而言，更强调抽象性。   典">
+<meta property="og:description" content="开放-关闭原则介绍    类应该对扩展开放，对修改关闭。 允许类容易扩展，在不修改代码的情况下，就可以应用于新的行为。这样的设计具有弹性，可以应对改变，可以接受新的功能来应对改变的需求。 典型应用：装饰者模式">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-07-22T08:16:12.535Z">
+<meta property="og:updated_time" content="2017-07-23T08:03:03.771Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OOP原则">
-<meta name="twitter:description" content="开放-关闭原则介绍    类应该对扩展开放，对修改关闭。 允许类容易扩展，在不修改代码的情况下，就可以应用于新的行为。这样的设计具有弹性，可以应对改变，可以接受新的功能来应对改变的需求。 典型应用：装饰者模式  依赖倒置原则介绍    要依赖抽象，不要依赖具体类。不能让高层组件依赖低层组件，而且，不管高层组件还是低层组件，都要依赖抽象。相比于针对接口编程，不针对实现编程而言，更强调抽象性。   典">
+<meta name="twitter:description" content="开放-关闭原则介绍    类应该对扩展开放，对修改关闭。 允许类容易扩展，在不修改代码的情况下，就可以应用于新的行为。这样的设计具有弹性，可以应对改变，可以接受新的功能来应对改变的需求。 典型应用：装饰者模式">
 
 
 
@@ -363,6 +363,7 @@
 <blockquote>
 <p>  类应该对扩展开放，对修改关闭。 允许类容易扩展，在不修改代码的情况下，就可以应用于新的行为。这样的设计具有弹性，可以应对改变，可以接受新的功能来应对改变的需求。<br> 典型应用：装饰者模式</p>
 </blockquote>
+<a id="more"></a>
 <h2 id="依赖倒置原则"><a href="#依赖倒置原则" class="headerlink" title="依赖倒置原则"></a>依赖倒置原则</h2><p>介绍</p>
 <blockquote>
 <p>  要依赖抽象，不要依赖具体类。不能让高层组件依赖低层组件，而且，不管高层组件还是低层组件，都要依赖抽象。相比于针对接口编程，不针对实现编程而言，更强调抽象性。</p>
@@ -385,6 +386,11 @@
 <blockquote>
 <p>客户端不应该依赖它不需要的接口；类间的依赖应该建立在最小的接口上。接口应该建立单一接口，不要建立臃肿庞大的接口，尽量给调用者提供专门的接口，而非多功能接口。</p>
 </blockquote>
+<h2 id="其他书中提及原则"><a href="#其他书中提及原则" class="headerlink" title="其他书中提及原则"></a>其他书中提及原则</h2><ul>
+<li>找出应用中可能需要变化之处，独立出来，不要和那些不需要变化的代码混在一起</li>
+<li>针对接口编程，而不是针对实现编程</li>
+<li>多用组合，少用继承</li>
+</ul>
 
       
     </div>
@@ -452,6 +458,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/22/记一次千万级数据库迁移/" rel="prev" title="记一次千万级数据库迁移">
+                记一次千万级数据库迁移 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -526,7 +536,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -537,7 +547,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -548,7 +558,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -603,7 +613,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#开放-关闭原则"><span class="nav-number">1.</span> <span class="nav-text">开放-关闭原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#依赖倒置原则"><span class="nav-number">2.</span> <span class="nav-text">依赖倒置原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最少知识原则（迪米特法则）"><span class="nav-number">3.</span> <span class="nav-text">最少知识原则（迪米特法则）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单一职责原则"><span class="nav-number">4.</span> <span class="nav-text">单一职责原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#里氏替换原则"><span class="nav-number">5.</span> <span class="nav-text">里氏替换原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接口隔离原则"><span class="nav-number">6.</span> <span class="nav-text">接口隔离原则</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#开放-关闭原则"><span class="nav-number">1.</span> <span class="nav-text">开放-关闭原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#依赖倒置原则"><span class="nav-number">2.</span> <span class="nav-text">依赖倒置原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最少知识原则（迪米特法则）"><span class="nav-number">3.</span> <span class="nav-text">最少知识原则（迪米特法则）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单一职责原则"><span class="nav-number">4.</span> <span class="nav-text">单一职责原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#里氏替换原则"><span class="nav-number">5.</span> <span class="nav-text">里氏替换原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接口隔离原则"><span class="nav-number">6.</span> <span class="nav-text">接口隔离原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他书中提及原则"><span class="nav-number">7.</span> <span class="nav-text">其他书中提及原则</span></a></li></ol></div>
             
 
           </div>
