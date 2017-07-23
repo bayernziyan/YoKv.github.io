@@ -362,41 +362,14 @@
 
       
         
-          
-            <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><h3 id="镜像"><a href="#镜像" class="headerlink" title="镜像"></a>镜像</h3><blockquote>
-<p> 类似于虚拟机镜像，是一个只读的模板。一个镜像可以包含一个基本的操作系统，里面仅安装一个Apache应用程序。可以叫做Apache镜像。</p>
-</blockquote>
-<h3 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h3><blockquote>
-<p> 容器类似于一个轻量级的沙箱，docker利用容器，来运行和隔离应用。容器是从镜像创建的应用程序实例。可以将容器看作一个简易版的linux系统环境以及运行在其中的应用程序打包而成的盒子。</p>
-</blockquote>
-<h3 id="仓库"><a href="#仓库" class="headerlink" title="仓库"></a>仓库</h3><blockquote>
-<p> 仓库类似于代码仓库，是docker集中存放镜像文件的场所。仓库分为公开仓库和私有仓库，最大的公开仓库是Docker Hub。仓库管理与Git非常相似。</p>
-</blockquote>
-<h4 id="仓库和仓库注册服务器区分"><a href="#仓库和仓库注册服务器区分" class="headerlink" title="仓库和仓库注册服务器区分"></a>仓库和仓库注册服务器区分</h4><blockquote>
-<p> 仓库注册服务器是存放仓库的地方，往往有多个仓库，每个仓库集中存放某一类镜像，往往包括多个镜像文件，通过tag区分。</p>
-</blockquote>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><blockquote>
-<p> 本文以CentOS 7为例。<br> 官网有Docker Platform,Docker Hub,Docker Cloud和Docker DataCenter。</p>
-</blockquote>
-<ul>
-<li>Docker Platform 适合桌面系统或云平台</li>
-<li>Docker Hub 官方提供的云托管服务，提供镜像仓库</li>
-<li>Docker Cloud 官方提供的容器云服务，可以完成容器的部署和管理，可以完整地支持容器化项目，有CI，CD功能</li>
-<li>Docker DataCenter  企业级的简单安全弹性容器集群编排和管理</li>
-</ul>
-<h4 id="开始安装"><a href="#开始安装" class="headerlink" title="开始安装"></a>开始安装</h4><blockquote>
-<p> CentOS-Extras 内置了Docker,直接通过命令yum命令安装：<br> yum install docker<br> 或yum install -y docker-engine</p>
-</blockquote>
-<p>通过shell脚本安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">	curl -fsSL https://get.docker.com/ | sh</div><div class="line">或</div><div class="line">	wget -qO https://get.docker.com/ | sh</div></pre></td></tr></table></figure></p>
-<h4 id="配置服务"><a href="#配置服务" class="headerlink" title="配置服务"></a>配置服务</h4><blockquote>
-<p> 避免使用docker命令都要用特殊身份，将当前用户加入安装中自动创建的docker用户组：</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">usermod -aG docker username</div></pre></td></tr></table></figure>
-<p>默认配置文件/etc/default/docker</p>
-<p>管理服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">systemctl start docker.service</div></pre></td></tr></table></figure></p>
-<p>日志<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tail /var/log/upstart/docker.log</div></pre></td></tr></table></figure></p>
-
-          
+          <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/23/Docker概念与安装/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
