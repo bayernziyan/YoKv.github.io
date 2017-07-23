@@ -107,7 +107,7 @@
 <meta property="og:site_name" content="技术杂记">
 <meta property="og:description" content="策略模式本文为Head First设计模式第一章阅读笔记，以抽象类，接口的形式实现了“找出应用中可能需要变化之处，独立出来，不要和那些不需要变化的代码混在一起”,做到了一个易拓展，弹性的设计。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-07-23T08:17:00.743Z">
+<meta property="og:updated_time" content="2017-07-23T08:37:05.592Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="设计模式入门">
 <meta name="twitter:description" content="策略模式本文为Head First设计模式第一章阅读笔记，以抽象类，接口的形式实现了“找出应用中可能需要变化之处，独立出来，不要和那些不需要变化的代码混在一起”,做到了一个易拓展，弹性的设计。">
@@ -360,7 +360,13 @@
 
       
         <h2 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h2><p>本文为Head First设计模式第一章阅读笔记，以抽象类，接口的形式实现了“找出应用中可能需要变化之处，独立出来，不要和那些不需要变化的代码混在一起”,做到了一个易拓展，弹性的设计。<br><a id="more"></a><br>本文案例，动物有名字，要吃饭，要睡觉。<br>首先第一直觉是建立一个抽象类或接口:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">public abstract class Animal &#123;</div><div class="line">    </div><div class="line">    public abstract void name();</div><div class="line"></div><div class="line">    public abstract void eat();</div><div class="line"></div><div class="line">    public abstract void sleep();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>这样做遇到的问题：一只动物今天吃这个，明天吃那个，今天睡这，明天睡那（一个方法实现不同），就要在动物子类中做一些冗余，而这些方法部分是可以被其他动物使用的，完全可以封装起来，这些就是上面提到的需要变化的代码。而动物的名字的实现不会被其他动物使用。所以把吃饭和睡觉提取出来，做成接口，这样一个动物可以有多个吃饭，睡觉实现，动物可以方便地动态改变吃饭，睡觉，提升代码灵活性。在拓展性方面，新增一个动物类，需要同时增加其吃饭，睡觉行为的实现，而大部分实现已经在之前实现了，只需增加这个动物特殊的实现。其实使用了设计原则：多用组合，少用继承。</p>
+<p>这样做遇到的问题：一只动物今天吃这个，明天吃那个，今天睡这，明天睡那（一个方法实现不同），就要在动物子类中做一些冗余，而这些方法部分是可以被其他动物使用的，完全可以封装起来，这些就是上面提到的需要变化的代码。而动物的名字的实现不会被其他动物使用。所以把吃饭和睡觉提取出来，做成接口，这样一个动物可以有多个吃饭，睡觉实现，动物可以方便地动态改变吃饭，睡觉，提升代码灵活性。在拓展性方面，新增一个动物类，需要同时增加其吃饭，睡觉行为的实现，而大部分实现已经在之前实现了，只需增加这个动物特殊的实现。其实使用了设计原则：多用组合，少用继承。<br>缺点汇总：</p>
+<ul>
+<li>代码在多个子类中重复</li>
+<li>运行时的行为不易改变</li>
+<li>很难知道动物的所有的行为</li>
+<li>牵一发动全身，会对其他子类造成不必要的改变</li>
+</ul>
 <h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p><strong>动物超类：</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">public abstract class Animal &#123;</div><div class="line">    protected EatBehavior eatBehavior;</div><div class="line">    protected SleepBehavior sleepBehavior;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 名字</div><div class="line">     */</div><div class="line">    public abstract void name();</div><div class="line"></div><div class="line">    public void eat() &#123;</div><div class="line">        eatBehavior.eat();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void sleep()&#123;</div><div class="line">        sleepBehavior.sleep();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void setEatBehavior(EatBehavior eatBehavior) &#123;</div><div class="line">        this.eatBehavior = eatBehavior;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void setSleepBehavior(SleepBehavior sleepBehavior) &#123;</div><div class="line">        this.sleepBehavior = sleepBehavior;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p><strong>吃饭行为接口：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public interface EatBehavior &#123;</div><div class="line">    void eat();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
@@ -369,6 +375,7 @@
 <p><strong>吃饭行为接口实现：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">public class CatEat implements EatBehavior &#123;</div><div class="line">    @Override</div><div class="line">    public void eat() &#123;</div><div class="line">        System.out.println(&quot;eat fish.&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p><strong>睡觉行为接口：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">public class CatSleep implements SleepBehavior &#123;</div><div class="line">    @Override</div><div class="line">    public void sleep() &#123;</div><div class="line">        System.out.println(&quot;sleep everywhere.&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p><strong>测试：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">public class AnimalTest &#123;</div><div class="line">    @Test</div><div class="line">    public void test()&#123;</div><div class="line">        Animal cat = new Cat();</div><div class="line">        cat.name();</div><div class="line">        cat.eat();</div><div class="line">        cat.sleep();</div><div class="line">        cat.setEatBehavior(new CatEat2());</div><div class="line">        cat.eat();</div><div class="line"></div><div class="line">        Animal viking = new Viking();</div><div class="line">        viking.name();</div><div class="line">        viking.eat();</div><div class="line">        viking.sleep();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>策略模式定义了算法族，分别封装起来，让它们之间可以相互替换，此模式让算法的变化独立于使用算法的客户。</p>
 <h2 id="代码地址"><a href="#代码地址" class="headerlink" title="代码地址"></a>代码地址</h2><p><a href="https://coding.net/u/YoKv/p/readingNotes/git/tree/master/design-patterns/src/main/java/space/aiyo/gettingStarted" target="_blank" rel="external">代码地址</a>  </p>
 
       
@@ -437,6 +444,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/23/设计模式工具箱/" rel="prev" title="设计模式工具箱">
+                设计模式工具箱 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -588,7 +599,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#策略模式"><span class="nav-number">1.</span> <span class="nav-text">策略模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码实现"><span class="nav-number">2.</span> <span class="nav-text">代码实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码地址"><span class="nav-number">3.</span> <span class="nav-text">代码地址</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#策略模式"><span class="nav-number">1.</span> <span class="nav-text">策略模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码实现"><span class="nav-number">2.</span> <span class="nav-text">代码实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定义"><span class="nav-number">3.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码地址"><span class="nav-number">4.</span> <span class="nav-text">代码地址</span></a></li></ol></div>
             
 
           </div>
