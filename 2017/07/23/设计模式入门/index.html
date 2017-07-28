@@ -107,7 +107,7 @@
 <meta property="og:site_name" content="技术杂记">
 <meta property="og:description" content="策略模式本文为Head First设计模式第一章阅读笔记，以抽象类，接口的形式实现了“找出应用中可能需要变化之处，独立出来，不要和那些不需要变化的代码混在一起”,做到了一个易拓展，弹性的设计。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-07-23T08:37:05.592Z">
+<meta property="og:updated_time" content="2017-07-28T06:10:14.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="设计模式入门">
 <meta name="twitter:description" content="策略模式本文为Head First设计模式第一章阅读笔记，以抽象类，接口的形式实现了“找出应用中可能需要变化之处，独立出来，不要和那些不需要变化的代码混在一起”,做到了一个易拓展，弹性的设计。">
@@ -359,7 +359,7 @@
       
 
       
-        <h2 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h2><p>本文为Head First设计模式第一章阅读笔记，以抽象类，接口的形式实现了“找出应用中可能需要变化之处，独立出来，不要和那些不需要变化的代码混在一起”,做到了一个易拓展，弹性的设计。<br><a id="more"></a><br>本文案例，动物有名字，要吃饭，要睡觉。<br>首先第一直觉是建立一个抽象类或接口:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">public abstract class Animal &#123;</div><div class="line">    </div><div class="line">    public abstract void name();</div><div class="line"></div><div class="line">    public abstract void eat();</div><div class="line"></div><div class="line">    public abstract void sleep();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+        <h2 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h2><p>本文为Head First设计模式第一章阅读笔记，以抽象类，接口的形式实现了“找出应用中可能需要变化之处，独立出来，不要和那些不需要变化的代码混在一起”,做到了一个易拓展，弹性的设计。<br><a id="more"></a><br>本文案例，动物有名字，要吃饭，要睡觉。（书上案例，鸭子,飞）<br>首先第一直觉是建立一个抽象类或接口:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">public abstract class Animal &#123;</div><div class="line">    </div><div class="line">    public abstract void name();</div><div class="line"></div><div class="line">    public abstract void eat();</div><div class="line"></div><div class="line">    public abstract void sleep();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>这样做遇到的问题：一只动物今天吃这个，明天吃那个，今天睡这，明天睡那（一个方法实现不同），就要在动物子类中做一些冗余，而这些方法部分是可以被其他动物使用的，完全可以封装起来，这些就是上面提到的需要变化的代码。而动物的名字的实现不会被其他动物使用。所以把吃饭和睡觉提取出来，做成接口，这样一个动物可以有多个吃饭，睡觉实现，动物可以方便地动态改变吃饭，睡觉，提升代码灵活性。在拓展性方面，新增一个动物类，需要同时增加其吃饭，睡觉行为的实现，而大部分实现已经在之前实现了，只需增加这个动物特殊的实现。其实使用了设计原则：多用组合，少用继承。<br>缺点汇总：</p>
 <ul>
 <li>代码在多个子类中重复</li>
@@ -522,7 +522,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -544,7 +544,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
