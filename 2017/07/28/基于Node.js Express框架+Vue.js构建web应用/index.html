@@ -107,7 +107,7 @@
 <meta property="og:site_name" content="技术杂记">
 <meta property="og:description" content="环境介绍手头上有一个需求，需要一个简单的web项目，非常适合部署成微服务。考虑使用Node.js的Express框架作为后端，Vue.js作为前端框架。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-07-30T01:31:19.709Z">
+<meta property="og:updated_time" content="2017-07-30T03:26:40.387Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于Node.js Express框架 + Vue.js构建web应用">
 <meta name="twitter:description" content="环境介绍手头上有一个需求，需要一个简单的web项目，非常适合部署成微服务。考虑使用Node.js的Express框架作为后端，Vue.js作为前端框架。">
@@ -381,7 +381,7 @@
 <p><em>file.vue:</em><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">&lt;template lang=&quot;html&quot;&gt;</div><div class="line">    &lt;div&gt;</div><div class="line">    &lt;form method=&quot;post&quot; action=&quot;http://upload.qiniu.com/&quot;</div><div class="line">     enctype=&quot;multipart/form-data&quot;&gt;</div><div class="line">&lt;!--      &lt;input name=&quot;key&quot; type=&quot;hidden&quot; v-bind:value=&quot;bucketKey&quot; /&gt;--&gt;</div><div class="line">&lt;!--      &lt;input name=&quot;x:&lt;custom_name&gt;&quot; type=&quot;hidden&quot; value=&quot;&lt;custom_value&gt;&quot;&gt;--&gt;</div><div class="line">      &lt;input name=&quot;token&quot; type=&quot;hidden&quot; v-bind:value=&quot;uploadToken&quot; /&gt;</div><div class="line">      &lt;input name=&quot;file&quot; type=&quot;file&quot; /&gt;</div><div class="line">      &lt;!--&lt;input name=&quot;crc32&quot; type=&quot;hidden&quot; /&gt;--&gt;</div><div class="line">&lt;!--      &lt;input name=&quot;accept&quot; type=&quot;hidden&quot; /&gt;--&gt;</div><div class="line">      &lt;input type=&quot;submit&quot;  value=&quot;确定&quot;/&gt;</div><div class="line">    &lt;/form&gt;</div><div class="line"></div><div class="line"></div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/template&gt;</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">export default &#123;</div><div class="line">    data: function() &#123;</div><div class="line">        return &#123;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">&lt;/script&gt;</div><div class="line"></div><div class="line">&lt;style lang=&quot;css&quot;&gt;</div><div class="line">&lt;/style&gt;</div></pre></td></tr></table></figure></p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>项目使用了express-vue 的封装，后端代码都在index.js上，前端代码在.vue页面上，简单粗暴地实现了一个上传到七牛云的服务。第一次使用node.js 目的已经达到，后期学习相关代码分层相关知识。</p>
 <p>重构时的思路是把业务代码和路由从index.js分离，解耦，index.js起分发作用，代码组织策略有待修改。</p>
-<p>遇到的坑点，node.js项目部署在阿里云服务器上，退出终端，node.js项目就被关闭了。</p>
+<p>遇到的坑点，node.js项目部署在阿里云服务器上，退出终端，node.js项目就被关闭了。使用PM2解决。</p>
 
       
     </div>
@@ -449,6 +449,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/03/工厂模式/" rel="prev" title="工厂模式">
+                工厂模式 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -523,7 +527,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
