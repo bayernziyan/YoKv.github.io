@@ -107,7 +107,7 @@
 <meta property="og:site_name" content="技术杂记">
 <meta property="og:description" content="三大特性封装，继承，多态。 封装把对象的属性和操作联合为一个整体，并且隐藏内部实现细节。例子，属性用private修饰，然后建立公有方法给属性赋值，并且在方法中控制给属性赋值的规则。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-21T05:42:06.792Z">
+<meta property="og:updated_time" content="2017-09-21T06:35:03.035Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面向对象">
 <meta name="twitter:description" content="三大特性封装，继承，多态。 封装把对象的属性和操作联合为一个整体，并且隐藏内部实现细节。例子，属性用private修饰，然后建立公有方法给属性赋值，并且在方法中控制给属性赋值的规则。">
@@ -365,8 +365,9 @@
 <h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><p>继承就是从已有的类中派生出新的类，新的类能够吸收已有类的数据和行为，并能扩展新的能力。一般将这个已有类称为父类或是基类，而新的类称为子类或派生类。在java继承特性中，只能实现单继承，也就是所有子类只能有一个父类，子类继承父类的关键字是extends后面跟上类名。</p>
 <h4 id="几个注意点："><a href="#几个注意点：" class="headerlink" title="几个注意点："></a>几个注意点：</h4><ul>
 <li>在父类中的私有属性或方法在子类中是不能被继承的</li>
-<li>如果在父类中有一个带参的构造函数并且没有无参的构造函数，那么子类在继承父类之后，必须有相同构造函数并且函数中的第一条语句要调用父类中的构造函数，因为当你实例化出子类对象的时候，会先走到父类的构造函数中执行再回到子类的构造函数中。<h4 id="方法重写（覆盖）"><a href="#方法重写（覆盖）" class="headerlink" title="方法重写（覆盖）"></a>方法重写（覆盖）</h4>子类中有和父类的重名方法我们叫做覆盖，也就是说重写了父类的方法，在调用的时候可以把两个类的方法看成一种，但是其实是不一样，在子类中通过this和super关键字可以区分出来，this调用的是本类的方法，super调用的是父类方法，属性也是一样</li>
+<li>如果在父类中有一个带参的构造函数并且没有无参的构造函数，那么子类在继承父类之后，必须有相同构造函数并且函数中的第一条语句要调用父类中的构造函数，因为当你实例化出子类对象的时候，会先走到父类的构造函数中执行再回到子类的构造函数中。</li>
 </ul>
+<h4 id="方法重写（覆盖）"><a href="#方法重写（覆盖）" class="headerlink" title="方法重写（覆盖）"></a>方法重写（覆盖）</h4><p>子类中有和父类的重名方法我们叫做覆盖，也就是说重写了父类的方法，在调用的时候可以把两个类的方法看成一种，但是其实是不一样，在子类中通过this和super关键字可以区分出来，this调用的是本类的方法，super调用的是父类方法，属性也是一样</p>
 <h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><p>多态性是指允许不同类的对象对同一消息作出响应，多态包括参数化和包含多态性。多态性语言具有灵活、抽象、行为共享、代码共享的优势，很好的解决了应用程序函数同名的问题。，多态的过程实质是一个抽象指令，让一组具有相同行为单具有不同内容的个体协同工作的这样的一个过程。</p>
 <h4 id="多态的优点"><a href="#多态的优点" class="headerlink" title="多态的优点"></a>多态的优点</h4><ul>
 <li>可替换性（substitutability）。多态对已存在代码具有可替换性。例如，多态对圆Circle类工作，对其他任何圆形几何体，如圆环，也同样工作。</li>
@@ -564,7 +565,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
