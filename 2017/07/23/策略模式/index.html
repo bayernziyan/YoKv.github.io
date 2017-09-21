@@ -83,7 +83,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="docker," />
+  <meta name="keywords" content="设计模式," />
 
 
 
@@ -99,18 +99,18 @@
 
 
 
-<meta name="description" content="概念">
-<meta name="keywords" content="docker">
+<meta name="description" content="策略模式本文为Head First设计模式第一章阅读笔记，以抽象类，接口的形式实现了“找出应用中可能需要变化之处，独立出来，不要和那些不需要变化的代码混在一起”,做到了一个易拓展，弹性的设计。">
+<meta name="keywords" content="设计模式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Docker概念与安装">
-<meta property="og:url" content="http://blog/aiyo.space/2017/07/23/Docker概念与安装/index.html">
+<meta property="og:title" content="设计模式入门">
+<meta property="og:url" content="http://blog/aiyo.space/2017/07/23/策略模式/index.html">
 <meta property="og:site_name" content="技术杂记">
-<meta property="og:description" content="概念">
+<meta property="og:description" content="策略模式本文为Head First设计模式第一章阅读笔记，以抽象类，接口的形式实现了“找出应用中可能需要变化之处，独立出来，不要和那些不需要变化的代码混在一起”,做到了一个易拓展，弹性的设计。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-07-28T06:04:10.000Z">
+<meta property="og:updated_time" content="2017-07-28T06:10:14.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Docker概念与安装">
-<meta name="twitter:description" content="概念">
+<meta name="twitter:title" content="设计模式入门">
+<meta name="twitter:description" content="策略模式本文为Head First设计模式第一章阅读笔记，以抽象类，接口的形式实现了“找出应用中可能需要变化之处，独立出来，不要和那些不需要变化的代码混在一起”,做到了一个易拓展，弹性的设计。">
 
 
 
@@ -138,13 +138,13 @@
 
 
 
-  <link rel="canonical" href="http://blog/aiyo.space/2017/07/23/Docker概念与安装/"/>
+  <link rel="canonical" href="http://blog/aiyo.space/2017/07/23/策略模式/"/>
 
 
 
 
 
-  <title>Docker概念与安装 | 技术杂记</title>
+  <title>设计模式入门 | 技术杂记</title>
   
 
 
@@ -273,7 +273,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog/aiyo.space/2017/07/23/Docker概念与安装/">
+    <link itemprop="mainEntityOfPage" href="http://blog/aiyo.space/2017/07/23/策略模式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="YoKv">
@@ -290,7 +290,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">Docker概念与安装</h2>
+          <h2 class="post-title" itemprop="name headline">设计模式入门</h2>
         
 
         <div class="post-meta">
@@ -302,7 +302,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-23T19:42:13+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-23T14:46:07+08:00">
                 2017-07-23
               </time>
             
@@ -359,39 +359,24 @@
       
 
       
-        <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><a id="more"></a>
-<h3 id="镜像"><a href="#镜像" class="headerlink" title="镜像"></a>镜像</h3><blockquote>
-<p> 类似于虚拟机镜像，是一个只读的模板。一个镜像可以包含一个基本的操作系统，里面仅安装一个Apache应用程序。可以叫做Apache镜像。</p>
-</blockquote>
-<h3 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h3><blockquote>
-<p> 容器类似于一个轻量级的沙箱，docker利用容器，来运行和隔离应用。容器是从镜像创建的应用程序实例。可以将容器看作一个简易版的linux系统环境以及运行在其中的应用程序打包而成的盒子。</p>
-</blockquote>
-<h3 id="仓库"><a href="#仓库" class="headerlink" title="仓库"></a>仓库</h3><blockquote>
-<p> 仓库类似于代码仓库，是docker集中存放镜像文件的场所。仓库分为公开仓库和私有仓库，最大的公开仓库是Docker Hub。仓库管理与Git非常相似。</p>
-</blockquote>
-<h4 id="仓库和仓库注册服务器区分"><a href="#仓库和仓库注册服务器区分" class="headerlink" title="仓库和仓库注册服务器区分"></a>仓库和仓库注册服务器区分</h4><blockquote>
-<p> 仓库注册服务器是存放仓库的地方，往往有多个仓库，每个仓库集中存放某一类镜像，往往包括多个镜像文件，通过tag区分。</p>
-</blockquote>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><blockquote>
-<p> 本文以CentOS 7为例。<br> 官网有Docker Platform,Docker Hub,Docker Cloud和Docker DataCenter。</p>
-</blockquote>
+        <h2 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h2><p>本文为Head First设计模式第一章阅读笔记，以抽象类，接口的形式实现了“找出应用中可能需要变化之处，独立出来，不要和那些不需要变化的代码混在一起”,做到了一个易拓展，弹性的设计。<br><a id="more"></a><br>本文案例，动物有名字，要吃饭，要睡觉。（书上案例，鸭子,飞）<br>首先第一直觉是建立一个抽象类或接口:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">public abstract class Animal &#123;</div><div class="line">    </div><div class="line">    public abstract void name();</div><div class="line"></div><div class="line">    public abstract void eat();</div><div class="line"></div><div class="line">    public abstract void sleep();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这样做遇到的问题：一只动物今天吃这个，明天吃那个，今天睡这，明天睡那（一个方法实现不同），就要在动物子类中做一些冗余，而这些方法部分是可以被其他动物使用的，完全可以封装起来，这些就是上面提到的需要变化的代码。而动物的名字的实现不会被其他动物使用。所以把吃饭和睡觉提取出来，做成接口，这样一个动物可以有多个吃饭，睡觉实现，动物可以方便地动态改变吃饭，睡觉，提升代码灵活性。在拓展性方面，新增一个动物类，需要同时增加其吃饭，睡觉行为的实现，而大部分实现已经在之前实现了，只需增加这个动物特殊的实现。其实使用了设计原则：多用组合，少用继承。<br>缺点汇总：</p>
 <ul>
-<li>Docker Platform 适合桌面系统或云平台</li>
-<li>Docker Hub 官方提供的云托管服务，提供镜像仓库</li>
-<li>Docker Cloud 官方提供的容器云服务，可以完成容器的部署和管理，可以完整地支持容器化项目，有CI，CD功能</li>
-<li>Docker DataCenter  企业级的简单安全弹性容器集群编排和管理</li>
+<li>代码在多个子类中重复</li>
+<li>运行时的行为不易改变</li>
+<li>很难知道动物的所有的行为</li>
+<li>牵一发动全身，会对其他子类造成不必要的改变</li>
 </ul>
-<h4 id="开始安装"><a href="#开始安装" class="headerlink" title="开始安装"></a>开始安装</h4><blockquote>
-<p> CentOS-Extras 内置了Docker,直接通过命令yum命令安装：<br> yum install docker<br> 或yum install -y docker-engine</p>
-</blockquote>
-<p>通过shell脚本安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">	curl -fsSL https://get.docker.com/ | sh</div><div class="line">或</div><div class="line">	wget -qO https://get.docker.com/ | sh</div></pre></td></tr></table></figure></p>
-<h4 id="配置服务"><a href="#配置服务" class="headerlink" title="配置服务"></a>配置服务</h4><blockquote>
-<p> 避免使用docker命令都要用特殊身份，将当前用户加入安装中自动创建的docker用户组：</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">usermod -aG docker username</div></pre></td></tr></table></figure>
-<p>默认配置文件/etc/default/docker</p>
-<p>管理服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">systemctl start docker.service</div></pre></td></tr></table></figure></p>
-<p>日志<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tail /var/log/upstart/docker.log</div></pre></td></tr></table></figure></p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p><strong>动物超类：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">public abstract class Animal &#123;</div><div class="line">    protected EatBehavior eatBehavior;</div><div class="line">    protected SleepBehavior sleepBehavior;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 名字</div><div class="line">     */</div><div class="line">    public abstract void name();</div><div class="line"></div><div class="line">    public void eat() &#123;</div><div class="line">        eatBehavior.eat();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void sleep()&#123;</div><div class="line">        sleepBehavior.sleep();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void setEatBehavior(EatBehavior eatBehavior) &#123;</div><div class="line">        this.eatBehavior = eatBehavior;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void setSleepBehavior(SleepBehavior sleepBehavior) &#123;</div><div class="line">        this.sleepBehavior = sleepBehavior;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>吃饭行为接口：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public interface EatBehavior &#123;</div><div class="line">    void eat();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>睡觉行为接口：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public interface SleepBehavior &#123;</div><div class="line">    void sleep();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>猫：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">public class Cat extends Animal &#123;</div><div class="line">    public Cat() &#123;</div><div class="line">        this.eatBehavior = new CatEat();</div><div class="line">        this.sleepBehavior = new CatSleep();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void name() &#123;</div><div class="line">        System.out.println(&quot;My name is cat.&quot;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>吃饭行为接口实现：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">public class CatEat implements EatBehavior &#123;</div><div class="line">    @Override</div><div class="line">    public void eat() &#123;</div><div class="line">        System.out.println(&quot;eat fish.&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>睡觉行为接口：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">public class CatSleep implements SleepBehavior &#123;</div><div class="line">    @Override</div><div class="line">    public void sleep() &#123;</div><div class="line">        System.out.println(&quot;sleep everywhere.&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>测试：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">public class AnimalTest &#123;</div><div class="line">    @Test</div><div class="line">    public void test()&#123;</div><div class="line">        Animal cat = new Cat();</div><div class="line">        cat.name();</div><div class="line">        cat.eat();</div><div class="line">        cat.sleep();</div><div class="line">        cat.setEatBehavior(new CatEat2());</div><div class="line">        cat.eat();</div><div class="line"></div><div class="line">        Animal viking = new Viking();</div><div class="line">        viking.name();</div><div class="line">        viking.eat();</div><div class="line">        viking.sleep();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>策略模式定义了算法族，分别封装起来，让它们之间可以相互替换，此模式让算法的变化独立于使用算法的客户。</p>
+<h2 id="代码地址"><a href="#代码地址" class="headerlink" title="代码地址"></a>代码地址</h2><p><a href="https://coding.net/u/YoKv/p/readingNotes/git/tree/master/design-patterns/src/main/java/space/aiyo/gettingStarted" target="_blank" rel="external">代码地址</a>  </p>
 
       
     </div>
@@ -437,7 +422,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/docker/" rel="tag"># docker</a>
+            <a href="/tags/设计模式/" rel="tag"># 设计模式</a>
           
         </div>
       
@@ -450,8 +435,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/07/23/设计模式工具箱/" rel="next" title="设计模式工具箱">
-                <i class="fa fa-chevron-left"></i> 设计模式工具箱
+              <a href="/2017/07/21/观察者模式/" rel="next" title="观察者模式">
+                <i class="fa fa-chevron-left"></i> 观察者模式
               </a>
             
           </div>
@@ -460,8 +445,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/07/24/Docker镜像/" rel="prev" title="Docker镜像">
-                Docker镜像 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/07/23/设计模式工具箱/" rel="prev" title="设计模式工具箱">
+                设计模式工具箱 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -614,7 +599,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#镜像"><span class="nav-number">1.1.</span> <span class="nav-text">镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#容器"><span class="nav-number">1.2.</span> <span class="nav-text">容器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#仓库"><span class="nav-number">1.3.</span> <span class="nav-text">仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#仓库和仓库注册服务器区分"><span class="nav-number">1.3.1.</span> <span class="nav-text">仓库和仓库注册服务器区分</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#开始安装"><span class="nav-number">2.0.1.</span> <span class="nav-text">开始安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置服务"><span class="nav-number">2.0.2.</span> <span class="nav-text">配置服务</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#策略模式"><span class="nav-number">1.</span> <span class="nav-text">策略模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码实现"><span class="nav-number">2.</span> <span class="nav-text">代码实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定义"><span class="nav-number">3.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码地址"><span class="nav-number">4.</span> <span class="nav-text">代码地址</span></a></li></ol></div>
             
 
           </div>
