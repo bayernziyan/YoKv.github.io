@@ -83,7 +83,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="JavaSE," />
+  <meta name="keywords" content="dubbo," />
 
 
 
@@ -99,18 +99,18 @@
 
 
 
-<meta name="description" content="内存模型">
-<meta name="keywords" content="JavaSE">
+<meta name="description" content="dubbo 介绍Dubbo是阿里巴巴开源的一个分布式服务框架，致力于提供高性能和透明化的RPC远程服务调用方案，以及SOA服务化治理方案。">
+<meta name="keywords" content="dubbo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="内存模型">
-<meta property="og:url" content="http://blog/aiyo.space/2017/08/25/Java基础回顾——内存模型/index.html">
+<meta property="og:title" content="Dubbo 介绍">
+<meta property="og:url" content="http://blog/aiyo.space/2017/10/31/dubbo介绍/index.html">
 <meta property="og:site_name" content="技术杂记">
-<meta property="og:description" content="内存模型">
+<meta property="og:description" content="dubbo 介绍Dubbo是阿里巴巴开源的一个分布式服务框架，致力于提供高性能和透明化的RPC远程服务调用方案，以及SOA服务化治理方案。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-22T07:11:42.992Z">
+<meta property="og:updated_time" content="2017-10-31T15:54:40.983Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="内存模型">
-<meta name="twitter:description" content="内存模型">
+<meta name="twitter:title" content="Dubbo 介绍">
+<meta name="twitter:description" content="dubbo 介绍Dubbo是阿里巴巴开源的一个分布式服务框架，致力于提供高性能和透明化的RPC远程服务调用方案，以及SOA服务化治理方案。">
 
 
 
@@ -138,13 +138,13 @@
 
 
 
-  <link rel="canonical" href="http://blog/aiyo.space/2017/08/25/Java基础回顾——内存模型/"/>
+  <link rel="canonical" href="http://blog/aiyo.space/2017/10/31/dubbo介绍/"/>
 
 
 
 
 
-  <title>内存模型 | 技术杂记</title>
+  <title>Dubbo 介绍 | 技术杂记</title>
   
 
 
@@ -273,7 +273,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog/aiyo.space/2017/08/25/Java基础回顾——内存模型/">
+    <link itemprop="mainEntityOfPage" href="http://blog/aiyo.space/2017/10/31/dubbo介绍/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="YoKv">
@@ -290,7 +290,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">内存模型</h2>
+          <h2 class="post-title" itemprop="name headline">Dubbo 介绍</h2>
         
 
         <div class="post-meta">
@@ -302,8 +302,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-25T16:20:36+08:00">
-                2017-08-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-31T23:58:46+08:00">
+                2017-10-31
               </time>
             
 
@@ -325,8 +325,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java基础回顾/" itemprop="url" rel="index">
-                    <span itemprop="name">Java基础回顾</span>
+                  <a href="/categories/dubbo/" itemprop="url" rel="index">
+                    <span itemprop="name">dubbo</span>
                   </a>
                 </span>
 
@@ -359,18 +359,47 @@
       
 
       
-        <h2 id="内存模型"><a href="#内存模型" class="headerlink" title="内存模型"></a>内存模型</h2><a id="more"></a>
-<p><a href="http://gityuan.com/2016/01/09/java-memory/" target="_blank" rel="external">来源</a><br>作为Java开发人员来说，并不需要像C/C++开发人员，需要时刻注意内存的释放，而是全权交给虚拟机去管理，那么有就必要了解虚拟机的运行时内存是如何构成的。运行时内存模型，分为线程私有和共享数据区两大类，其中线程私有的数据区包含程序计数器、虚拟机栈、本地方法区，所有线程共享的数据区包含Java堆、方法区，在方法区内有一个常量池<br><a href="http://gityuan.com/images/jvm/jvm_memory_1.png" target="_blank" rel="external">图</a><br><a href="http://gityuan.com/images/jvm/stack_heap_info.png" target="_blank" rel="external">图</a><br>（1）线程私有区：</p>
-<ul>
-<li>程序计数器，记录正在执行的虚拟机字节码的地址；</li>
-<li>虚拟机栈：方法执行的内存区，每个方法执行时会在虚拟机栈中创建栈帧；</li>
-<li>本地方法栈：虚拟机的Native方法执行的内存区；<br>（2）线程共享区：</li>
-<li>Java堆：对象分配内存的区域；</li>
-<li>方法区：存放类信息、常量、静态变量、编译器编译后的代码等数据；</li>
-<li>常量池：存放编译器生成的各种字面量和符号引用，是方法区的一部分。</li>
+        <h2 id="dubbo-介绍"><a href="#dubbo-介绍" class="headerlink" title="dubbo 介绍"></a>dubbo 介绍</h2><p>Dubbo是阿里巴巴开源的一个分布式服务框架，致力于提供高性能和透明化的RPC远程服务调用方案，以及SOA服务化治理方案。<br><a id="more"></a></p>
+<h2 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h2><h3 id="节点角色说明"><a href="#节点角色说明" class="headerlink" title="节点角色说明"></a>节点角色说明</h3><table>
+<thead>
+<tr>
+<th>节点</th>
+<th style="text-align:right">角色说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Provider</td>
+<td style="text-align:right">暴露服务的服务提供方</td>
+</tr>
+<tr>
+<td>Consumer</td>
+<td style="text-align:right">调用远程服务的服务消费方</td>
+</tr>
+<tr>
+<td>Registry</td>
+<td style="text-align:right">服务注册与发现的注册中心</td>
+</tr>
+<tr>
+<td>Monitor</td>
+<td style="text-align:right">统计服务的调用次调和调用时间的监控中心</td>
+</tr>
+<tr>
+<td>Container</td>
+<td style="text-align:right">服务运行容器</td>
+</tr>
+</tbody>
+</table>
+<h3 id="调用关系说明"><a href="#调用关系说明" class="headerlink" title="调用关系说明"></a>调用关系说明</h3><ul>
+<li>服务容器负责启动，加载，运行服务提供者。</li>
+<li>服务提供者在启动时，向注册中心注册自己提供的服务。</li>
+<li>服务消费者在启动时，向注册中心订阅自己所需的服务。</li>
+<li>注册中心返回服务提供者地址列表给消费者，如果有变更，注册中心将基*于长连接推送变更数据给消费者。</li>
+<li>服务消费者，从提供者地址列表中，基于软负载均衡算法，选一台提供者进行调用，如果调用失败，再选另一台调用。</li>
+<li>服务消费者和提供者，在内存中累计调用次数和调用时间，定时每分钟发送一次统计数据到监控中心。</li>
 </ul>
-<h2 id="并发编程"><a href="#并发编程" class="headerlink" title="并发编程"></a>并发编程</h2><p>Java内存模型规定和指引Java程序在不同的内存架构、CPU和操作系统间有确定性地行为。它在多线程的情况下尤其重要。Java内存模型对一个线程所做的变动能被其它线程可见提供了保证，它们之间是先行发生关系。这个关系定义了一些规则让程序员在并发编程时思路更清晰。比如，先行发生关系确保了：<br>线程内的代码能够按先后顺序执行，这被称为程序次序规则。<br>对于同一个锁，一个解锁操作一定要发生在时间上后发生的另一个锁定操作之前，也叫做管程锁定规则。<br>前一个对volatile的写操作在后一个volatile的读操作之前，也叫volatile变量规则。<br>一个线程内的任何操作必需在这个线程的start()调用之后，也叫作线程启动规则。<br>一个线程的所有操作都会在线程终止之前，线程终止规则。<br>一个对象的终结操作必需在这个对象构造完成之后，也叫对象终结规则。<br>可传递性</p>
-<h2 id="待研究补充"><a href="#待研究补充" class="headerlink" title="待研究补充"></a>待研究补充</h2>
+<p>Dubbo 架构具有以下几个特点，分别是连通性、健壮性、伸缩性、以及向未来架构的升级性。</p>
+
       
     </div>
 
@@ -415,7 +444,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/JavaSE/" rel="tag"># JavaSE</a>
+            <a href="/tags/dubbo/" rel="tag"># dubbo</a>
           
         </div>
       
@@ -428,8 +457,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/08/23/Java基础回顾——集合/" rel="next" title="集合">
-                <i class="fa fa-chevron-left"></i> 集合
+              <a href="/2017/10/31/dubbo-demo/" rel="next" title="Dubbo Demo">
+                <i class="fa fa-chevron-left"></i> Dubbo Demo
               </a>
             
           </div>
@@ -438,8 +467,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/08/30/Java基础回顾——Java Web基础/" rel="prev" title="Java Web基础">
-                Java Web基础 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/10/31/dubbo配置/" rel="prev" title="Dubbo 配置">
+                Dubbo 配置 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -592,7 +621,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#内存模型"><span class="nav-number">1.</span> <span class="nav-text">内存模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#并发编程"><span class="nav-number">2.</span> <span class="nav-text">并发编程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#待研究补充"><span class="nav-number">3.</span> <span class="nav-text">待研究补充</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#dubbo-介绍"><span class="nav-number">1.</span> <span class="nav-text">dubbo 介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#架构"><span class="nav-number">2.</span> <span class="nav-text">架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#节点角色说明"><span class="nav-number">2.1.</span> <span class="nav-text">节点角色说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#调用关系说明"><span class="nav-number">2.2.</span> <span class="nav-text">调用关系说明</span></a></li></ol></li></ol></div>
             
 
           </div>

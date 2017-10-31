@@ -83,7 +83,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="JavaSE," />
+  <meta name="keywords" content="事务," />
 
 
 
@@ -99,18 +99,18 @@
 
 
 
-<meta name="description" content="内存模型">
-<meta name="keywords" content="JavaSE">
+<meta name="description" content="事务传播属性">
+<meta name="keywords" content="事务">
 <meta property="og:type" content="article">
-<meta property="og:title" content="内存模型">
-<meta property="og:url" content="http://blog/aiyo.space/2017/08/25/Java基础回顾——内存模型/index.html">
+<meta property="og:title" content="Spring事务管理">
+<meta property="og:url" content="http://blog/aiyo.space/2017/10/31/Spring事务管理/index.html">
 <meta property="og:site_name" content="技术杂记">
-<meta property="og:description" content="内存模型">
+<meta property="og:description" content="事务传播属性">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-22T07:11:42.992Z">
+<meta property="og:updated_time" content="2017-10-31T15:53:46.050Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="内存模型">
-<meta name="twitter:description" content="内存模型">
+<meta name="twitter:title" content="Spring事务管理">
+<meta name="twitter:description" content="事务传播属性">
 
 
 
@@ -138,13 +138,13 @@
 
 
 
-  <link rel="canonical" href="http://blog/aiyo.space/2017/08/25/Java基础回顾——内存模型/"/>
+  <link rel="canonical" href="http://blog/aiyo.space/2017/10/31/Spring事务管理/"/>
 
 
 
 
 
-  <title>内存模型 | 技术杂记</title>
+  <title>Spring事务管理 | 技术杂记</title>
   
 
 
@@ -273,7 +273,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog/aiyo.space/2017/08/25/Java基础回顾——内存模型/">
+    <link itemprop="mainEntityOfPage" href="http://blog/aiyo.space/2017/10/31/Spring事务管理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="YoKv">
@@ -290,7 +290,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">内存模型</h2>
+          <h2 class="post-title" itemprop="name headline">Spring事务管理</h2>
         
 
         <div class="post-meta">
@@ -302,8 +302,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-25T16:20:36+08:00">
-                2017-08-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-31T23:58:46+08:00">
+                2017-10-31
               </time>
             
 
@@ -325,8 +325,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java基础回顾/" itemprop="url" rel="index">
-                    <span itemprop="name">Java基础回顾</span>
+                  <a href="/categories/Spring/" itemprop="url" rel="index">
+                    <span itemprop="name">Spring</span>
                   </a>
                 </span>
 
@@ -359,18 +359,29 @@
       
 
       
-        <h2 id="内存模型"><a href="#内存模型" class="headerlink" title="内存模型"></a>内存模型</h2><a id="more"></a>
-<p><a href="http://gityuan.com/2016/01/09/java-memory/" target="_blank" rel="external">来源</a><br>作为Java开发人员来说，并不需要像C/C++开发人员，需要时刻注意内存的释放，而是全权交给虚拟机去管理，那么有就必要了解虚拟机的运行时内存是如何构成的。运行时内存模型，分为线程私有和共享数据区两大类，其中线程私有的数据区包含程序计数器、虚拟机栈、本地方法区，所有线程共享的数据区包含Java堆、方法区，在方法区内有一个常量池<br><a href="http://gityuan.com/images/jvm/jvm_memory_1.png" target="_blank" rel="external">图</a><br><a href="http://gityuan.com/images/jvm/stack_heap_info.png" target="_blank" rel="external">图</a><br>（1）线程私有区：</p>
-<ul>
-<li>程序计数器，记录正在执行的虚拟机字节码的地址；</li>
-<li>虚拟机栈：方法执行的内存区，每个方法执行时会在虚拟机栈中创建栈帧；</li>
-<li>本地方法栈：虚拟机的Native方法执行的内存区；<br>（2）线程共享区：</li>
-<li>Java堆：对象分配内存的区域；</li>
-<li>方法区：存放类信息、常量、静态变量、编译器编译后的代码等数据；</li>
-<li>常量池：存放编译器生成的各种字面量和符号引用，是方法区的一部分。</li>
+        <h2 id="事务传播属性"><a href="#事务传播属性" class="headerlink" title="事务传播属性"></a>事务传播属性</h2><a id="more"></a>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Propagation &#123;</div><div class="line">    REQUIRED(<span class="number">0</span>),</div><div class="line">    SUPPORTS(<span class="number">1</span>),</div><div class="line">    MANDATORY(<span class="number">2</span>),</div><div class="line">    REQUIRES_NEW(<span class="number">3</span>),</div><div class="line">    NOT_SUPPORTED(<span class="number">4</span>),</div><div class="line">    NEVER(<span class="number">5</span>),</div><div class="line">    NESTED(<span class="number">6</span>);</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> value;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Propagation</span><span class="params">(<span class="keyword">int</span> value)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.value = value;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">value</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.value;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>1) REQUIRED ，这个是默认的属性<br>Support a current transaction, create a new one if none exists.<br>如果存在一个事务，则支持当前事务。如果没有事务则开启一个新的事务。<br>被设置成这个级别时，会为每一个被调用的方法创建一个逻辑事务域。如果前面的方法已经创建了事务，那么后面的方法支持当前的事务，如果当前没有事务会重新建立事务。 </p>
+<p>2) MANDATORY<br>Support a current transaction, throw an exception if none exists.支持当前事务，如果当前没有事务，就抛出异常。 </p>
+<p>3) NEVER<br>Execute non-transactionally, throw an exception if a transaction exists.<br>以非事务方式执行，如果当前存在事务，则抛出异常。 </p>
+<p>4) NOT_SUPPORTED<br>Execute non-transactionally, suspend the current transaction if one exists.<br>以非事务方式执行操作，如果当前存在事务，就把当前事务挂起。 </p>
+<p>5) REQUIRES_NEW<br>Create a new transaction, suspend the current transaction if one exists.<br>新建事务，如果当前存在事务，把当前事务挂起。<br>如图所示： </p>
+<p>6) SUPPORTS<br>Support a current transaction, execute non-transactionally if none exists.<br>支持当前事务，如果当前没有事务，就以非事务方式执行。 </p>
+<p>7) NESTED<br>Execute within a nested transaction if a current transaction exists, behave like PROPAGATION_REQUIRED else.<br>支持当前事务，新增Savepoint点，与当前事务同步提交或回滚。<br>嵌套事务一个非常重要的概念就是内层事务依赖于外层事务。外层事务失败时，会回滚内层事务所做的动作。而内层事务操作失败并不会引起外层事务的回滚。 </p>
+<h2 id="事务隔离"><a href="#事务隔离" class="headerlink" title="事务隔离"></a>事务隔离</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Isolation &#123;</div><div class="line">    DEFAULT(-<span class="number">1</span>),</div><div class="line">    READ_UNCOMMITTED(<span class="number">1</span>),</div><div class="line">    READ_COMMITTED(<span class="number">2</span>),</div><div class="line">    REPEATABLE_READ(<span class="number">4</span>),</div><div class="line">    SERIALIZABLE(<span class="number">8</span>);</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> value;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Isolation</span><span class="params">(<span class="keyword">int</span> value)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.value = value;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">value</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.value;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="存在的问题"><a href="#存在的问题" class="headerlink" title="存在的问题"></a>存在的问题</h3><ul>
+<li>Dirty Reads 脏读 ：<br>一个事务正在对数据进行更新操作，但是更新还未提交，另一个事务这时也来操作这组数据，并且读取了前一个事务还未提交的数据，而前一个事务如果操作失败进行了回滚，后一个事务读取的就是错误数据，这样就造成了脏读。</li>
+<li>Non-Repeatable Reads 不可重复读 ：<br>一个事务多次读取同一数据，在该事务还未结束时，另一个事务也对该数据进行了操作，而且在第一个事务两次次读取之间，第二个事务对数据进行了更新，那么第一个事务前后两次读取到的数据是不同的，这样就造成了不可重复读。</li>
+<li>Phantom Reads 幻像读 ：<br>第一个数据正在查询符合某一条件的数据，这时，另一个事务又插入了一条符合条件的数据，第一个事务在第二次查询符合同一条件的数据时，发现多了一条前一次查询时没有的数据，仿佛幻觉一样，这就是幻像读。</li>
 </ul>
-<h2 id="并发编程"><a href="#并发编程" class="headerlink" title="并发编程"></a>并发编程</h2><p>Java内存模型规定和指引Java程序在不同的内存架构、CPU和操作系统间有确定性地行为。它在多线程的情况下尤其重要。Java内存模型对一个线程所做的变动能被其它线程可见提供了保证，它们之间是先行发生关系。这个关系定义了一些规则让程序员在并发编程时思路更清晰。比如，先行发生关系确保了：<br>线程内的代码能够按先后顺序执行，这被称为程序次序规则。<br>对于同一个锁，一个解锁操作一定要发生在时间上后发生的另一个锁定操作之前，也叫做管程锁定规则。<br>前一个对volatile的写操作在后一个volatile的读操作之前，也叫volatile变量规则。<br>一个线程内的任何操作必需在这个线程的start()调用之后，也叫作线程启动规则。<br>一个线程的所有操作都会在线程终止之前，线程终止规则。<br>一个对象的终结操作必需在这个对象构造完成之后，也叫对象终结规则。<br>可传递性</p>
-<h2 id="待研究补充"><a href="#待研究补充" class="headerlink" title="待研究补充"></a>待研究补充</h2>
+<ul>
+<li>DEFAULT：<br>这是一个PlatfromTransactionManager默认的隔离级别，使用数据库默认的事务隔离级别。 </li>
+<li>READ_UNCOMMITTED：<br>这是事务最低的隔离级别，它充许别外一个事务可以看到这个事务未提交的数据。这种隔离级别会产生脏读，不可重复读和幻像读。<br>大部分数据库缺省的事物隔离级别都不会出现这种状况) </li>
+<li>READ_COMMITTED ：<br>保证一个事务修改的数据提交后才能被另外一个事务读取。另外一个事务不能读取该事务未提交的数据。这种事务隔离级别可以避免脏读出现，但是可能会出现不可重复读和幻像读。</li>
+<li>_REPEATABLE_READ：<br>这种事务隔离级别可以防止脏读，不可重复读。但是可能出现幻像读。 </li>
+<li>SERIALIZABLE ：<br>这是花费最高代价但是最可靠的事务隔离级别。事务被处理为顺序执行。除了防止脏读，不可重复读外，还避免了幻读。 </li>
+</ul>
+
       
     </div>
 
@@ -415,7 +426,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/JavaSE/" rel="tag"># JavaSE</a>
+            <a href="/tags/事务/" rel="tag"># 事务</a>
           
         </div>
       
@@ -428,8 +439,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/08/23/Java基础回顾——集合/" rel="next" title="集合">
-                <i class="fa fa-chevron-left"></i> 集合
+              <a href="/2017/08/31/Java基础回顾——JDBC及数据库/" rel="next" title="JDBC及数据库">
+                <i class="fa fa-chevron-left"></i> JDBC及数据库
               </a>
             
           </div>
@@ -438,8 +449,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/08/30/Java基础回顾——Java Web基础/" rel="prev" title="Java Web基础">
-                Java Web基础 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/10/31/dubbo-demo/" rel="prev" title="Dubbo Demo">
+                Dubbo Demo <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -592,7 +603,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#内存模型"><span class="nav-number">1.</span> <span class="nav-text">内存模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#并发编程"><span class="nav-number">2.</span> <span class="nav-text">并发编程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#待研究补充"><span class="nav-number">3.</span> <span class="nav-text">待研究补充</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#事务传播属性"><span class="nav-number">1.</span> <span class="nav-text">事务传播属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事务隔离"><span class="nav-number">2.</span> <span class="nav-text">事务隔离</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#存在的问题"><span class="nav-number">2.1.</span> <span class="nav-text">存在的问题</span></a></li></ol></li></ol></div>
             
 
           </div>
