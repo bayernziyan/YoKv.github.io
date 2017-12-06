@@ -83,7 +83,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="dubbo," />
+  <meta name="keywords" content="Java, Web, Math, Data" />
 
 
 
@@ -100,14 +100,13 @@
 
 
 <meta name="description" content="dubbo 配置">
-<meta name="keywords" content="dubbo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Dubbo 配置">
 <meta property="og:url" content="http://blog/aiyo.space/2017/10/31/dubbo配置/index.html">
 <meta property="og:site_name" content="技术杂记">
 <meta property="og:description" content="dubbo 配置">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-31T15:54:36.006Z">
+<meta property="og:updated_time" content="2017-12-06T13:53:32.085Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Dubbo 配置">
 <meta name="twitter:description" content="dubbo 配置">
@@ -231,16 +230,6 @@
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             归档
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
           </a>
         </li>
       
@@ -373,57 +362,57 @@
 </thead>
 <tbody>
 <tr>
-<td><dubbo:service></dubbo:service></td>
+<td>dubbo:service</td>
 <td style="text-align:right">服务配置</td>
 <td style="text-align:right">用于暴露一个服务，定义服务的元信息，一个服务可以用多个协议暴露，一个服务也可以注册到多个注册中心</td>
 </tr>
 <tr>
-<td><dubbo:reference></dubbo:reference></td>
+<td>dubbo:reference</td>
 <td style="text-align:right">引用配置</td>
 <td style="text-align:right">用于创建一个远程服务代理，一个引用可以指向多个注册中心</td>
 </tr>
 <tr>
-<td><dubbo:protocol></dubbo:protocol></td>
+<td>dubbo:protocol</td>
 <td style="text-align:right">协议配置</td>
 <td style="text-align:right">用于配置提供服务的协议信息，协议由提供方指定，消费方被动接受</td>
 </tr>
 <tr>
-<td><dubbo:application></dubbo:application></td>
+<td>dubbo:application</td>
 <td style="text-align:right">应用配置</td>
 <td style="text-align:right">用于配置当前应用信息，不管该应用是提供者还是消费者</td>
 </tr>
 <tr>
-<td><dubbo:module></dubbo:module></td>
+<td>dubbo:module</td>
 <td style="text-align:right">模块配置</td>
 <td style="text-align:right">用于配置当前模块信息，可选</td>
 </tr>
 <tr>
-<td><dubbo:registry></dubbo:registry></td>
+<td>dubbo:registry</td>
 <td style="text-align:right">注册中心配置</td>
 <td style="text-align:right">用于配置连接注册中心相关信息</td>
 </tr>
 <tr>
-<td><dubbo:monitor></dubbo:monitor></td>
+<td>dubbo:monitor</td>
 <td style="text-align:right">监控中心配置</td>
 <td style="text-align:right">用于配置连接监控中心相关信息，可选</td>
 </tr>
 <tr>
-<td><dubbo:provider></dubbo:provider></td>
+<td>dubbo:provider</td>
 <td style="text-align:right">提供方配置</td>
 <td style="text-align:right">当 ProtocolConfig 和 ServiceConfig 某属性没有配置时，采用此缺省值，可选</td>
 </tr>
 <tr>
-<td><dubbo:consumer></dubbo:consumer></td>
+<td>dubbo:consumer</td>
 <td style="text-align:right">消费方配置</td>
 <td style="text-align:right">当 ReferenceConfig 某属性没有配置时，采用此缺省值，可选</td>
 </tr>
 <tr>
-<td><dubbo:method></dubbo:method></td>
+<td>dubbo:method</td>
 <td style="text-align:right">方法配置</td>
 <td style="text-align:right">用于 ServiceConfig 和 ReferenceConfig 指定方法级的配置信息</td>
 </tr>
 <tr>
-<td><dubbo:argument></dubbo:argument></td>
+<td>dubbo:argument</td>
 <td style="text-align:right">参数配置</td>
 <td style="text-align:right">用于指定方法参数配置</td>
 </tr>
@@ -450,8 +439,8 @@
 <h3 id="API配置"><a href="#API配置" class="headerlink" title="API配置"></a>API配置</h3><p>API 属性与配置项一对一，各属性含义，请参见：配置参考手册，比如：ApplicationConfig.setName(“xxx”) 对应 <dubbo:application name="xxx"> </dubbo:application></p>
 <p>服务提供者<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 服务实现</span></div><div class="line">XxxService xxxService = <span class="keyword">new</span> XxxServiceImpl();</div><div class="line"></div><div class="line"><span class="comment">// 当前应用配置</span></div><div class="line">ApplicationConfig application = <span class="keyword">new</span> ApplicationConfig();</div><div class="line">application.setName(<span class="string">"xxx"</span>);</div><div class="line"></div><div class="line"><span class="comment">// 连接注册中心配置</span></div><div class="line">RegistryConfig registry = <span class="keyword">new</span> RegistryConfig();</div><div class="line">registry.setAddress(<span class="string">"10.20.130.230:9090"</span>);</div><div class="line">registry.setUsername(<span class="string">"aaa"</span>);</div><div class="line">registry.setPassword(<span class="string">"bbb"</span>);</div><div class="line"></div><div class="line"><span class="comment">// 服务提供者协议配置</span></div><div class="line">ProtocolConfig protocol = <span class="keyword">new</span> ProtocolConfig();</div><div class="line">protocol.setName(<span class="string">"dubbo"</span>);</div><div class="line">protocol.setPort(<span class="number">12345</span>);</div><div class="line">protocol.setThreads(<span class="number">200</span>);</div><div class="line"></div><div class="line"><span class="comment">// 注意：ServiceConfig为重对象，内部封装了与注册中心的连接，以及开启服务端口</span></div><div class="line"></div><div class="line"><span class="comment">// 服务提供者暴露服务配置</span></div><div class="line">ServiceConfig&lt;XxxService&gt; service = <span class="keyword">new</span> ServiceConfig&lt;XxxService&gt;(); <span class="comment">// 此实例很重，封装了与注册中心的连接，请自行缓存，否则可能造成内存和连接泄漏</span></div><div class="line">service.setApplication(application);</div><div class="line">service.setRegistry(registry); <span class="comment">// 多个注册中心可以用setRegistries()</span></div><div class="line">service.setProtocol(protocol); <span class="comment">// 多个协议可以用setProtocols()</span></div><div class="line">service.setInterface(XxxService.class);</div><div class="line">service.setRef(xxxService);</div><div class="line">service.setVersion(<span class="string">"1.0.0"</span>);</div><div class="line"></div><div class="line"><span class="comment">// 暴露及注册服务</span></div><div class="line">service.export();</div></pre></td></tr></table></figure></p>
 <p>服务消费者<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 当前应用配置</span></div><div class="line">ApplicationConfig application = <span class="keyword">new</span> ApplicationConfig();</div><div class="line">application.setName(<span class="string">"yyy"</span>);</div><div class="line"></div><div class="line"><span class="comment">// 连接注册中心配置</span></div><div class="line">RegistryConfig registry = <span class="keyword">new</span> RegistryConfig();</div><div class="line">registry.setAddress(<span class="string">"10.20.130.230:9090"</span>);</div><div class="line">registry.setUsername(<span class="string">"aaa"</span>);</div><div class="line">registry.setPassword(<span class="string">"bbb"</span>);</div><div class="line"></div><div class="line"><span class="comment">// 注意：ReferenceConfig为重对象，内部封装了与注册中心的连接，以及与服务提供方的连接</span></div><div class="line"></div><div class="line"><span class="comment">// 引用远程服务</span></div><div class="line">ReferenceConfig&lt;XxxService&gt; reference = <span class="keyword">new</span> ReferenceConfig&lt;XxxService&gt;(); <span class="comment">// 此实例很重，封装了与注册中心的连接以及与提供者的连接，请自行缓存，否则可能造成内存和连接泄漏</span></div><div class="line">reference.setApplication(application);</div><div class="line">reference.setRegistry(registry); <span class="comment">// 多个注册中心可以用setRegistries()</span></div><div class="line">reference.setInterface(XxxService.class);</div><div class="line">reference.setVersion(<span class="string">"1.0.0"</span>);</div><div class="line"></div><div class="line"><span class="comment">// 和本地bean一样使用xxxService</span></div><div class="line">XxxService xxxService = reference.get(); <span class="comment">// 注意：此代理对象内部封装了所有通讯细节，对象较重，请缓存复用</span></div></pre></td></tr></table></figure></p>
-<h4 id="特殊场景"><a href="#特殊场景" class="headerlink" title="特殊场景"></a>特殊场景</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line"></div><div class="line">// 方法级配置</div><div class="line">List&lt;MethodConfig&gt; methods = new ArrayList&lt;MethodConfig&gt;();</div><div class="line">MethodConfig method = new MethodConfig();</div><div class="line">method.setName(&quot;createXxx&quot;);</div><div class="line">method.setTimeout(10000);</div><div class="line">method.setRetries(0);</div><div class="line">methods.add(method);</div><div class="line"></div><div class="line">// 引用远程服务</div><div class="line">ReferenceConfig&lt;XxxService&gt; reference = new ReferenceConfig&lt;XxxService&gt;(); // 此实例很重，封装了与注册中心的连接以及与提供者的连接，请自行缓存，否则可能造成内存和连接泄漏</div><div class="line">...</div><div class="line">reference.setMethods(methods); // 设置方法级配置</div><div class="line"></div><div class="line">...</div></pre></td></tr></table></figure>
-<p>点对点直连<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line"></div><div class="line">ReferenceConfig&lt;XxxService&gt; reference = new ReferenceConfig&lt;XxxService&gt;(); // 此实例很重，封装了与注册中心的连接以及与提供者的连接，请自行缓存，否则可能造成内存和连接泄漏</div><div class="line">// 如果点对点直连，可以用reference.setUrl()指定目标地址，设置url后将绕过注册中心，</div><div class="line">// 其中，协议对应provider.setProtocol()的值，端口对应provider.setPort()的值，</div><div class="line">// 路径对应service.setPath()的值，如果未设置path，缺省path为接口名</div><div class="line">reference.setUrl(&quot;dubbo://10.20.130.230:20880/com.xxx.XxxService&quot;); </div><div class="line"></div><div class="line">...</div></pre></td></tr></table></figure></p>
+<h4 id="特殊场景"><a href="#特殊场景" class="headerlink" title="特殊场景"></a>特殊场景</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">// 方法级配置</div><div class="line">List&lt;MethodConfig&gt; methods = new ArrayList&lt;MethodConfig&gt;();</div><div class="line">MethodConfig method = new MethodConfig();</div><div class="line">method.setName(&quot;createXxx&quot;);</div><div class="line">method.setTimeout(10000);</div><div class="line">method.setRetries(0);</div><div class="line">methods.add(method);</div><div class="line"></div><div class="line">// 引用远程服务</div><div class="line">ReferenceConfig&lt;XxxService&gt; reference = new ReferenceConfig&lt;XxxService&gt;(); // 此实例很重，封装了与注册中心的连接以及与提供者的连接，请自行缓存，否则可能造成内存和连接泄漏</div><div class="line"></div><div class="line">reference.setMethods(methods); // 设置方法级配置</div></pre></td></tr></table></figure>
+<p>点对点直连<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">ReferenceConfig&lt;XxxService&gt; reference = new ReferenceConfig&lt;XxxService&gt;(); // 此实例很重，封装了与注册中心的连接以及与提供者的连接，请自行缓存，否则可能造成内存和连接泄漏</div><div class="line">// 如果点对点直连，可以用reference.setUrl()指定目标地址，设置url后将绕过注册中心，</div><div class="line">// 其中，协议对应provider.setProtocol()的值，端口对应provider.setPort()的值，</div><div class="line">// 路径对应service.setPath()的值，如果未设置path，缺省path为接口名</div><div class="line">reference.setUrl(&quot;dubbo://10.20.130.230:20880/com.xxx.XxxService&quot;);</div></pre></td></tr></table></figure></p>
 <h3 id="注解配置"><a href="#注解配置" class="headerlink" title="注解配置"></a>注解配置</h3>
       
     </div>
@@ -495,12 +484,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/dubbo/" rel="tag"># dubbo</a>
-          
-        </div>
-      
 
       
       
@@ -510,8 +493,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/10/31/dubbo介绍/" rel="next" title="Dubbo 介绍">
-                <i class="fa fa-chevron-left"></i> Dubbo 介绍
+              <a href="/2017/10/31/Spring事务管理/" rel="next" title="Spring事务管理">
+                <i class="fa fa-chevron-left"></i> Spring事务管理
               </a>
             
           </div>
@@ -519,6 +502,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/10/31/dubbo介绍/" rel="prev" title="Dubbo 介绍">
+                Dubbo 介绍 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -593,7 +580,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">31</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -604,21 +591,12 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
           
 
-          
-            
-            
-            <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">7</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
           
 
         </nav>
