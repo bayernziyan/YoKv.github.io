@@ -3,6 +3,7 @@ title: docker镜像
 date: 2017-07-24 21:45:48
 categories: 
 - docker
+- DevOps
 ---
 
 ## 镜像操作

@@ -3,6 +3,7 @@ title: docker概念与安装
 date: 2017-07-23 19:42:13
 categories: 
 - docker
+- DevOps
 ---
 
 
