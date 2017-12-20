@@ -64,6 +64,7 @@ docker run -d -v /docker/volumes/blog/source:/hexo/blog/source -v /docker/volume
 cd /docker/volumes/blog/source/_posts
 git pull origin
 docker restart 1c
+sleep 30
 cd /docker/volumes/blog/public
 git add -A
 git commit -m "blog update"
