@@ -93,17 +93,17 @@
 
 
 
-<meta name="description" content="内存模型">
+<meta name="description" content="镜像操作">
 <meta property="og:type" content="article">
-<meta property="og:title" content="内存模型">
-<meta property="og:url" content="http://blog/aiyo.space/2017/08/25/Java基础回顾——内存模型/index.html">
+<meta property="og:title" content="Docker镜像">
+<meta property="og:url" content="http://blog/aiyo.space/2017/07/24/docker镜像/index.html">
 <meta property="og:site_name" content="技术杂记">
-<meta property="og:description" content="内存模型">
+<meta property="og:description" content="镜像操作">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-13T15:13:39.000Z">
+<meta property="og:updated_time" content="2017-12-18T12:20:22.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="内存模型">
-<meta name="twitter:description" content="内存模型">
+<meta name="twitter:title" content="Docker镜像">
+<meta name="twitter:description" content="镜像操作">
 
 
 
@@ -131,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://blog/aiyo.space/2017/08/25/Java基础回顾——内存模型/"/>
+  <link rel="canonical" href="http://blog/aiyo.space/2017/07/24/docker镜像/"/>
 
 
 
 
 
-  <title> 内存模型 | 技术杂记 </title>
+  <title> Docker镜像 | 技术杂记 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -256,7 +256,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog/aiyo.space/2017/08/25/Java基础回顾——内存模型/">
+    <link itemprop="mainEntityOfPage" href="http://blog/aiyo.space/2017/07/24/docker镜像/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="YoKv">
@@ -277,7 +277,7 @@
             
             
               
-                内存模型
+                Docker镜像
               
             
           </h2>
@@ -292,8 +292,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-25T16:20:36+00:00">
-                2017-08-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-24T21:45:48+00:00">
+                2017-07-24
               </time>
             
 
@@ -315,8 +315,19 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaSE/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaSE</span>
+                  <a href="/categories/docker/" itemprop="url" rel="index">
+                    <span itemprop="name">docker</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/docker/DevOps/" itemprop="url" rel="index">
+                    <span itemprop="name">DevOps</span>
                   </a>
                 </span>
 
@@ -350,18 +361,21 @@
       
 
       
-        <h2 id="内存模型"><a href="#内存模型" class="headerlink" title="内存模型"></a>内存模型</h2><a id="more"></a>
-<p><a href="http://gityuan.com/2016/01/09/java-memory/" target="_blank" rel="noopener">来源</a><br>作为Java开发人员来说，并不需要像C/C++开发人员，需要时刻注意内存的释放，而是全权交给虚拟机去管理，那么有就必要了解虚拟机的运行时内存是如何构成的。运行时内存模型，分为线程私有和共享数据区两大类，其中线程私有的数据区包含程序计数器、虚拟机栈、本地方法区，所有线程共享的数据区包含Java堆、方法区，在方法区内有一个常量池<br><a href="http://gityuan.com/images/jvm/jvm_memory_1.png" target="_blank" rel="noopener">图</a><br><a href="http://gityuan.com/images/jvm/stack_heap_info.png" target="_blank" rel="noopener">图</a><br>（1）线程私有区：</p>
-<ul>
-<li>程序计数器，记录正在执行的虚拟机字节码的地址；</li>
-<li>虚拟机栈：方法执行的内存区，每个方法执行时会在虚拟机栈中创建栈帧；</li>
-<li>本地方法栈：虚拟机的Native方法执行的内存区；<br>（2）线程共享区：</li>
-<li>Java堆：对象分配内存的区域；</li>
-<li>方法区：存放类信息、常量、静态变量、编译器编译后的代码等数据；</li>
-<li>常量池：存放编译器生成的各种字面量和符号引用，是方法区的一部分。</li>
-</ul>
-<h2 id="并发编程"><a href="#并发编程" class="headerlink" title="并发编程"></a>并发编程</h2><p>Java内存模型规定和指引Java程序在不同的内存架构、CPU和操作系统间有确定性地行为。它在多线程的情况下尤其重要。Java内存模型对一个线程所做的变动能被其它线程可见提供了保证，它们之间是先行发生关系。这个关系定义了一些规则让程序员在并发编程时思路更清晰。比如，先行发生关系确保了：<br>线程内的代码能够按先后顺序执行，这被称为程序次序规则。<br>对于同一个锁，一个解锁操作一定要发生在时间上后发生的另一个锁定操作之前，也叫做管程锁定规则。<br>前一个对volatile的写操作在后一个volatile的读操作之前，也叫volatile变量规则。<br>一个线程内的任何操作必需在这个线程的start()调用之后，也叫作线程启动规则。<br>一个线程的所有操作都会在线程终止之前，线程终止规则。<br>一个对象的终结操作必需在这个对象构造完成之后，也叫对象终结规则。<br>可传递性</p>
-<h2 id="待研究补充"><a href="#待研究补充" class="headerlink" title="待研究补充"></a>待研究补充</h2>
+        <h2 id="镜像操作"><a href="#镜像操作" class="headerlink" title="镜像操作"></a>镜像操作</h2><a id="more"></a>
+<h4 id="获取镜像"><a href="#获取镜像" class="headerlink" title="获取镜像"></a>获取镜像</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull NAME[:TAG]</span><br></pre></td></tr></table></figure>
+<h4 id="创建一个容器"><a href="#创建一个容器" class="headerlink" title="创建一个容器"></a>创建一个容器</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it NAME[:TAG] bash</span><br></pre></td></tr></table></figure>
+<h4 id="列出镜像"><a href="#列出镜像" class="headerlink" title="列出镜像"></a>列出镜像</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure>
+<p>镜像id 使用时不需要输入完整</p>
+<h4 id="镜像打标签"><a href="#镜像打标签" class="headerlink" title="镜像打标签"></a>镜像打标签</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker tag ubuntu:latest myimage:tag</span><br></pre></td></tr></table></figure>
+<p>image id 一样,显示两个镜像</p>
+<h4 id="镜像详细信息"><a href="#镜像详细信息" class="headerlink" title="镜像详细信息"></a>镜像详细信息</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker inspect NAME[:TAG]</span><br></pre></td></tr></table></figure>
+<h4 id="镜像历史"><a href="#镜像历史" class="headerlink" title="镜像历史"></a>镜像历史</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker history</span><br></pre></td></tr></table></figure>
+<h4 id="镜像搜索"><a href="#镜像搜索" class="headerlink" title="镜像搜索"></a>镜像搜索</h4><p>默认搜索官方共享镜像<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker search TERM</span><br><span class="line">docker --automated true --no-trunc true -s 0 nginx</span><br></pre></td></tr></table></figure></p>
+<h4 id="删除镜像-删除容器"><a href="#删除镜像-删除容器" class="headerlink" title="删除镜像,删除容器"></a>删除镜像,删除容器</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker rmi myimage:tag</span><br><span class="line">docker rmi a625sd...</span><br><span class="line"></span><br><span class="line">docker rm a21fsd...</span><br></pre></td></tr></table></figure>
+<h4 id="查看容器"><a href="#查看容器" class="headerlink" title="查看容器"></a>查看容器</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps -a</span><br></pre></td></tr></table></figure>
+<h4 id="创建镜像"><a href="#创建镜像" class="headerlink" title="创建镜像"></a>创建镜像</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">基于已有镜像的容器</span><br><span class="line">docker commit [OPTIONS] CONTAINER [repo[:tag]]</span><br><span class="line"></span><br><span class="line">直接导入</span><br><span class="line">cat ubuntu xxxx.tar.gz | docker import - ubuntu:14.04</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">存出镜像</span><br><span class="line">docker save -o ubuntu.tar ubuntu:14.04</span><br><span class="line">载入镜像</span><br><span class="line">docker load --input ubuntu.tar</span><br><span class="line">或</span><br><span class="line">docker load &lt; ubuntu.tar</span><br></pre></td></tr></table></figure>
+<h4 id="上传镜像"><a href="#上传镜像" class="headerlink" title="上传镜像"></a>上传镜像</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker push NAME[:TAG]</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -413,8 +427,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/08/23/Java基础回顾——集合/" rel="next" title="集合">
-                <i class="fa fa-chevron-left"></i> 集合
+              <a href="/2017/07/23/docker概念与安装/" rel="next" title="Docker概念与安装">
+                <i class="fa fa-chevron-left"></i> Docker概念与安装
               </a>
             
           </div>
@@ -423,8 +437,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/08/30/Java基础回顾——Java Web基础/" rel="prev" title="Java Web基础">
-                Java Web基础 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/07/28/装饰者模式/" rel="prev" title="装饰者模式">
+                装饰者模式 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -567,7 +581,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#内存模型"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x5185;&#x5B58;&#x6A21;&#x578B;" class="headerlink" title="&#x5185;&#x5B58;&#x6A21;&#x578B;"></a>&#x5185;&#x5B58;&#x6A21;&#x578B;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#并发编程"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x5E76;&#x53D1;&#x7F16;&#x7A0B;" class="headerlink" title="&#x5E76;&#x53D1;&#x7F16;&#x7A0B;"></a>&#x5E76;&#x53D1;&#x7F16;&#x7A0B;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#待研究补充"><span class="nav-number">3.</span> <span class="nav-text"><a href="#&#x5F85;&#x7814;&#x7A76;&#x8865;&#x5145;" class="headerlink" title="&#x5F85;&#x7814;&#x7A76;&#x8865;&#x5145;"></a>&#x5F85;&#x7814;&#x7A76;&#x8865;&#x5145;</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#镜像操作"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x955C;&#x50CF;&#x64CD;&#x4F5C;" class="headerlink" title="&#x955C;&#x50CF;&#x64CD;&#x4F5C;"></a>&#x955C;&#x50CF;&#x64CD;&#x4F5C;</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#获取镜像"><span class="nav-number">1.0.1.</span> <span class="nav-text"><a href="#&#x83B7;&#x53D6;&#x955C;&#x50CF;" class="headerlink" title="&#x83B7;&#x53D6;&#x955C;&#x50CF;"></a>&#x83B7;&#x53D6;&#x955C;&#x50CF;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建一个容器"><span class="nav-number">1.0.2.</span> <span class="nav-text"><a href="#&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5BB9;&#x5668;" class="headerlink" title="&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5BB9;&#x5668;"></a>&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5BB9;&#x5668;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#列出镜像"><span class="nav-number">1.0.3.</span> <span class="nav-text"><a href="#&#x5217;&#x51FA;&#x955C;&#x50CF;" class="headerlink" title="&#x5217;&#x51FA;&#x955C;&#x50CF;"></a>&#x5217;&#x51FA;&#x955C;&#x50CF;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#镜像打标签"><span class="nav-number">1.0.4.</span> <span class="nav-text"><a href="#&#x955C;&#x50CF;&#x6253;&#x6807;&#x7B7E;" class="headerlink" title="&#x955C;&#x50CF;&#x6253;&#x6807;&#x7B7E;"></a>&#x955C;&#x50CF;&#x6253;&#x6807;&#x7B7E;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#镜像详细信息"><span class="nav-number">1.0.5.</span> <span class="nav-text"><a href="#&#x955C;&#x50CF;&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;" class="headerlink" title="&#x955C;&#x50CF;&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;"></a>&#x955C;&#x50CF;&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#镜像历史"><span class="nav-number">1.0.6.</span> <span class="nav-text"><a href="#&#x955C;&#x50CF;&#x5386;&#x53F2;" class="headerlink" title="&#x955C;&#x50CF;&#x5386;&#x53F2;"></a>&#x955C;&#x50CF;&#x5386;&#x53F2;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#镜像搜索"><span class="nav-number">1.0.7.</span> <span class="nav-text"><a href="#&#x955C;&#x50CF;&#x641C;&#x7D22;" class="headerlink" title="&#x955C;&#x50CF;&#x641C;&#x7D22;"></a>&#x955C;&#x50CF;&#x641C;&#x7D22;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除镜像-删除容器"><span class="nav-number">1.0.8.</span> <span class="nav-text"><a href="#&#x5220;&#x9664;&#x955C;&#x50CF;-&#x5220;&#x9664;&#x5BB9;&#x5668;" class="headerlink" title="&#x5220;&#x9664;&#x955C;&#x50CF;,&#x5220;&#x9664;&#x5BB9;&#x5668;"></a>&#x5220;&#x9664;&#x955C;&#x50CF;,&#x5220;&#x9664;&#x5BB9;&#x5668;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看容器"><span class="nav-number">1.0.9.</span> <span class="nav-text"><a href="#&#x67E5;&#x770B;&#x5BB9;&#x5668;" class="headerlink" title="&#x67E5;&#x770B;&#x5BB9;&#x5668;"></a>&#x67E5;&#x770B;&#x5BB9;&#x5668;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建镜像"><span class="nav-number">1.0.10.</span> <span class="nav-text"><a href="#&#x521B;&#x5EFA;&#x955C;&#x50CF;" class="headerlink" title="&#x521B;&#x5EFA;&#x955C;&#x50CF;"></a>&#x521B;&#x5EFA;&#x955C;&#x50CF;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#上传镜像"><span class="nav-number">1.0.11.</span> <span class="nav-text"><a href="#&#x4E0A;&#x4F20;&#x955C;&#x50CF;" class="headerlink" title="&#x4E0A;&#x4F20;&#x955C;&#x50CF;"></a>&#x4E0A;&#x4F20;&#x955C;&#x50CF;</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

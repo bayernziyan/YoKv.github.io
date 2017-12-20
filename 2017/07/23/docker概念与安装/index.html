@@ -93,17 +93,17 @@
 
 
 
-<meta name="description" content="内存模型">
+<meta name="description" content="概念">
 <meta property="og:type" content="article">
-<meta property="og:title" content="内存模型">
-<meta property="og:url" content="http://blog/aiyo.space/2017/08/25/Java基础回顾——内存模型/index.html">
+<meta property="og:title" content="Docker概念与安装">
+<meta property="og:url" content="http://blog/aiyo.space/2017/07/23/docker概念与安装/index.html">
 <meta property="og:site_name" content="技术杂记">
-<meta property="og:description" content="内存模型">
+<meta property="og:description" content="概念">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-13T15:13:39.000Z">
+<meta property="og:updated_time" content="2017-12-18T12:20:13.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="内存模型">
-<meta name="twitter:description" content="内存模型">
+<meta name="twitter:title" content="Docker概念与安装">
+<meta name="twitter:description" content="概念">
 
 
 
@@ -131,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://blog/aiyo.space/2017/08/25/Java基础回顾——内存模型/"/>
+  <link rel="canonical" href="http://blog/aiyo.space/2017/07/23/docker概念与安装/"/>
 
 
 
 
 
-  <title> 内存模型 | 技术杂记 </title>
+  <title> Docker概念与安装 | 技术杂记 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -256,7 +256,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog/aiyo.space/2017/08/25/Java基础回顾——内存模型/">
+    <link itemprop="mainEntityOfPage" href="http://blog/aiyo.space/2017/07/23/docker概念与安装/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="YoKv">
@@ -277,7 +277,7 @@
             
             
               
-                内存模型
+                Docker概念与安装
               
             
           </h2>
@@ -292,8 +292,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-25T16:20:36+00:00">
-                2017-08-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-23T19:42:13+00:00">
+                2017-07-23
               </time>
             
 
@@ -315,8 +315,19 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaSE/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaSE</span>
+                  <a href="/categories/docker/" itemprop="url" rel="index">
+                    <span itemprop="name">docker</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/docker/DevOps/" itemprop="url" rel="index">
+                    <span itemprop="name">DevOps</span>
                   </a>
                 </span>
 
@@ -350,18 +361,40 @@
       
 
       
-        <h2 id="内存模型"><a href="#内存模型" class="headerlink" title="内存模型"></a>内存模型</h2><a id="more"></a>
-<p><a href="http://gityuan.com/2016/01/09/java-memory/" target="_blank" rel="noopener">来源</a><br>作为Java开发人员来说，并不需要像C/C++开发人员，需要时刻注意内存的释放，而是全权交给虚拟机去管理，那么有就必要了解虚拟机的运行时内存是如何构成的。运行时内存模型，分为线程私有和共享数据区两大类，其中线程私有的数据区包含程序计数器、虚拟机栈、本地方法区，所有线程共享的数据区包含Java堆、方法区，在方法区内有一个常量池<br><a href="http://gityuan.com/images/jvm/jvm_memory_1.png" target="_blank" rel="noopener">图</a><br><a href="http://gityuan.com/images/jvm/stack_heap_info.png" target="_blank" rel="noopener">图</a><br>（1）线程私有区：</p>
+        <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><a id="more"></a>
+<h3 id="镜像"><a href="#镜像" class="headerlink" title="镜像"></a>镜像</h3><blockquote>
+<p> 类似于虚拟机镜像，是一个只读的模板。一个镜像可以包含一个基本的操作系统，里面仅安装一个Apache应用程序。可以叫做Apache镜像。</p>
+</blockquote>
+<h3 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h3><blockquote>
+<p> 容器类似于一个轻量级的沙箱，docker利用容器，来运行和隔离应用。容器是从镜像创建的应用程序实例。可以将容器看作一个简易版的linux系统环境以及运行在其中的应用程序打包而成的盒子。</p>
+</blockquote>
+<h3 id="仓库"><a href="#仓库" class="headerlink" title="仓库"></a>仓库</h3><blockquote>
+<p> 仓库类似于代码仓库，是docker集中存放镜像文件的场所。仓库分为公开仓库和私有仓库，最大的公开仓库是Docker Hub。仓库管理与Git非常相似。</p>
+</blockquote>
+<h4 id="仓库和仓库注册服务器区分"><a href="#仓库和仓库注册服务器区分" class="headerlink" title="仓库和仓库注册服务器区分"></a>仓库和仓库注册服务器区分</h4><blockquote>
+<p> 仓库注册服务器是存放仓库的地方，往往有多个仓库，每个仓库集中存放某一类镜像，往往包括多个镜像文件，通过tag区分。</p>
+</blockquote>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><blockquote>
+<p> 本文以CentOS 7为例。<br> 官网有Docker Platform,Docker Hub,Docker Cloud和Docker DataCenter。</p>
+</blockquote>
 <ul>
-<li>程序计数器，记录正在执行的虚拟机字节码的地址；</li>
-<li>虚拟机栈：方法执行的内存区，每个方法执行时会在虚拟机栈中创建栈帧；</li>
-<li>本地方法栈：虚拟机的Native方法执行的内存区；<br>（2）线程共享区：</li>
-<li>Java堆：对象分配内存的区域；</li>
-<li>方法区：存放类信息、常量、静态变量、编译器编译后的代码等数据；</li>
-<li>常量池：存放编译器生成的各种字面量和符号引用，是方法区的一部分。</li>
+<li>Docker Platform 适合桌面系统或云平台</li>
+<li>Docker Hub 官方提供的云托管服务，提供镜像仓库</li>
+<li>Docker Cloud 官方提供的容器云服务，可以完成容器的部署和管理，可以完整地支持容器化项目，有CI，CD功能</li>
+<li>Docker DataCenter  企业级的简单安全弹性容器集群编排和管理</li>
 </ul>
-<h2 id="并发编程"><a href="#并发编程" class="headerlink" title="并发编程"></a>并发编程</h2><p>Java内存模型规定和指引Java程序在不同的内存架构、CPU和操作系统间有确定性地行为。它在多线程的情况下尤其重要。Java内存模型对一个线程所做的变动能被其它线程可见提供了保证，它们之间是先行发生关系。这个关系定义了一些规则让程序员在并发编程时思路更清晰。比如，先行发生关系确保了：<br>线程内的代码能够按先后顺序执行，这被称为程序次序规则。<br>对于同一个锁，一个解锁操作一定要发生在时间上后发生的另一个锁定操作之前，也叫做管程锁定规则。<br>前一个对volatile的写操作在后一个volatile的读操作之前，也叫volatile变量规则。<br>一个线程内的任何操作必需在这个线程的start()调用之后，也叫作线程启动规则。<br>一个线程的所有操作都会在线程终止之前，线程终止规则。<br>一个对象的终结操作必需在这个对象构造完成之后，也叫对象终结规则。<br>可传递性</p>
-<h2 id="待研究补充"><a href="#待研究补充" class="headerlink" title="待研究补充"></a>待研究补充</h2>
+<h4 id="开始安装"><a href="#开始安装" class="headerlink" title="开始安装"></a>开始安装</h4><blockquote>
+<p> CentOS-Extras 内置了Docker,直接通过命令yum命令安装：<br> yum install docker<br> 或yum install -y docker-engine</p>
+</blockquote>
+<p>通过shell脚本安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">	curl -fsSL https://get.docker.com/ | sh</span><br><span class="line">或</span><br><span class="line">	wget -qO https://get.docker.com/ | sh</span><br></pre></td></tr></table></figure></p>
+<h4 id="配置服务"><a href="#配置服务" class="headerlink" title="配置服务"></a>配置服务</h4><blockquote>
+<p> 避免使用docker命令都要用特殊身份，将当前用户加入安装中自动创建的docker用户组：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usermod -aG docker username</span><br></pre></td></tr></table></figure>
+<p>默认配置文件/etc/default/docker</p>
+<p>管理服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start docker.service</span><br></pre></td></tr></table></figure></p>
+<p>日志<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tail /var/log/upstart/docker.log</span><br></pre></td></tr></table></figure></p>
+
       
     </div>
 
@@ -413,8 +446,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/08/23/Java基础回顾——集合/" rel="next" title="集合">
-                <i class="fa fa-chevron-left"></i> 集合
+              <a href="/2017/07/23/设计模式工具箱/" rel="next" title="设计模式工具箱">
+                <i class="fa fa-chevron-left"></i> 设计模式工具箱
               </a>
             
           </div>
@@ -423,8 +456,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/08/30/Java基础回顾——Java Web基础/" rel="prev" title="Java Web基础">
-                Java Web基础 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/07/24/docker镜像/" rel="prev" title="Docker镜像">
+                Docker镜像 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -567,7 +600,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#内存模型"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x5185;&#x5B58;&#x6A21;&#x578B;" class="headerlink" title="&#x5185;&#x5B58;&#x6A21;&#x578B;"></a>&#x5185;&#x5B58;&#x6A21;&#x578B;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#并发编程"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x5E76;&#x53D1;&#x7F16;&#x7A0B;" class="headerlink" title="&#x5E76;&#x53D1;&#x7F16;&#x7A0B;"></a>&#x5E76;&#x53D1;&#x7F16;&#x7A0B;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#待研究补充"><span class="nav-number">3.</span> <span class="nav-text"><a href="#&#x5F85;&#x7814;&#x7A76;&#x8865;&#x5145;" class="headerlink" title="&#x5F85;&#x7814;&#x7A76;&#x8865;&#x5145;"></a>&#x5F85;&#x7814;&#x7A76;&#x8865;&#x5145;</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x6982;&#x5FF5;" class="headerlink" title="&#x6982;&#x5FF5;"></a>&#x6982;&#x5FF5;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#镜像"><span class="nav-number">1.1.</span> <span class="nav-text"><a href="#&#x955C;&#x50CF;" class="headerlink" title="&#x955C;&#x50CF;"></a>&#x955C;&#x50CF;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#容器"><span class="nav-number">1.2.</span> <span class="nav-text"><a href="#&#x5BB9;&#x5668;" class="headerlink" title="&#x5BB9;&#x5668;"></a>&#x5BB9;&#x5668;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#仓库"><span class="nav-number">1.3.</span> <span class="nav-text"><a href="#&#x4ED3;&#x5E93;" class="headerlink" title="&#x4ED3;&#x5E93;"></a>&#x4ED3;&#x5E93;</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#仓库和仓库注册服务器区分"><span class="nav-number">1.3.1.</span> <span class="nav-text"><a href="#&#x4ED3;&#x5E93;&#x548C;&#x4ED3;&#x5E93;&#x6CE8;&#x518C;&#x670D;&#x52A1;&#x5668;&#x533A;&#x5206;" class="headerlink" title="&#x4ED3;&#x5E93;&#x548C;&#x4ED3;&#x5E93;&#x6CE8;&#x518C;&#x670D;&#x52A1;&#x5668;&#x533A;&#x5206;"></a>&#x4ED3;&#x5E93;&#x548C;&#x4ED3;&#x5E93;&#x6CE8;&#x518C;&#x670D;&#x52A1;&#x5668;&#x533A;&#x5206;</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x5B89;&#x88C5;" class="headerlink" title="&#x5B89;&#x88C5;"></a>&#x5B89;&#x88C5;</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#开始安装"><span class="nav-number">2.0.1.</span> <span class="nav-text"><a href="#&#x5F00;&#x59CB;&#x5B89;&#x88C5;" class="headerlink" title="&#x5F00;&#x59CB;&#x5B89;&#x88C5;"></a>&#x5F00;&#x59CB;&#x5B89;&#x88C5;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置服务"><span class="nav-number">2.0.2.</span> <span class="nav-text"><a href="#&#x914D;&#x7F6E;&#x670D;&#x52A1;" class="headerlink" title="&#x914D;&#x7F6E;&#x670D;&#x52A1;"></a>&#x914D;&#x7F6E;&#x670D;&#x52A1;</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
