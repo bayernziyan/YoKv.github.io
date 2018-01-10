@@ -100,7 +100,7 @@
 <meta property="og:site_name" content="技术杂记">
 <meta property="og:description" content="教程来源教程来源">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-10T14:35:10.452Z">
+<meta property="og:updated_time" content="2018-01-10T14:44:26.036Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Shell笔记">
 <meta name="twitter:description" content="教程来源教程来源">
@@ -351,23 +351,196 @@
 
       
         <h2 id="教程来源"><a href="#教程来源" class="headerlink" title="教程来源"></a>教程来源</h2><p><a href="http://www.runoob.com/linux/linux-shell.html" target="_blank" rel="noopener">教程来源</a><br><a id="more"></a></p>
-<h2 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h2><figure class="highlight plain"><figcaption><span>是一个约定的标记，它告诉系统这个脚本需要什么解释器来执行，即使用哪一种 Shell。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>#!/bin/bash</p>
-<p>#!/bin/sh<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## Shell 变量</span><br><span class="line"></span><br><span class="line">### 定义和使用</span><br></pre></td></tr></table></figure></p>
-<p>your_name=”qinjx”<br>echo &#36;your_name<br>echo ${your_name}</p>
-<p>for file in <code>ls /etc</code></p>
-<p>for skill in Ada Coffe Action Java; do<br>    echo “I am good at ${skill}Script”<br>done<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">### 删除变量</span><br></pre></td></tr></table></figure></p>
-<p>unset variable_name<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 字符串方法</span><br></pre></td></tr></table></figure></p>
-<p>string=”abcd”<br>echo $#36;#string} #输出 4</p>
-<p>string=”runoob is a great site”<br>echo $#36;string:1:4} # 输出 unoo</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 数组</span><br><span class="line">在Shell中，用括号来表示数组，数组元素用&quot;空格&quot;符号分割开。</span><br></pre></td></tr></table></figure>
-<p>array_name=(value0 value1 value2 value3)</p>
-<p>array_name[0]=value0<br>array_name[1]=value1<br>array_name[n]=valuen</p>
-<p>valuen=${array_name[n]}</p>
-<p>echo ${array_name[@]}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">使用@符号可以获取数组中的所有元素</span><br><span class="line"></span><br><span class="line">## 注释</span><br><span class="line"></span><br><span class="line">以```#```开头的行就是注释，会被解释器忽略。</span><br><span class="line">sh里没有多行注释，只能每一行加一个```#```号。</span><br><span class="line"></span><br><span class="line">## 传递参数</span><br></pre></td></tr></table></figure></p>
-<p>echo “Shell 传递参数实例！”;<br>echo “执行的文件名：&#36;0”;<br>echo “第一个参数为：&#36;1”;<br>echo “第二个参数为：&#36;2”;<br>echo “第三个参数为：&#36;3”;</p>
-<p>&#36; chmod +x test.sh<br>&#36; ./test.sh 1 2 3<br>Shell 传递参数实例！<br>执行的文件名：./test.sh<br>第一个参数为：1<br>第二个参数为：2<br>第三个参数为：3</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">|参数处理	|说明|</span><br><span class="line">|---|---:|</span><br><span class="line">|$#	|传递到脚本的参数个数|</span><br><span class="line">|$*	|以一个单字符串显示所有向脚本传递的参数。如&quot;$*&quot;用「&quot;」括起来的情况、以&quot;$1 &amp;#36;2 … &amp;#36;n&quot;的形式输出所有参数。|</span><br><span class="line">|$$	|脚本运行的当前进程ID号|</span><br><span class="line">|$!	|后台运行的最后一个进程的ID号|</span><br><span class="line">|$@	|与$*相同，但是使用时加引号，并在引号中返回每个参数。如&quot;$@&quot;用「&quot;」括起来的情况、以&quot;$1&quot; &quot;$2&quot; … &quot;$n&quot; 的形式输出所有参数。|</span><br><span class="line">|$- |	显示Shell使用的当前选项，与set命令功能相同。|</span><br><span class="line">|$?	|显示最后命令的退出状态。0表示没有错误，其他任何值表明有错误。|</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## 运算符</span><br><span class="line"></span><br><span class="line">### 算术运算符</span><br><span class="line">假定变量 a 为 10，变量 b 为 20：</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">|运算符|说明|	举例|</span><br><span class="line">|----|----|:-----|</span><br><span class="line">|+	|加法| expr &amp;#36;a + &amp;#36;b 结果为 30。|</span><br><span class="line">|-	|减法|	expr &amp;#36;a - &amp;#36;b 结果为 -10。|</span><br><span class="line">|*	|乘法|	`expr &amp;#36;a \* &amp;#36;b` 结果为  200。|</span><br><span class="line">|/	|除法|	`expr &amp;#36;b / &amp;#36;a` 结果为 2。|</span><br><span class="line">|%	|取余|	`expr &amp;#36;b % &amp;#36;a` 结果为 0。|</span><br><span class="line">|=	|赋值|	a=$b 将把变量 b 的值赋给 a。|</span><br><span class="line">|==	|相等。用于比较两个数字，相同则返回 true。|	[ &amp;#36;a == &amp;#36;b ] 返回 false。|</span><br><span class="line">|!=	|不相等。用于比较两个数字，不相同则返回 true。|	[ &amp;#36;a != &amp;#36;b ] 返回 true。|</span><br><span class="line"></span><br><span class="line">### 关系运算符</span><br><span class="line"></span><br><span class="line">|运算符	|说明 |举例|</span><br><span class="line">|-----|----|-----:|</span><br><span class="line">|-eq |检测两个数是否相等，相等返回 true。| [ &amp;#36;a -eq &amp;#36;b ] 返回 false。|</span><br><span class="line">|-ne	|检测两个数是否相等，不相等返回 true。|	[ &amp;#36;a -ne &amp;#36;b ] 返回 true。|</span><br><span class="line">|-gt	|检测左边的数是否大于右边的，如果是，则返回 true。|	[ &amp;#36;a -gt &amp;#36;b ] 返回 false。|</span><br><span class="line">|-lt	|检测左边的数是否小于右边的，如果是，则返回 true。|	[ &amp;#36;a -lt &amp;#36;b ] 返回 true。|</span><br><span class="line">|-ge	|检测左边的数是否大于等于右边的，如果是，则返回 true。	|[ &amp;#36;a -ge &amp;#36;b ] 返回 false。|</span><br><span class="line">|-le	|检测左边的数是否小于等于右边的，如果是，则返回 true。	|[ &amp;#36;a -le &amp;#36;b ] 返回 true。|</span><br><span class="line"></span><br><span class="line">### 布尔运算符</span><br><span class="line"></span><br><span class="line">|运算符	|说明|	举例|</span><br><span class="line">|-----|----|-----|</span><br><span class="line">|!	|非运算，表达式为 true 则返回 false，否则返回 true。|	[ ! false ] 返回 true。|</span><br><span class="line">|-o	|或运算，有一个表达式为 true 则返回 true。	|[ &amp;#36;a -lt 20 -o &amp;#36;b -gt 100 ] 返回 true。|</span><br><span class="line">|-a	|与运算，两个表达式都为 true 才返回 true。	|[ &amp;#36;a -lt 20 -a &amp;#36;b -gt 100 ] 返回 false。|</span><br><span class="line"></span><br><span class="line">### 逻辑运算符</span><br><span class="line"></span><br><span class="line">|运算符	|说明|	举例|</span><br><span class="line">|-----|----|-----|</span><br><span class="line">|&amp;&amp;	|逻辑的 AND	|[[ &amp;#36;a -lt 100 &amp;&amp; &amp;#36;b -gt 100 ]] 返回 false|</span><br><span class="line">| \u007c\u007c	|逻辑的 OR	|[[ &amp;#36;a -lt 100 \u007c\u007c &amp;#36;b -gt 100 ]] 返回 true|</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 字符串运算符</span><br><span class="line"></span><br><span class="line">### 文件测试运算符</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## echo命令</span><br><span class="line">用于字符串的输出</span><br><span class="line"></span><br><span class="line">```shell</span><br><span class="line">echo &quot;It is a test&quot;</span><br><span class="line"></span><br><span class="line">echo &quot;\&quot;It is a test\&quot;&quot;</span><br><span class="line"></span><br><span class="line">#read 命令从标准输入中读取一行,并把输入行的每个字段的值指定给 shell 变量</span><br><span class="line">#!/bin/sh</span><br><span class="line">read name </span><br><span class="line">echo &quot;$name It is a test&quot;</span><br><span class="line"></span><br><span class="line">#显示换行</span><br><span class="line">echo -e &quot;OK! \n&quot; # -e 开启转义</span><br><span class="line">echo &quot;It it a test&quot;</span><br><span class="line"></span><br><span class="line">#显示不换行</span><br><span class="line">#!/bin/sh</span><br><span class="line">echo -e &quot;OK! \c&quot; # -e 开启转义 \c 不换行</span><br><span class="line">echo &quot;It is a test&quot;</span><br><span class="line"></span><br><span class="line">#显示结果定向至文件</span><br><span class="line">echo &quot;It is a test&quot; &gt; myfile</span><br><span class="line"></span><br><span class="line"># 原样输出字符串，不进行转义或取变量(用单引号)</span><br><span class="line">echo &apos;$name\&quot;&apos;</span><br><span class="line"></span><br><span class="line">#显示命令执行结果</span><br><span class="line">echo `date`</span><br></pre></td></tr></table></figure>
+<h2 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h2><p>“#!”是一个约定的标记，它告诉系统这个脚本需要什么解释器来执行，即使用哪一种 Shell。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">#!/bin/sh</span><br></pre></td></tr></table></figure>
+<h2 id="Shell-变量"><a href="#Shell-变量" class="headerlink" title="Shell 变量"></a>Shell 变量</h2><h3 id="定义和使用"><a href="#定义和使用" class="headerlink" title="定义和使用"></a>定义和使用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">your_name=&quot;qinjx&quot;</span><br><span class="line">echo &amp;#36;your_name</span><br><span class="line">echo $&#123;your_name&#125;</span><br><span class="line"></span><br><span class="line">for file in `ls /etc`</span><br><span class="line"></span><br><span class="line">for skill in Ada Coffe Action Java; do</span><br><span class="line">    echo &quot;I am good at $&#123;skill&#125;Script&quot;</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+<h3 id="删除变量"><a href="#删除变量" class="headerlink" title="删除变量"></a>删除变量</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unset variable_name</span><br></pre></td></tr></table></figure>
+<h3 id="字符串方法"><a href="#字符串方法" class="headerlink" title="字符串方法"></a>字符串方法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">string=&quot;abcd&quot;</span><br><span class="line">echo $#36;#string&#125; #输出 4</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">string=&quot;runoob is a great site&quot;</span><br><span class="line">echo $#36;string:1:4&#125; # 输出 unoo</span><br></pre></td></tr></table></figure>
+<h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><p>在Shell中，用括号来表示数组，数组元素用”空格”符号分割开。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">array_name=(value0 value1 value2 value3)</span><br><span class="line"></span><br><span class="line">array_name[0]=value0</span><br><span class="line">array_name[1]=value1</span><br><span class="line">array_name[n]=valuen</span><br><span class="line"></span><br><span class="line">valuen=$&#123;array_name[n]&#125;</span><br><span class="line"></span><br><span class="line">echo $&#123;array_name[@]&#125;</span><br></pre></td></tr></table></figure>
+<p>使用@符号可以获取数组中的所有元素</p>
+<h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><p>以”#”开头的行就是注释，会被解释器忽略。<br>sh里没有多行注释，只能每一行加一个”#”号。</p>
+<h2 id="传递参数"><a href="#传递参数" class="headerlink" title="传递参数"></a>传递参数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;Shell 传递参数实例！&quot;;</span><br><span class="line">echo &quot;执行的文件名：&amp;#36;0&quot;;</span><br><span class="line">echo &quot;第一个参数为：&amp;#36;1&quot;;</span><br><span class="line">echo &quot;第二个参数为：&amp;#36;2&quot;;</span><br><span class="line">echo &quot;第三个参数为：&amp;#36;3&quot;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&amp;#36; chmod +x test.sh </span><br><span class="line">&amp;#36; ./test.sh 1 2 3</span><br><span class="line">Shell 传递参数实例！</span><br><span class="line">执行的文件名：./test.sh</span><br><span class="line">第一个参数为：1</span><br><span class="line">第二个参数为：2</span><br><span class="line">第三个参数为：3</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>参数处理</th>
+<th style="text-align:right">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$#</td>
+<td style="text-align:right">传递到脚本的参数个数</td>
+</tr>
+<tr>
+<td>$*</td>
+<td style="text-align:right">以一个单字符串显示所有向脚本传递的参数。如”$*”用「”」括起来的情况、以”$1 &#36;2 … &#36;n”的形式输出所有参数。</td>
+</tr>
+<tr>
+<td>$$</td>
+<td style="text-align:right">脚本运行的当前进程ID号</td>
+</tr>
+<tr>
+<td>$!</td>
+<td style="text-align:right">后台运行的最后一个进程的ID号</td>
+</tr>
+<tr>
+<td>$@</td>
+<td style="text-align:right">与$*相同，但是使用时加引号，并在引号中返回每个参数。如”$@”用「”」括起来的情况、以”$1” “$2” … “$n” 的形式输出所有参数。</td>
+</tr>
+<tr>
+<td>$-</td>
+<td style="text-align:right">显示Shell使用的当前选项，与set命令功能相同。</td>
+</tr>
+<tr>
+<td>$?</td>
+<td style="text-align:right">显示最后命令的退出状态。0表示没有错误，其他任何值表明有错误。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><h3 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h3><p>假定变量 a 为 10，变量 b 为 20：</p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>说明</th>
+<th style="text-align:left">举例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>+</td>
+<td>加法</td>
+<td style="text-align:left">expr &#36;a + &#36;b 结果为 30。</td>
+</tr>
+<tr>
+<td>-</td>
+<td>减法</td>
+<td style="text-align:left">expr &#36;a - &#36;b 结果为 -10。</td>
+</tr>
+<tr>
+<td>*</td>
+<td>乘法</td>
+<td style="text-align:left"><code>expr &amp;#36;a \* &amp;#36;b</code> 结果为  200。</td>
+</tr>
+<tr>
+<td>/</td>
+<td>除法</td>
+<td style="text-align:left"><code>expr &amp;#36;b / &amp;#36;a</code> 结果为 2。</td>
+</tr>
+<tr>
+<td>%</td>
+<td>取余</td>
+<td style="text-align:left"><code>expr &amp;#36;b % &amp;#36;a</code> 结果为 0。</td>
+</tr>
+<tr>
+<td>=</td>
+<td>赋值</td>
+<td style="text-align:left">a=$b 将把变量 b 的值赋给 a。</td>
+</tr>
+<tr>
+<td>==</td>
+<td>相等。用于比较两个数字，相同则返回 true。</td>
+<td style="text-align:left">[ &#36;a == &#36;b ] 返回 false。</td>
+</tr>
+<tr>
+<td>!=</td>
+<td>不相等。用于比较两个数字，不相同则返回 true。</td>
+<td style="text-align:left">[ &#36;a != &#36;b ] 返回 true。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="关系运算符"><a href="#关系运算符" class="headerlink" title="关系运算符"></a>关系运算符</h3><table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>说明</th>
+<th style="text-align:right">举例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-eq</td>
+<td>检测两个数是否相等，相等返回 true。</td>
+<td style="text-align:right">[ &#36;a -eq &#36;b ] 返回 false。</td>
+</tr>
+<tr>
+<td>-ne</td>
+<td>检测两个数是否相等，不相等返回 true。</td>
+<td style="text-align:right">[ &#36;a -ne &#36;b ] 返回 true。</td>
+</tr>
+<tr>
+<td>-gt</td>
+<td>检测左边的数是否大于右边的，如果是，则返回 true。</td>
+<td style="text-align:right">[ &#36;a -gt &#36;b ] 返回 false。</td>
+</tr>
+<tr>
+<td>-lt</td>
+<td>检测左边的数是否小于右边的，如果是，则返回 true。</td>
+<td style="text-align:right">[ &#36;a -lt &#36;b ] 返回 true。</td>
+</tr>
+<tr>
+<td>-ge</td>
+<td>检测左边的数是否大于等于右边的，如果是，则返回 true。</td>
+<td style="text-align:right">[ &#36;a -ge &#36;b ] 返回 false。</td>
+</tr>
+<tr>
+<td>-le</td>
+<td>检测左边的数是否小于等于右边的，如果是，则返回 true。</td>
+<td style="text-align:right">[ &#36;a -le &#36;b ] 返回 true。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="布尔运算符"><a href="#布尔运算符" class="headerlink" title="布尔运算符"></a>布尔运算符</h3><table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>说明</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>!</td>
+<td>非运算，表达式为 true 则返回 false，否则返回 true。</td>
+<td>[ ! false ] 返回 true。</td>
+</tr>
+<tr>
+<td>-o</td>
+<td>或运算，有一个表达式为 true 则返回 true。</td>
+<td>[ &#36;a -lt 20 -o &#36;b -gt 100 ] 返回 true。</td>
+</tr>
+<tr>
+<td>-a</td>
+<td>与运算，两个表达式都为 true 才返回 true。</td>
+<td>[ &#36;a -lt 20 -a &#36;b -gt 100 ] 返回 false。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h3><table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>说明</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&amp;&amp;</td>
+<td>逻辑的 AND</td>
+<td>[[ &#36;a -lt 100 &amp;&amp; &#36;b -gt 100 ]] 返回 false</td>
+</tr>
+<tr>
+<td>\u007c\u007c</td>
+<td>逻辑的 OR</td>
+<td>[[ &#36;a -lt 100 \u007c\u007c &#36;b -gt 100 ]] 返回 true</td>
+</tr>
+</tbody>
+</table>
+<h3 id="字符串运算符"><a href="#字符串运算符" class="headerlink" title="字符串运算符"></a>字符串运算符</h3><h3 id="文件测试运算符"><a href="#文件测试运算符" class="headerlink" title="文件测试运算符"></a>文件测试运算符</h3><h2 id="echo命令"><a href="#echo命令" class="headerlink" title="echo命令"></a>echo命令</h2><p>用于字符串的输出</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">echo "It is a test"</span><br><span class="line"></span><br><span class="line">echo "\"It is a test\""</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>read 命令从标准输入中读取一行,并把输入行的每个字段的值指定给 shell 变量</span><br><span class="line"><span class="meta">#</span>!/bin/sh</span><br><span class="line">read name </span><br><span class="line">echo "$name It is a test"</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>显示换行</span><br><span class="line">echo -e "OK! \n" # -e 开启转义</span><br><span class="line">echo "It it a test"</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>显示不换行</span><br><span class="line"><span class="meta">#</span>!/bin/sh</span><br><span class="line">echo -e "OK! \c" # -e 开启转义 \c 不换行</span><br><span class="line">echo "It is a test"</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>显示结果定向至文件</span><br><span class="line">echo "It is a test" &gt; myfile</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 原样输出字符串，不进行转义或取变量(用单引号)</span><br><span class="line">echo '$name\"'</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>显示命令执行结果</span><br><span class="line">echo `date`</span><br></pre></td></tr></table></figure>
 <h2 id="printf-命令"><a href="#printf-命令" class="headerlink" title="printf 命令"></a>printf 命令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">printf  format-string  [arguments...]</span><br><span class="line"></span><br><span class="line">&amp;#36; echo &quot;Hello, Shell&quot;</span><br><span class="line">Hello, Shell</span><br><span class="line">&amp;#36; printf &quot;Hello, Shell\n&quot;</span><br><span class="line">Hello, Shell</span><br></pre></td></tr></table></figure>
 <h2 id="test-命令"><a href="#test-命令" class="headerlink" title="test 命令"></a>test 命令</h2><p>Shell中的 test 命令用于检查某个条件是否成立，它可以进行数值、字符和文件三个方面的测试。</p>
 <h3 id="数值测试"><a href="#数值测试" class="headerlink" title="数值测试"></a>数值测试</h3><table>
@@ -530,7 +703,7 @@
 </table>
 <h2 id="输入-输出重定向"><a href="#输入-输出重定向" class="headerlink" title="输入/输出重定向"></a>输入/输出重定向</h2><p>大多数 UNIX 系统命令从你的终端接受输入并将所产生的输出发送回​​到您的终端。一个命令通常从一个叫标准输入的地方读取输入，默认情况下，这恰好是你的终端。同样，一个命令通常将其输出写入到标准输出，默认情况下，这也是你的终端。</p>
 <h2 id="文件包含"><a href="#文件包含" class="headerlink" title="文件包含"></a>文件包含</h2><p>Shell 也可以包含外部脚本。这样可以很方便的封装一些公用的代码作为一个独立的文件。<br>Shell 文件包含的语法格式如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">. filename   # 注意点号(.)和文件名中间有一空格</span><br><span class="line"></span><br><span class="line">或</span><br><span class="line"></span><br><span class="line">source filename</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">. filename   # 注意点号(.)和文件名中间有一空格</span><br><span class="line">或</span><br><span class="line">source filename</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -733,7 +906,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#教程来源"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x6559;&#x7A0B;&#x6765;&#x6E90;" class="headerlink" title="&#x6559;&#x7A0B;&#x6765;&#x6E90;"></a>&#x6559;&#x7A0B;&#x6765;&#x6E90;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类型"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x7C7B;&#x578B;" class="headerlink" title="&#x7C7B;&#x578B;"></a>&#x7C7B;&#x578B;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#printf-命令"><span class="nav-number">3.</span> <span class="nav-text"><a href="#printf-&#x547D;&#x4EE4;" class="headerlink" title="printf &#x547D;&#x4EE4;"></a>printf &#x547D;&#x4EE4;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#test-命令"><span class="nav-number">4.</span> <span class="nav-text"><a href="#test-&#x547D;&#x4EE4;" class="headerlink" title="test &#x547D;&#x4EE4;"></a>test &#x547D;&#x4EE4;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数值测试"><span class="nav-number">4.1.</span> <span class="nav-text"><a href="#&#x6570;&#x503C;&#x6D4B;&#x8BD5;" class="headerlink" title="&#x6570;&#x503C;&#x6D4B;&#x8BD5;"></a>&#x6570;&#x503C;&#x6D4B;&#x8BD5;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串测试"><span class="nav-number">4.2.</span> <span class="nav-text"><a href="#&#x5B57;&#x7B26;&#x4E32;&#x6D4B;&#x8BD5;" class="headerlink" title="&#x5B57;&#x7B26;&#x4E32;&#x6D4B;&#x8BD5;"></a>&#x5B57;&#x7B26;&#x4E32;&#x6D4B;&#x8BD5;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件测试"><span class="nav-number">4.3.</span> <span class="nav-text"><a href="#&#x6587;&#x4EF6;&#x6D4B;&#x8BD5;" class="headerlink" title="&#x6587;&#x4EF6;&#x6D4B;&#x8BD5;"></a>&#x6587;&#x4EF6;&#x6D4B;&#x8BD5;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#流程控制"><span class="nav-number">5.</span> <span class="nav-text"><a href="#&#x6D41;&#x7A0B;&#x63A7;&#x5236;" class="headerlink" title="&#x6D41;&#x7A0B;&#x63A7;&#x5236;"></a>&#x6D41;&#x7A0B;&#x63A7;&#x5236;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#if-else"><span class="nav-number">5.1.</span> <span class="nav-text"><a href="#if-else" class="headerlink" title="if else"></a>if else</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#for-循环"><span class="nav-number">5.2.</span> <span class="nav-text"><a href="#for-&#x5FAA;&#x73AF;" class="headerlink" title="for &#x5FAA;&#x73AF;"></a>for &#x5FAA;&#x73AF;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#while-语句"><span class="nav-number">5.3.</span> <span class="nav-text"><a href="#while-&#x8BED;&#x53E5;" class="headerlink" title="while &#x8BED;&#x53E5;"></a>while &#x8BED;&#x53E5;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#无限循环"><span class="nav-number">5.4.</span> <span class="nav-text"><a href="#&#x65E0;&#x9650;&#x5FAA;&#x73AF;" class="headerlink" title="&#x65E0;&#x9650;&#x5FAA;&#x73AF;"></a>&#x65E0;&#x9650;&#x5FAA;&#x73AF;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#until-循环"><span class="nav-number">5.5.</span> <span class="nav-text"><a href="#until-&#x5FAA;&#x73AF;" class="headerlink" title="until &#x5FAA;&#x73AF;"></a>until &#x5FAA;&#x73AF;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#case"><span class="nav-number">5.6.</span> <span class="nav-text"><a href="#case" class="headerlink" title="case"></a>case</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#跳出循环"><span class="nav-number">5.7.</span> <span class="nav-text"><a href="#&#x8DF3;&#x51FA;&#x5FAA;&#x73AF;" class="headerlink" title="&#x8DF3;&#x51FA;&#x5FAA;&#x73AF;"></a>&#x8DF3;&#x51FA;&#x5FAA;&#x73AF;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Shell-函数"><span class="nav-number">6.</span> <span class="nav-text"><a href="#Shell-&#x51FD;&#x6570;" class="headerlink" title="Shell &#x51FD;&#x6570;"></a>Shell &#x51FD;&#x6570;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#函数参数"><span class="nav-number">6.1.</span> <span class="nav-text"><a href="#&#x51FD;&#x6570;&#x53C2;&#x6570;" class="headerlink" title="&#x51FD;&#x6570;&#x53C2;&#x6570;"></a>&#x51FD;&#x6570;&#x53C2;&#x6570;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入-输出重定向"><span class="nav-number">7.</span> <span class="nav-text"><a href="#&#x8F93;&#x5165;-&#x8F93;&#x51FA;&#x91CD;&#x5B9A;&#x5411;" class="headerlink" title="&#x8F93;&#x5165;/&#x8F93;&#x51FA;&#x91CD;&#x5B9A;&#x5411;"></a>&#x8F93;&#x5165;/&#x8F93;&#x51FA;&#x91CD;&#x5B9A;&#x5411;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件包含"><span class="nav-number">8.</span> <span class="nav-text"><a href="#&#x6587;&#x4EF6;&#x5305;&#x542B;" class="headerlink" title="&#x6587;&#x4EF6;&#x5305;&#x542B;"></a>&#x6587;&#x4EF6;&#x5305;&#x542B;</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#教程来源"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x6559;&#x7A0B;&#x6765;&#x6E90;" class="headerlink" title="&#x6559;&#x7A0B;&#x6765;&#x6E90;"></a>&#x6559;&#x7A0B;&#x6765;&#x6E90;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类型"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x7C7B;&#x578B;" class="headerlink" title="&#x7C7B;&#x578B;"></a>&#x7C7B;&#x578B;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Shell-变量"><span class="nav-number">3.</span> <span class="nav-text"><a href="#Shell-&#x53D8;&#x91CF;" class="headerlink" title="Shell &#x53D8;&#x91CF;"></a>Shell &#x53D8;&#x91CF;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义和使用"><span class="nav-number">3.1.</span> <span class="nav-text"><a href="#&#x5B9A;&#x4E49;&#x548C;&#x4F7F;&#x7528;" class="headerlink" title="&#x5B9A;&#x4E49;&#x548C;&#x4F7F;&#x7528;"></a>&#x5B9A;&#x4E49;&#x548C;&#x4F7F;&#x7528;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除变量"><span class="nav-number">3.2.</span> <span class="nav-text"><a href="#&#x5220;&#x9664;&#x53D8;&#x91CF;" class="headerlink" title="&#x5220;&#x9664;&#x53D8;&#x91CF;"></a>&#x5220;&#x9664;&#x53D8;&#x91CF;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串方法"><span class="nav-number">3.3.</span> <span class="nav-text"><a href="#&#x5B57;&#x7B26;&#x4E32;&#x65B9;&#x6CD5;" class="headerlink" title="&#x5B57;&#x7B26;&#x4E32;&#x65B9;&#x6CD5;"></a>&#x5B57;&#x7B26;&#x4E32;&#x65B9;&#x6CD5;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组"><span class="nav-number">3.4.</span> <span class="nav-text"><a href="#&#x6570;&#x7EC4;" class="headerlink" title="&#x6570;&#x7EC4;"></a>&#x6570;&#x7EC4;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注释"><span class="nav-number">4.</span> <span class="nav-text"><a href="#&#x6CE8;&#x91CA;" class="headerlink" title="&#x6CE8;&#x91CA;"></a>&#x6CE8;&#x91CA;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#传递参数"><span class="nav-number">5.</span> <span class="nav-text"><a href="#&#x4F20;&#x9012;&#x53C2;&#x6570;" class="headerlink" title="&#x4F20;&#x9012;&#x53C2;&#x6570;"></a>&#x4F20;&#x9012;&#x53C2;&#x6570;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运算符"><span class="nav-number">6.</span> <span class="nav-text"><a href="#&#x8FD0;&#x7B97;&#x7B26;" class="headerlink" title="&#x8FD0;&#x7B97;&#x7B26;"></a>&#x8FD0;&#x7B97;&#x7B26;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#算术运算符"><span class="nav-number">6.1.</span> <span class="nav-text"><a href="#&#x7B97;&#x672F;&#x8FD0;&#x7B97;&#x7B26;" class="headerlink" title="&#x7B97;&#x672F;&#x8FD0;&#x7B97;&#x7B26;"></a>&#x7B97;&#x672F;&#x8FD0;&#x7B97;&#x7B26;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关系运算符"><span class="nav-number">6.2.</span> <span class="nav-text"><a href="#&#x5173;&#x7CFB;&#x8FD0;&#x7B97;&#x7B26;" class="headerlink" title="&#x5173;&#x7CFB;&#x8FD0;&#x7B97;&#x7B26;"></a>&#x5173;&#x7CFB;&#x8FD0;&#x7B97;&#x7B26;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#布尔运算符"><span class="nav-number">6.3.</span> <span class="nav-text"><a href="#&#x5E03;&#x5C14;&#x8FD0;&#x7B97;&#x7B26;" class="headerlink" title="&#x5E03;&#x5C14;&#x8FD0;&#x7B97;&#x7B26;"></a>&#x5E03;&#x5C14;&#x8FD0;&#x7B97;&#x7B26;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑运算符"><span class="nav-number">6.4.</span> <span class="nav-text"><a href="#&#x903B;&#x8F91;&#x8FD0;&#x7B97;&#x7B26;" class="headerlink" title="&#x903B;&#x8F91;&#x8FD0;&#x7B97;&#x7B26;"></a>&#x903B;&#x8F91;&#x8FD0;&#x7B97;&#x7B26;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串运算符"><span class="nav-number">6.5.</span> <span class="nav-text"><a href="#&#x5B57;&#x7B26;&#x4E32;&#x8FD0;&#x7B97;&#x7B26;" class="headerlink" title="&#x5B57;&#x7B26;&#x4E32;&#x8FD0;&#x7B97;&#x7B26;"></a>&#x5B57;&#x7B26;&#x4E32;&#x8FD0;&#x7B97;&#x7B26;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件测试运算符"><span class="nav-number">6.6.</span> <span class="nav-text"><a href="#&#x6587;&#x4EF6;&#x6D4B;&#x8BD5;&#x8FD0;&#x7B97;&#x7B26;" class="headerlink" title="&#x6587;&#x4EF6;&#x6D4B;&#x8BD5;&#x8FD0;&#x7B97;&#x7B26;"></a>&#x6587;&#x4EF6;&#x6D4B;&#x8BD5;&#x8FD0;&#x7B97;&#x7B26;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#echo命令"><span class="nav-number">7.</span> <span class="nav-text"><a href="#echo&#x547D;&#x4EE4;" class="headerlink" title="echo&#x547D;&#x4EE4;"></a>echo&#x547D;&#x4EE4;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#printf-命令"><span class="nav-number">8.</span> <span class="nav-text"><a href="#printf-&#x547D;&#x4EE4;" class="headerlink" title="printf &#x547D;&#x4EE4;"></a>printf &#x547D;&#x4EE4;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#test-命令"><span class="nav-number">9.</span> <span class="nav-text"><a href="#test-&#x547D;&#x4EE4;" class="headerlink" title="test &#x547D;&#x4EE4;"></a>test &#x547D;&#x4EE4;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数值测试"><span class="nav-number">9.1.</span> <span class="nav-text"><a href="#&#x6570;&#x503C;&#x6D4B;&#x8BD5;" class="headerlink" title="&#x6570;&#x503C;&#x6D4B;&#x8BD5;"></a>&#x6570;&#x503C;&#x6D4B;&#x8BD5;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串测试"><span class="nav-number">9.2.</span> <span class="nav-text"><a href="#&#x5B57;&#x7B26;&#x4E32;&#x6D4B;&#x8BD5;" class="headerlink" title="&#x5B57;&#x7B26;&#x4E32;&#x6D4B;&#x8BD5;"></a>&#x5B57;&#x7B26;&#x4E32;&#x6D4B;&#x8BD5;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件测试"><span class="nav-number">9.3.</span> <span class="nav-text"><a href="#&#x6587;&#x4EF6;&#x6D4B;&#x8BD5;" class="headerlink" title="&#x6587;&#x4EF6;&#x6D4B;&#x8BD5;"></a>&#x6587;&#x4EF6;&#x6D4B;&#x8BD5;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#流程控制"><span class="nav-number">10.</span> <span class="nav-text"><a href="#&#x6D41;&#x7A0B;&#x63A7;&#x5236;" class="headerlink" title="&#x6D41;&#x7A0B;&#x63A7;&#x5236;"></a>&#x6D41;&#x7A0B;&#x63A7;&#x5236;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#if-else"><span class="nav-number">10.1.</span> <span class="nav-text"><a href="#if-else" class="headerlink" title="if else"></a>if else</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#for-循环"><span class="nav-number">10.2.</span> <span class="nav-text"><a href="#for-&#x5FAA;&#x73AF;" class="headerlink" title="for &#x5FAA;&#x73AF;"></a>for &#x5FAA;&#x73AF;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#while-语句"><span class="nav-number">10.3.</span> <span class="nav-text"><a href="#while-&#x8BED;&#x53E5;" class="headerlink" title="while &#x8BED;&#x53E5;"></a>while &#x8BED;&#x53E5;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#无限循环"><span class="nav-number">10.4.</span> <span class="nav-text"><a href="#&#x65E0;&#x9650;&#x5FAA;&#x73AF;" class="headerlink" title="&#x65E0;&#x9650;&#x5FAA;&#x73AF;"></a>&#x65E0;&#x9650;&#x5FAA;&#x73AF;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#until-循环"><span class="nav-number">10.5.</span> <span class="nav-text"><a href="#until-&#x5FAA;&#x73AF;" class="headerlink" title="until &#x5FAA;&#x73AF;"></a>until &#x5FAA;&#x73AF;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#case"><span class="nav-number">10.6.</span> <span class="nav-text"><a href="#case" class="headerlink" title="case"></a>case</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#跳出循环"><span class="nav-number">10.7.</span> <span class="nav-text"><a href="#&#x8DF3;&#x51FA;&#x5FAA;&#x73AF;" class="headerlink" title="&#x8DF3;&#x51FA;&#x5FAA;&#x73AF;"></a>&#x8DF3;&#x51FA;&#x5FAA;&#x73AF;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Shell-函数"><span class="nav-number">11.</span> <span class="nav-text"><a href="#Shell-&#x51FD;&#x6570;" class="headerlink" title="Shell &#x51FD;&#x6570;"></a>Shell &#x51FD;&#x6570;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#函数参数"><span class="nav-number">11.1.</span> <span class="nav-text"><a href="#&#x51FD;&#x6570;&#x53C2;&#x6570;" class="headerlink" title="&#x51FD;&#x6570;&#x53C2;&#x6570;"></a>&#x51FD;&#x6570;&#x53C2;&#x6570;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入-输出重定向"><span class="nav-number">12.</span> <span class="nav-text"><a href="#&#x8F93;&#x5165;-&#x8F93;&#x51FA;&#x91CD;&#x5B9A;&#x5411;" class="headerlink" title="&#x8F93;&#x5165;/&#x8F93;&#x51FA;&#x91CD;&#x5B9A;&#x5411;"></a>&#x8F93;&#x5165;/&#x8F93;&#x51FA;&#x91CD;&#x5B9A;&#x5411;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件包含"><span class="nav-number">13.</span> <span class="nav-text"><a href="#&#x6587;&#x4EF6;&#x5305;&#x542B;" class="headerlink" title="&#x6587;&#x4EF6;&#x5305;&#x542B;"></a>&#x6587;&#x4EF6;&#x5305;&#x542B;</span></a></li></ol></div>
             
 
           </div>
