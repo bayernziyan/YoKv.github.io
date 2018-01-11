@@ -93,17 +93,17 @@
 
 
 
-<meta name="description" content="内存模型">
+<meta name="description" content="性能测试方法的核心根据不同的测试目的，性能测试可以分为多种类型，常见的有如下几类：  基准测试（Standard Testing） 负载测试（Load Testing） 压力测试（Stress Testing） 疲劳强度测试">
 <meta property="og:type" content="article">
-<meta property="og:title" content="内存模型">
-<meta property="og:url" content="http://blog/aiyo.space/2017/08/25/Java基础回顾——内存模型/index.html">
+<meta property="og:title" content="性能测试理论整理">
+<meta property="og:url" content="http://blog/aiyo.space/2018/01/11/性能测试理论整理/index.html">
 <meta property="og:site_name" content="技术杂记">
-<meta property="og:description" content="内存模型">
+<meta property="og:description" content="性能测试方法的核心根据不同的测试目的，性能测试可以分为多种类型，常见的有如下几类：  基准测试（Standard Testing） 负载测试（Load Testing） 压力测试（Stress Testing） 疲劳强度测试">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-25T14:25:27.753Z">
+<meta property="og:updated_time" content="2018-01-11T01:37:15.300Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="内存模型">
-<meta name="twitter:description" content="内存模型">
+<meta name="twitter:title" content="性能测试理论整理">
+<meta name="twitter:description" content="性能测试方法的核心根据不同的测试目的，性能测试可以分为多种类型，常见的有如下几类：  基准测试（Standard Testing） 负载测试（Load Testing） 压力测试（Stress Testing） 疲劳强度测试">
 
 
 
@@ -131,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://blog/aiyo.space/2017/08/25/Java基础回顾——内存模型/"/>
+  <link rel="canonical" href="http://blog/aiyo.space/2018/01/11/性能测试理论整理/"/>
 
 
 
 
 
-  <title> 内存模型 | 技术杂记 </title>
+  <title> 性能测试理论整理 | 技术杂记 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -256,7 +256,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog/aiyo.space/2017/08/25/Java基础回顾——内存模型/">
+    <link itemprop="mainEntityOfPage" href="http://blog/aiyo.space/2018/01/11/性能测试理论整理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="YoKv">
@@ -277,7 +277,7 @@
             
             
               
-                内存模型
+                性能测试理论整理
               
             
           </h2>
@@ -292,8 +292,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-25T16:20:36+00:00">
-                2017-08-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-11T17:30:27+00:00">
+                2018-01-11
               </time>
             
 
@@ -315,8 +315,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaSE/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaSE</span>
+                  <a href="/categories/测试/" itemprop="url" rel="index">
+                    <span itemprop="name">测试</span>
                   </a>
                 </span>
 
@@ -350,18 +350,54 @@
       
 
       
-        <h2 id="内存模型"><a href="#内存模型" class="headerlink" title="内存模型"></a>内存模型</h2><a id="more"></a>
-<p><a href="http://gityuan.com/2016/01/09/java-memory/" target="_blank" rel="noopener">来源</a><br>作为Java开发人员来说，并不需要像C/C++开发人员，需要时刻注意内存的释放，而是全权交给虚拟机去管理，那么有就必要了解虚拟机的运行时内存是如何构成的。运行时内存模型，分为线程私有和共享数据区两大类，其中线程私有的数据区包含程序计数器、虚拟机栈、本地方法区，所有线程共享的数据区包含Java堆、方法区，在方法区内有一个常量池<br><a href="http://gityuan.com/images/jvm/jvm_memory_1.png" target="_blank" rel="noopener">图</a><br><a href="http://gityuan.com/images/jvm/stack_heap_info.png" target="_blank" rel="noopener">图</a><br>（1）线程私有区：</p>
+        <h2 id="性能测试方法的核心"><a href="#性能测试方法的核心" class="headerlink" title="性能测试方法的核心"></a>性能测试方法的核心</h2><p>根据不同的测试目的，性能测试可以分为多种类型，常见的有如下几类：</p>
 <ul>
-<li>程序计数器，记录正在执行的虚拟机字节码的地址；</li>
-<li>虚拟机栈：方法执行的内存区，每个方法执行时会在虚拟机栈中创建栈帧；</li>
-<li>本地方法栈：虚拟机的Native方法执行的内存区；<br>（2）线程共享区：</li>
-<li>Java堆：对象分配内存的区域；</li>
-<li>方法区：存放类信息、常量、静态变量、编译器编译后的代码等数据；</li>
-<li>常量池：存放编译器生成的各种字面量和符号引用，是方法区的一部分。</li>
+<li>基准测试（Standard Testing）</li>
+<li>负载测试（Load Testing）</li>
+<li>压力测试（Stress Testing）</li>
+<li>疲劳强度测试</li>
 </ul>
-<h2 id="并发编程"><a href="#并发编程" class="headerlink" title="并发编程"></a>并发编程</h2><p>Java内存模型规定和指引Java程序在不同的内存架构、CPU和操作系统间有确定性地行为。它在多线程的情况下尤其重要。Java内存模型对一个线程所做的变动能被其它线程可见提供了保证，它们之间是先行发生关系。这个关系定义了一些规则让程序员在并发编程时思路更清晰。比如，先行发生关系确保了：<br>线程内的代码能够按先后顺序执行，这被称为程序次序规则。<br>对于同一个锁，一个解锁操作一定要发生在时间上后发生的另一个锁定操作之前，也叫做管程锁定规则。<br>前一个对volatile的写操作在后一个volatile的读操作之前，也叫volatile变量规则。<br>一个线程内的任何操作必需在这个线程的start()调用之后，也叫作线程启动规则。<br>一个线程的所有操作都会在线程终止之前，线程终止规则。<br>一个对象的终结操作必需在这个对象构造完成之后，也叫对象终结规则。<br>可传递性</p>
-<h2 id="待研究补充"><a href="#待研究补充" class="headerlink" title="待研究补充"></a>待研究补充</h2>
+<a id="more"></a>
+<ul>
+<li><p>基准测试</p>
+<blockquote>
+<p>基准测试指的是模拟单个用户执行业务场景时，考察系统的性能指标。严格意义上来讲，基准测试并不能算作性能测试范畴，它跟功能测试并没有太大区别。差异在于，基准测试的目的更多地是关注业务功能的正确性，或者说验证测试脚本的正确性，然后，将基准测试时采集得到的系统性能指标，作为基准测试结果，为后续并发压力测试的性能分析提供参考依据。</p>
+</blockquote>
+</li>
+<li><p>负载测试</p>
+<blockquote>
+<p>主要指的是模拟系统在正常负载压力场景下，考察系统的性能指标。这里说的正常负载，主要是指用户对系统能承受的最大业务负载量的期望值，即预计系统最大应该支持多大用户的并发量。通过负载测试，目的是验证系统是否能满足预期的业务压力场景。</p>
+</blockquote>
+</li>
+<li><p>压力测试</p>
+<blockquote>
+<p>通俗地讲，压力测试是为了发现在多大并发压力下系统的性能会变得不可接受，或者出现性能拐点（崩溃）的情况。在加压策略上，压力测试会对被测系统逐步加压，在加压的过程中考察系统性能指标的走势情况，最终找出系统在出现性能拐点时的并发用户数，也就是系统支持的最大并发用户数。</p>
+</blockquote>
+</li>
+<li><p>疲劳强度测试</p>
+<blockquote>
+<p>其实疲劳强度测试的加压策略跟负载测试也很接近，都是对系统模拟出系统能承受的最大业务负载量，差异在于，疲劳强度测试更关注系统在长时间运行情况下系统性能指标的变化情况，例如，系统在运行一段时间后，是否会出现事务处理失败、响应时间增长、业务吞吐量降低、CPU/内存资源增长等问题。</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="名词介绍"><a href="#名词介绍" class="headerlink" title="名词介绍"></a>名词介绍</h2><h3 id="PV、TPS、QPS"><a href="#PV、TPS、QPS" class="headerlink" title="PV、TPS、QPS"></a>PV、TPS、QPS</h3><p>PV=page view<br>TPS=transactions per second<br>QPS=queries per second<br>RPS=requests per second<br>RPS=并发数/平均响应时间</p>
+<h4 id="峰值QPS"><a href="#峰值QPS" class="headerlink" title="峰值QPS:"></a>峰值QPS:</h4><p>原理：每天80%的访问集中在20%的时间里，这20%时间叫做峰值时间<br>公式：( 总PV数 <em> 80% ) / ( 每天秒数 </em> 20% ) = 峰值时间每秒请求数(QPS)<br><code>QPS =总PV数/21600</code></p>
+<h4 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h4><p> 就是用户某一步或几步操作的集合。不过，我们要保证它有一个完整意义。比如用户对某一个页面的一次请求，用户对某系统的一次登录，淘宝用户对商品的一次确认支付过程。这些我们都可以看作一个事务。那么如何衡量服务器对事务的处理能力。</p>
+<h2 id="工具-框架"><a href="#工具-框架" class="headerlink" title="工具/框架"></a>工具/框架</h2><p>LoadRunner,Jmeter,Gatling,Tsung,Grinder,apache AB,webbench,erlang包,golang包,Seige</p>
+<h2 id="业务性能指标"><a href="#业务性能指标" class="headerlink" title="业务性能指标:"></a>业务性能指标:</h2><ul>
+<li>并发用户数</li>
+<li>事务吞吐率（TPS/RPS）</li>
+<li>事务平均响应时间</li>
+<li>事务成功率</li>
+</ul>
+<h2 id="系统资源性能指标"><a href="#系统资源性能指标" class="headerlink" title="系统资源性能指标:"></a>系统资源性能指标:</h2><ul>
+<li>服务器：CPU利用率、处理器队列长度、内存利用率、内存交换页面数、磁盘IO状态、网卡带宽使用情况等；</li>
+<li>数据库：数据库连接数、数据库读写响应时长、数据库读写吞吐量等；</li>
+<li>网络：网络吞吐量、网络带宽、网络缓冲池大小；</li>
+<li>缓存（Redis）：静态资源缓存命中率、动态数据缓存命中率、缓存吞吐量等；</li>
+<li>测试设备（压力发生器）：CPU利用率、处理器队列长度、内存利用率、内存交换页面数、磁盘IO状态、网卡带宽使用情况等。</li>
+</ul>
+
       
     </div>
 
@@ -413,8 +449,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/08/23/Java基础回顾——集合/" rel="next" title="集合">
-                <i class="fa fa-chevron-left"></i> 集合
+              <a href="/2017/12/25/shell笔记/" rel="next" title="Shell笔记">
+                <i class="fa fa-chevron-left"></i> Shell笔记
               </a>
             
           </div>
@@ -422,10 +458,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/08/30/Java基础回顾——Java Web基础/" rel="prev" title="Java Web基础">
-                Java Web基础 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -567,7 +599,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#内存模型"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x5185;&#x5B58;&#x6A21;&#x578B;" class="headerlink" title="&#x5185;&#x5B58;&#x6A21;&#x578B;"></a>&#x5185;&#x5B58;&#x6A21;&#x578B;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#并发编程"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x5E76;&#x53D1;&#x7F16;&#x7A0B;" class="headerlink" title="&#x5E76;&#x53D1;&#x7F16;&#x7A0B;"></a>&#x5E76;&#x53D1;&#x7F16;&#x7A0B;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#待研究补充"><span class="nav-number">3.</span> <span class="nav-text"><a href="#&#x5F85;&#x7814;&#x7A76;&#x8865;&#x5145;" class="headerlink" title="&#x5F85;&#x7814;&#x7A76;&#x8865;&#x5145;"></a>&#x5F85;&#x7814;&#x7A76;&#x8865;&#x5145;</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#性能测试方法的核心"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x6027;&#x80FD;&#x6D4B;&#x8BD5;&#x65B9;&#x6CD5;&#x7684;&#x6838;&#x5FC3;" class="headerlink" title="&#x6027;&#x80FD;&#x6D4B;&#x8BD5;&#x65B9;&#x6CD5;&#x7684;&#x6838;&#x5FC3;"></a>&#x6027;&#x80FD;&#x6D4B;&#x8BD5;&#x65B9;&#x6CD5;&#x7684;&#x6838;&#x5FC3;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#名词介绍"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x540D;&#x8BCD;&#x4ECB;&#x7ECD;" class="headerlink" title="&#x540D;&#x8BCD;&#x4ECB;&#x7ECD;"></a>&#x540D;&#x8BCD;&#x4ECB;&#x7ECD;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PV、TPS、QPS"><span class="nav-number">2.1.</span> <span class="nav-text"><a href="#PV&#x3001;TPS&#x3001;QPS" class="headerlink" title="PV&#x3001;TPS&#x3001;QPS"></a>PV&#x3001;TPS&#x3001;QPS</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#峰值QPS"><span class="nav-number">2.1.1.</span> <span class="nav-text"><a href="#&#x5CF0;&#x503C;QPS" class="headerlink" title="&#x5CF0;&#x503C;QPS:"></a>&#x5CF0;&#x503C;QPS:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#事务"><span class="nav-number">2.1.2.</span> <span class="nav-text"><a href="#&#x4E8B;&#x52A1;" class="headerlink" title="&#x4E8B;&#x52A1;"></a>&#x4E8B;&#x52A1;</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#工具-框架"><span class="nav-number">3.</span> <span class="nav-text"><a href="#&#x5DE5;&#x5177;-&#x6846;&#x67B6;" class="headerlink" title="&#x5DE5;&#x5177;/&#x6846;&#x67B6;"></a>&#x5DE5;&#x5177;/&#x6846;&#x67B6;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#业务性能指标"><span class="nav-number">4.</span> <span class="nav-text"><a href="#&#x4E1A;&#x52A1;&#x6027;&#x80FD;&#x6307;&#x6807;" class="headerlink" title="&#x4E1A;&#x52A1;&#x6027;&#x80FD;&#x6307;&#x6807;:"></a>&#x4E1A;&#x52A1;&#x6027;&#x80FD;&#x6307;&#x6807;:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#系统资源性能指标"><span class="nav-number">5.</span> <span class="nav-text"><a href="#&#x7CFB;&#x7EDF;&#x8D44;&#x6E90;&#x6027;&#x80FD;&#x6307;&#x6807;" class="headerlink" title="&#x7CFB;&#x7EDF;&#x8D44;&#x6E90;&#x6027;&#x80FD;&#x6307;&#x6807;:"></a>&#x7CFB;&#x7EDF;&#x8D44;&#x6E90;&#x6027;&#x80FD;&#x6307;&#x6807;:</span></a></li></ol></div>
             
 
           </div>
