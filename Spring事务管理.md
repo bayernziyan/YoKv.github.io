@@ -2,7 +2,7 @@
 title: Spring事务管理
 date: 2017-10-31 23:58:46
 categories: 
-- Spring
+- Java框架
 ---
 
 ##  事务传播属性

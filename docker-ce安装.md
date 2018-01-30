@@ -3,7 +3,6 @@ title: docker-ce安装
 date: 2017-11-24 21:45:48
 categories: 
 - docker
-- DevOps
 ---
 
 ## 安装docker-ce
