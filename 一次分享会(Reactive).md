@@ -5,16 +5,16 @@ categories:
 - 项目实践
 ---
 
-# 手稿
+## 手稿
 目前仅后端开发领域，主流的开发语言有golang，python，php，ruby，还有基于JVM的kotlin，scala。高级编程语言都是不断的在进步中，比如java7到java8的更新，并且各个语言之间相互借鉴，
 原本打算分享一下spring相关的技术，但是准备不够充分，还是下次再分享吧，本期分享的主题可能大家现在工作中可能用不到，但我相信在不远的将来，这个技术将会是主流。不管怎样，在现在后端语言快速发展的阶段，多了解一些比较前沿的技术还是有必要的。
-
 写代码是件有趣的事，好奇心
+广泛适用性
 
-# 主题——响应式编程（Reactive）
-## 介绍
+## 主题——响应式编程（Reactive）
+### 介绍
+<!--more-->
 最近看到Dubbo 3.0将要在3月底发布，Spring Boot在经历了大半年的2.0里程碑版本（stands for milestone）迭代后，终于发布了RC版本（stands for Release Candidate），Release版本（正式版本）指日可待了，同时Spring Cloud的2.0版本也在稳步迭代。这些版本的迭代都包含了Reactive的内容。
-
 * [Dubbo3.0变化：](https://mp.weixin.qq.com/s/PpH9xoj0FZAbjKHkA57AAw)
 	Dubbo 3.0 将以 Streaming 为内核,重点是在服务治理和编程模型上,而编程模型的革新，其实就是使用了“反应式编程”模式（Reactive Programming）。在 Dubbo 3.0 中，reactive 将成为核心，会做到客户端、服务端、缓存和数据库，全程无阻塞。
 * [Spring2.0变化：](https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-2.0-Release-Notes)
@@ -23,11 +23,7 @@ categories:
 	2. WebFlux and WebFlux.fn support
 		Spring Boot 2.0 provides a new starter for supporting the Reactive Spring web frameworks, for both annotation and functional based variants. spring-boot-starter-webflux brings WebFlux itself, plus Reactor Netty as a default web engine (spring-boot-starter-reactor-netty).
 	3. Reactive data support
-		Spring Boot 2.0 provides auto-configuration for the following data store with reactive support:
-			* MongoDB (spring-boot-starter-data-mongodb-reactive)
-			* Redis (spring-boot-starter-data-redis-reactive)
-			* Cassandra (spring-boot-starter-data-cassandra-reactive)
-
+		Spring Boot 2.0 provides auto-configuration for the following data store with reactive support:MongoDB (spring-boot-starter-data-mongodb-reactive),Redis (spring-boot-starter-data-redis-reactive),Cassandra (spring-boot-starter-data-cassandra-reactive)
 	4. Reactive server customisation
 		 Customizers for Jetty, Tomcat, and Undertow are now called when configuring a reactive web server.
 	5. Reactive Couchbase support
@@ -41,48 +37,61 @@ categories:
 * **异步**
 * **非阻塞**
 * **stream**
+* **backpressure**
 
-### 概念 
+### 概念理解 
+
+#### 事件驱动
 响应式编程来源于数据流和变化的传播，意味着由底层的执行模型负责通过数据流来自动传播变化。这句话让我联想到vue.js的双向绑定，换句话说，vue.js来源于数据流和变化，可以不使用代码操作dom，自动传播数据变化，改变页面。另外举个例子，求值一个简单的表达式 c=a+b，当 a 或者 b 的值发生变化时，传统的编程范式需要对 a+b 进行重新计算来得到 c 的值。如果使用反应式编程，当 a 或者 b 的值发生变化时，c 的值会自动更新。
+#### stream
+首先是编程范式的转变，
+在传统的编程范式中，我们一般通过迭代器（Iterator）模式来遍历一个序列。这种遍历方式是由调用者来控制节奏的，采用的是拉的方式。每次由调用者通过 next()方法来获取序列中的下一个值。使用反应式流时采用的则是推的方式，即常见的发布者-订阅者模式。当发布者有新的数据产生时，这些数据会被推送到订阅者来进行处理。在反应式流上可以添加各种不同的操作来对数据进行处理，形成数据处理链。这个以声明式的方式添加的处理链只在订阅者进行订阅操作时才会真正执行。
+#### 发布订阅模型
 
-反应式流中第一个重要概念是负压/背压（backpressure）。在基本的消息推送模式中，当消息发布者产生数据的速度过快时，会使得消息订阅者的处理速度无法跟上产生的速度，从而给订阅者造成很大的压力。当压力过大时，有可能造成订阅者本身的奔溃，所产生的级联效应甚至可能造成整个系统的瘫痪。负压的作用在于提供一种从订阅者到生产者的反馈渠道。订阅者可以通过 request()方法来声明其一次所能处理的消息数量，而生产者就只会产生相应数量的消息，直到下一次 request()方法调用。这实际上变成了推拉结合的模式。
+#### 负压/背压(backpressure)
+一个重要概念是负压/背压（backpressure）。在基本的消息推送模式中，当消息发布者产生数据的速度过快时，会使得消息订阅者的处理速度无法跟上产生的速度，从而给订阅者造成很大的压力。当压力过大时，有可能造成订阅者本身的奔溃，所产生的级联效应甚至可能造成整个系统的瘫痪。负压的作用在于提供一种从订阅者到生产者的反馈渠道。订阅者可以通过 request()方法来声明其一次所能处理的消息数量，而生产者就只会产生相应数量的消息，直到下一次 request()方法调用。这实际上变成了推拉结合的模式。
 
+#### 非阻塞
+Mono作为一个Publisher，它往往代表着一个耗费资源的任务（在IO、延迟等方面），意识到这点是理解回压的关键：如果不对其进行订阅，你就不需要为之付出任何代价。因为Mono经常跟具有回压的Flux一起被编排到一个响应式链上，来自多个异步数据源的结果有可能被组合到一起，这种按需触发的能力是避免阻塞的关键。
 
+### 总结
+#### 优点
+* 惰性计算 
+* 函数是“第一等公民” 
+* 只使用表达式而不使用语句 
+* 没有副作用
+* 基于数据流，专注于逻辑 
 
-
-
-
-
-## 特点 
-- 惰性计算 
-- 函数是“第一等公民” 
-- 只使用表达式而不使用语句 
-- 没有副作用
-
-
-## 缺点
+#### 缺点
 * 难调试
-* 事务控制
-
-##
-操作数据流，专注于逻辑，让你的代码更上一层楼。
+* 基于ThreadLocal的事务控制,session会失效
+* 一旦阻塞，可能导致整个服务崩溃
 
 
-# 理论与代码
-## java原生实现
+## 理论与代码
+### java原生实现原理
+```java
 
-## 两大类库支持
-### reactor(Spring5中响应式编程的基础)
+```
 
-### rxjava
+### 两大类库支持
+#### reactor(Spring5中响应式编程的基础)
 
-## 主流框架
-### spring5与 spring boot2.0
+#### rxjava
 
-### vert.x
+### 主流框架
+#### spring5与 spring boot2.0
+```java
+
+```
+
+#### vert.x
+```java
+
+```
 
 
-## 参考资料
+### 参考资料
 [reactor官网](http://projectreactor.io/)
 [rxjava官网](http://reactivex.io/)
 [Wikipedia](https://en.wikipedia.org/wiki/Reactive_programming)
