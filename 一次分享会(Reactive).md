@@ -151,7 +151,7 @@ Mono.zip(item1Mono, item2Mono).map(tuple -> {
 
 ## 概念总结
 一句话总结：响应式编程是一种按流水线模式组织处理数据流的协程计算模型。
-#### 优点
+### 优点
 * 基于数据流，专注于逻辑，代码干净优雅
 * 无需关心同步、等待、唤醒、锁等并发问题
 * 背压传递，每个动作都可以调节（缓冲、消减、合并）其上下游动作的压力，在链条上传递压力
@@ -161,22 +161,22 @@ Mono.zip(item1Mono, item2Mono).map(tuple -> {
 * 基于ThreadLocal的事务控制,session会失效
 * 一旦阻塞，可能导致整个服务崩溃
 
-### 主流框架
-#### spring5与 spring boot2.0
+## 主流框架
+### spring5与 spring boot2.0
 [Spring WebFlux Framework 官方文档](https://docs.spring.io/spring-boot/docs/2.0.0.RC1/reference/htmlsingle/#boot-features-webflux)
-##### annotation方式实现web
+#### annotation方式实现web
 [源代码地址](https://github.com/YoKv/microservices-practise/tree/master/microservices/service666)
 
-#### functional方式实现web
+### functional方式实现web
 
-#### vert.x
+### vert.x
 [Vert.x 官网](http://vertx.io/)
 [Vert.x 官方文档中文翻译](https://vertxchina.github.io/vertx-translation-chinese/)
 [Vert.x 性能](https://www.techempower.com/benchmarks/#section=data-r8&hw=i7&test=plaintext)
 **Vert.x框架**基于事件和异步，依托于全异步Java服务器Netty，并扩展了很多其他特性，以其轻量、高性能、支持多语言开发而备受开发者青睐。Vert.x框架也提供了RxJava2的支持。
 [项目代码](https://github.com/YoKv/aiyo/tree/master/aiyo-service-steam)
 
-## 待补充内容 *TODOs**
+## 待补充内容 
 * rxjava
 * 异步与非阻塞具体实现原理
 * 原生java实现
