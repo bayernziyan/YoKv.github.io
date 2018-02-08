@@ -147,7 +147,6 @@ Mono.zip(item1Mono, item2Mono).map(tuple -> {
 ### rxjava
 [rxjava官网](http://reactivex.io/)
 [中文文档](https://mcxiaoke.gitbooks.io/rxdocs/content/Intro.html)
-*TODO**
 
 ## 概念总结
 一句话总结：响应式编程是一种按流水线模式组织处理数据流的协程计算模型。
@@ -164,7 +163,7 @@ Mono.zip(item1Mono, item2Mono).map(tuple -> {
 ## 主流框架
 ### spring5与 spring boot2.0
 [Spring WebFlux Framework 官方文档](https://docs.spring.io/spring-boot/docs/2.0.0.RC1/reference/htmlsingle/#boot-features-webflux)
-#### annotation方式实现web
+### annotation方式实现web
 [源代码地址](https://github.com/YoKv/microservices-practise/tree/master/microservices/service666)
 
 ### functional方式实现web
