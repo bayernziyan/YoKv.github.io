@@ -161,10 +161,190 @@ Mono.zip(item1Mono, item2Mono).map(tuple -> {
 ## 主流微服务框架集成
 ### spring5与 spring boot2.0
 [Spring WebFlux Framework 官方文档](https://docs.spring.io/spring-boot/docs/2.0.0.RC1/reference/htmlsingle/#boot-features-webflux)
+[WebFlux](https://docs.spring.io/spring/docs/5.0.3.RELEASE/spring-framework-reference/web-reactive.html#webflux)
 #### annotation方式实现web
 [源代码地址](https://github.com/YoKv/microservices-practise/tree/master/microservices/service666)
 
+**Controller**
+```java
+@RestController
+public class NormalController {
+
+  private final FooService fooService;
+
+  @Autowired
+  public NormalController(final FooService fooService) {
+    this.fooService = fooService;
+  }
+
+  /**
+   * 异常处理
+   */
+  @ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "Resource not found")
+  @ExceptionHandler(Exception.class)
+  public void notFound() {
+  }
+
+  @GetMapping("/list")
+  public Flux<Foo> list() {
+    return Flux.fromStream(fooService.findAll().stream());
+  }
+
+  @GetMapping("/{id}")
+  public Mono<Foo> getById(@PathVariable("id") final Long id) {
+    return Mono.justOrEmpty(fooService.findById(id));
+  }
+
+  @PostMapping("/save")
+  public Mono<Foo> save(@RequestBody final Foo foo) {
+    Objects.requireNonNull(foo);
+    return Mono.justOrEmpty(fooService.save(foo));
+  }
+
+  @DeleteMapping("/{id}")
+  public Mono<Foo> delete(@PathVariable("id") final Long id) {
+    return Mono.justOrEmpty(fooService.delete(id));
+  }
+
+}
+
+
+```
+**Service**
+```java
+@Service("fooService")
+public class FooServiceImpl implements FooService {
+
+  //假装数据库
+  private Map<Long, Foo> dataSource;
+  private AtomicLong atomicLong;
+
+  public FooServiceImpl() {
+    dataSource = new ConcurrentHashMap<>();
+    atomicLong = new AtomicLong(1);
+    Foo foo = new Foo();
+    foo.setId(atomicLong.get());
+    foo.setVar1("var1");
+    foo.setVar2("var2");
+    dataSource.put(atomicLong.get(), foo);
+  }
+
+  @Override
+  public List<Foo> findAll() {
+    return new ArrayList<>(dataSource.values());
+  }
+
+  @Override
+  public Foo findById(Long id) {
+    return dataSource.get(id);
+  }
+
+  @Override
+  public Foo save(Foo foo) {
+    Long id = foo.getId();
+    if (null == id) {
+      id = atomicLong.incrementAndGet();
+      foo.setId(id);
+    }
+    dataSource.put(id, foo);
+    return foo;
+  }
+
+  @Override
+  public Foo delete(Long id) {
+    return dataSource.remove(id);
+  }
+}
+
+```
+
 #### functional方式实现web
+
+```java
+@Configuration
+public class RestServer implements CommandLineRunner {
+
+
+    @Autowired
+    private FooHandle fooHandle;
+
+    /**
+     * 注册自定义RouterFunction
+     */
+    @Bean
+    public RouterFunction<ServerResponse> fooRouter() {
+        return route(GET("/list").and(accept(APPLICATION_JSON_UTF8)),
+                fooHandle::list)
+                .andRoute(GET("/{id}").and(accept(APPLICATION_JSON_UTF8)), fooHandle::getById)
+                // 注册自定义HandlerFilterFunction
+                .filter((request, next) -> {
+                    if (HttpMethod.PUT.equals(request.method())) {
+                        return ServerResponse.status(HttpStatus.BAD_REQUEST).build();
+                    }
+                    return next.handle(request);
+                });
+    }
+
+    @Override
+    public void run(String... args) throws Exception {
+        RouterFunction<ServerResponse> router = fooRouter();
+        // 转化为通用的Reactive HttpHandler
+        HttpHandler httpHandler = toHttpHandler(router);
+        // 适配成Netty Server所需的Handler
+        ReactorHttpHandlerAdapter httpAdapter = new ReactorHttpHandlerAdapter(httpHandler);
+        // 创建Netty Server
+        HttpServer server = HttpServer.create("localhost", 9090);
+        // 注册Handler并启动Netty Server
+        server.newHandler(httpAdapter).block();
+    }
+```
+
+```java
+@Component
+public class FooHandle {
+    private final FooService fooService;
+
+    @Autowired
+    public FooHandle(FooService fooService) {
+        this.fooService = fooService;
+    }
+
+
+    public Mono<ServerResponse> list(ServerRequest request) {
+        Flux<Foo> fooFlux = fooService.findAll();
+        return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(fooFlux,Foo.class);
+    }
+
+    public Mono<ServerResponse> getById(ServerRequest request) {
+        Mono<Long> id = request.bodyToMono(Long.class);
+        Mono<Foo> foo = fooService.findById(id.block());//FIXME
+        return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(foo, Foo.class);
+    }
+
+    public Mono<ServerResponse> update(ServerRequest request) {
+        return null;
+    }
+
+    public Mono<ServerResponse> delete(ServerRequest request) {
+        return null;
+    }
+
+}
+```
+
+
+```java
+public interface FooService {
+  Flux<Foo> findAll();
+
+  Mono<Foo> findById(Long id);
+
+  Mono<Foo> save(Foo foo);
+
+  Mono<Foo> delete(Long id);
+}
+```
+
 
 ### vert.x
 [Vert.x 官网](http://vertx.io/)
