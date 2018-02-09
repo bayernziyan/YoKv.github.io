@@ -45,17 +45,19 @@ categories:
 在Java 9中提供了Reactive Streams。它是“一种规范，为基于非阻塞回压的异步流处理提供了标准”，包含了TCK工具套件和四个简单接口（Publisher、Subscriber、Subscription和Processor）的规范。
 
 ### 负压/背压/回压(backpressure)
-一个重要概念是**负压/背压/回压**。在基本的消息推送模式中，当消息发布者产生数据的速度过快时，会使得消息订阅者的处理速度无法跟上产生的速度，从而给订阅者造成很大的压力。当压力过大时，有可能造成订阅者本身的奔溃，所产生的级联效应甚至可能造成整个系统的瘫痪。负压的作用在于提供一种从订阅者到生产者的反馈渠道。订阅者声明其一次所能处理的消息数量，而发布者就只会产生相应数量的消息。这实际上变成了推拉结合的模式。
+一个重要概念是**负压/背压/回压**。在基本的消息推送模式中，当消息发布者产生数据的速度过快时，会使得消息订阅者的处理速度无法跟上产生的速度，从而给订阅者造成很大的压力。当压力过大时，有可能造成订阅者本身的奔溃，所产生的级联效应甚至可能造成整个系统的瘫痪。负压的作用在于提供一种从订阅者到生产者的反馈渠道。订阅者声明其一次所能处理的消息数量，而发布者就只会产生相应数量的消息。
 
 ## 两大主流类库支持
 1. ReactiveX是Reactive Extensions的缩写，一般简写为Rx，Rx是一个编程模型，目标是提供一致的编程接口，帮助开发者更方便的处理异步数据流，Rx库支持.NET、JavaScript和C++，Rx近几年越来越流行了，现在已经支持几乎全部的流行编程语言了。
+### rxjava
+[rxjava官网](http://reactivex.io/)
+[中文文档](https://mcxiaoke.gitbooks.io/rxdocs/content/Intro.html)
+
 2. Reactor 是一个轻量级 JVM 基础库，帮助你的服务或应用高效，异步地传递消息。
 
 ### reactor(Spring5中响应式编程的基础)
 [reactor官网](http://projectreactor.io/)
 [Reactor 指南中文版](http://projectreactor.mydoc.io/)
-
-
 
 #### 几个重要接口
 * org.reactivestreams.Pubslisher：数据流发布者(信号从 0 到 N，N 可为无穷)。提供两个可选终端事件：错误和完成。
@@ -95,8 +97,7 @@ public void testBasic(){
 
 ```
 ##### 处理 Mono 和 Flux
-中间阶段的 Mono 和 Flux 的方法主要有 filter、map、flatMap、then、zip、reduce 等。这些方法使用方法和 Stream 中的方法类似。对于这些方法的介绍，将会放在下一节“Reactor 进阶”中，主要介绍这些方法不容易理解和使用容易出问题的点。
-
+中间阶段的 Mono 和 Flux 的方法主要有 filter、map、flatMap、then、zip、reduce 等。这些方法使用方法和 Stream 中的方法类似。
 ##### 消费 Mono 和 Flux
 直接消费的 Mono 或 Flux 的方式就是调用 subscribe 方法。如果在 Web Flux 接口中开发，直接返回 Mono 或 Flux 即可。Web Flux 框架会为我们完成最后的 Response 输出工作。作为Publisher，它往往代表着一个耗费资源的任务（在IO、延迟等方面），意识到这点是理解回压的关键：如果不对其进行订阅，你就不需要为之付出任何代价。因为Mono经常跟具有回压的Flux一起被编排到一个响应式链上，来自多个异步数据源的结果有可能被组合到一起，这种**按需触发的能力是避免阻塞的关键**。
 
@@ -104,10 +105,11 @@ reactor执行链：
 1. 终端向上游订阅，终端上游再向其上游订阅直到顶端
 2. 顶端响应下游订阅，顶端下游再响应下游订阅直到终端
 3. 终端向上游发起数据请求，终端上游再向上游发起数据请求直到顶端
-4. 顶端响应下游请求返回指定数量数据，顶端下游处理结束，再向其下游响应数据，直到终端
+4. 顶端响应下游请求返回指定数量数据，顶端下游处理结束，再向其下游响应数据
 5. 终端再次发起数据请求，循环4，直到所有数据处理完毕，收到上游完成信号
 6. 终端向上游发起取消订阅，不断向上游传递直到顶端，结束当前流式处理
 
+[官方的Mono,Flux解释](https://github.com/reactor/reactor-core)
 
 ##### 并发
 普通方式
@@ -144,10 +146,6 @@ Mono.zip(item1Mono, item2Mono).map(tuple -> {
 
 
 
-### rxjava
-[rxjava官网](http://reactivex.io/)
-[中文文档](https://mcxiaoke.gitbooks.io/rxdocs/content/Intro.html)
-
 ## 概念总结
 一句话总结：响应式编程是一种按流水线模式组织处理数据流的协程计算模型。
 ### 优点
@@ -160,13 +158,13 @@ Mono.zip(item1Mono, item2Mono).map(tuple -> {
 * 基于ThreadLocal的事务控制,session会失效
 * 一旦阻塞，可能导致整个服务崩溃
 
-## 主流框架
+## 主流微服务框架集成
 ### spring5与 spring boot2.0
 [Spring WebFlux Framework 官方文档](https://docs.spring.io/spring-boot/docs/2.0.0.RC1/reference/htmlsingle/#boot-features-webflux)
-### annotation方式实现web
+#### annotation方式实现web
 [源代码地址](https://github.com/YoKv/microservices-practise/tree/master/microservices/service666)
 
-### functional方式实现web
+#### functional方式实现web
 
 ### vert.x
 [Vert.x 官网](http://vertx.io/)
