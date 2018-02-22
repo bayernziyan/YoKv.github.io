@@ -95,14 +95,14 @@
 
 <meta name="description" content="写在前面本文简单介绍git，系统完整的git概念，命令请自行查阅资料，推荐廖雪峰Git教程 概念">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Git介绍">
+<meta property="og:title" content="Git简单介绍">
 <meta property="og:url" content="http://blog/aiyo.space/2018/02/22/git介绍/index.html">
 <meta property="og:site_name" content="技术杂记">
 <meta property="og:description" content="写在前面本文简单介绍git，系统完整的git概念，命令请自行查阅资料，推荐廖雪峰Git教程 概念">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-22T03:10:17.968Z">
+<meta property="og:updated_time" content="2018-02-22T06:30:28.795Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Git介绍">
+<meta name="twitter:title" content="Git简单介绍">
 <meta name="twitter:description" content="写在前面本文简单介绍git，系统完整的git概念，命令请自行查阅资料，推荐廖雪峰Git教程 概念">
 
 
@@ -137,7 +137,7 @@
 
 
 
-  <title> Git介绍 | 技术杂记 </title>
+  <title> Git简单介绍 | 技术杂记 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -277,7 +277,7 @@
             
             
               
-                Git介绍
+                Git简单介绍
               
             
           </h2>
@@ -359,7 +359,8 @@
 <li>开发人员clone该git项目</li>
 <li>开发人员新建分支，编写代码，合并分支，迭代版本</li>
 </ol>
-<h3 id="分布式的版本控制"><a href="#分布式的版本控制" class="headerlink" title="分布式的版本控制"></a>分布式的版本控制</h3><p>git是分布式的，在git中，安装了一个<a href="https://git-scm.com/" target="_blank" rel="noopener">git</a>,就是一个代码仓库。一个git项目往往是多人协作的，所以就有了远程仓库的概念。一般地，项目都有一个远程服务器，但这与分布式并不矛盾，每一个安装了git的机器都可以是git服务器。类似于集中式的svn使用一个服务器的原因主要在于这个服务器24小时不关机，甚至还可以在公网访问。<br>当clone了一个已经存在的git项目之后，在本地就有了该项目的repository，这个repository包含了所有项目的信息，开发人员编写代码，在提交<code>git commit</code>时，是将代码提交到本地的repository，而本地的repository代码要推送到远程的repository（服务器）上就是<code>git push</code>，所以与svn一个显著的区别就是需要先commit 后push（可以多个commit一次push）。不管是开发人员还是项目拥有者，抑或是服务器上的repository都是一致的，是克隆出来的，当服务器上git代码丢失了，也是能迅速恢复的，所以说git是分布式的。</p>
+<h3 id="分布式的版本控制"><a href="#分布式的版本控制" class="headerlink" title="分布式的版本控制"></a>分布式的版本控制</h3><p>git是分布式的，在git中，安装了一个<a href="https://git-scm.com/" target="_blank" rel="noopener">git</a>,就是一个代码仓库。一个git项目往往是多人协作的，所以就有了远程仓库的概念。一般地，项目都有一个远程服务器，但这与分布式并不矛盾，每一个安装了git的机器都可以是git服务器。类似于集中式的svn使用一个服务器的原因主要在于这个服务器24小时不关机，甚至还可以在公网访问。</p>
+<p>当clone了一个已经存在的git项目之后，在本地就有了该项目的repository，这个repository包含了所有项目的信息，开发人员编写代码，在提交<code>git commit</code>时，是将代码提交到本地的repository，而本地的repository代码要推送到远程的repository（服务器）上就是<code>git push</code>，所以与svn一个显著的区别就是需要先commit 后push（可以多个commit一次push）。不管是开发人员还是项目拥有者，抑或是服务器上的repository都是一致的，是克隆出来的，当服务器上git代码丢失了，也是能迅速恢复的，所以说git是分布式的。</p>
 <h3 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h3><p>假设你准备开发一个新功能，但是需要两周才能完成，第一周你写了50%的代码，如果立刻提交，由于代码还没写完，不完整的代码库会导致别人不能干活了。如果等代码全部写完再一次提交，又存在丢失每天进度的巨大风险。又比如，写了一半的代码，有一个紧急bug需要修复，需要马上发布，写了一半的代码就很难处理了。<br>在我们克隆项目的时候，默认只克隆了master分支的代码，其他分支需要手动拉取或创建。</p>
 <h4 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h4><p>一个项目有多个分支，而项目文件只有一份，因为项目当前使用的分支只有一个。因此，切换分支时，项目文件也会随着变动。</p>
 <h3 id="标签管理"><a href="#标签管理" class="headerlink" title="标签管理"></a>标签管理</h3><p>在版本发布时，打一个tag，如v1.0.0-release,能够在大量提交中迅速找到该版本，并且方便地下载代码，不多赘述。</p>
@@ -415,8 +416,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/05/一次分享会(Reactive)/" rel="next" title="一次分享会（Reactive）">
-                <i class="fa fa-chevron-left"></i> 一次分享会（Reactive）
+              <a href="/2018/02/22/gitlab项目管理/" rel="next" title="Gitlab项目管理">
+                <i class="fa fa-chevron-left"></i> Gitlab项目管理
               </a>
             
           </div>
@@ -424,6 +425,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/22/git本地环境搭建/" rel="prev" title="Git本地环境搭建">
+                Git本地环境搭建 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -497,7 +502,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">45</span>
+                <span class="site-state-item-count">47</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
