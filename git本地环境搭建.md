@@ -35,7 +35,7 @@ ssh需要进行配置
 
 ## git含界面的客户端
 git很多带界面的客户端，[git含界面的客户端](https://git-scm.com/downloads/guis)。推荐SourceTree，windows,mac都有。
-同时idea有git支持。
+同时idea,eclipse有git支持。
 接下来介绍这两个客户端使用(介绍clone)。
 ### idea
 成功安装了git后，可以直接使用idea的版本控制，步骤：
