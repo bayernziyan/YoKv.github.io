@@ -100,7 +100,7 @@
 <meta property="og:site_name" content="技术杂记">
 <meta property="og:description" content="前言本文介绍git本地环境搭建，在本地能都完成git的日常拉取和提交推送。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-22T06:55:50.352Z">
+<meta property="og:updated_time" content="2018-02-22T06:57:46.687Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git本地环境搭建">
 <meta name="twitter:description" content="前言本文介绍git本地环境搭建，在本地能都完成git的日常拉取和提交推送。">
@@ -352,7 +352,7 @@
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本文介绍git本地环境搭建，在本地能都完成git的日常拉取和提交推送。</p>
 <a id="more"></a>
-<h2 id="git安装-windows版"><a href="#git安装-windows版" class="headerlink" title="git安装(windows版)"></a>git安装(windows版)</h2><p><a href="https://git-scm.com/" target="_blank" rel="noopener">git官网下载</a>，下载完成后直接安装。<br>安装完成后可以通过<figure class="highlight plain"><figcaption><span>--version```命令检验是否成功</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">### 配置</span><br><span class="line">配置git的用户名和邮箱，用户名和邮箱与gitlab或github等git服务器的用户名和邮箱没有关联关系，但是推荐相同，便于识别。这个用户名和邮箱只在提交代码时标识代码提交者的信息（暂时只发现这个作用）。</span><br><span class="line">``` </span><br><span class="line"> git config --global user.name &quot;Your Name&quot;</span><br><span class="line"> git config --global user.email &quot;email@example.com&quot;</span><br></pre></td></tr></table></figure></p>
+<h2 id="git安装-windows版"><a href="#git安装-windows版" class="headerlink" title="git安装(windows版)"></a>git安装(windows版)</h2><p><a href="https://git-scm.com/" target="_blank" rel="noopener">git官网下载</a>，下载完成后直接安装。<br>安装完成后可以通过 <figure class="highlight plain"><figcaption><span>--version``` 命令检验是否成功</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">### 配置</span><br><span class="line">配置git的用户名和邮箱，用户名和邮箱与gitlab或github等git服务器的用户名和邮箱没有关联关系，但是推荐相同，便于识别。这个用户名和邮箱只在提交代码时标识代码提交者的信息（暂时只发现这个作用）。</span><br><span class="line">``` </span><br><span class="line"> git config --global user.name &quot;Your Name&quot;</span><br><span class="line"> git config --global user.email &quot;email@example.com&quot;</span><br></pre></td></tr></table></figure></p>
 <p>可以看到这里设置的是global 的作用域，若想要某个项目使用不一样的用户名和邮箱，可以项目单独设置，这里不做拓展。</p>
 <h3 id="认证"><a href="#认证" class="headerlink" title="认证"></a>认证</h3><p>在git中需要账户认证才能进行操作，有两种方式。在项目主页可以看到一个下拉选择有两个选项：SSH，HTTP</p>
 <h4 id="http"><a href="#http" class="headerlink" title="http"></a>http</h4><p>http认证不需要特别配置，克隆项目时选择HTTP，复制<code>http://xxxxxx.git</code>，在本地clone</p>
