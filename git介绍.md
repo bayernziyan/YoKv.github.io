@@ -1,5 +1,5 @@
 ---
-title: git介绍
+title: git简单介绍
 date: 2018-02-22 17:30:27
 categories:
 - git
@@ -20,6 +20,7 @@ categories:
 
 ### 分布式的版本控制
 git是分布式的，在git中，安装了一个[git](https://git-scm.com/),就是一个代码仓库。一个git项目往往是多人协作的，所以就有了远程仓库的概念。一般地，项目都有一个远程服务器，但这与分布式并不矛盾，每一个安装了git的机器都可以是git服务器。类似于集中式的svn使用一个服务器的原因主要在于这个服务器24小时不关机，甚至还可以在公网访问。
+
 当clone了一个已经存在的git项目之后，在本地就有了该项目的repository，这个repository包含了所有项目的信息，开发人员编写代码，在提交```git commit```时，是将代码提交到本地的repository，而本地的repository代码要推送到远程的repository（服务器）上就是```git push```，所以与svn一个显著的区别就是需要先commit 后push（可以多个commit一次push）。不管是开发人员还是项目拥有者，抑或是服务器上的repository都是一致的，是克隆出来的，当服务器上git代码丢失了，也是能迅速恢复的，所以说git是分布式的。
 
 ### 分支管理
