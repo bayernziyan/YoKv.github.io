@@ -8,7 +8,7 @@ categories:
 ## 安装docker-ce
 Docker有两种安装方式，分为存储库和包安装;官方指南推荐存储库安装Docker，方便安装和升级任务；本文以存储库的方式安装Docker，存储库方式安装的版本相对较落后，是稳定版本。通过官方的shell脚本安装(curl)为最新版本，例如17年11月版本为17.11，而存储库的版本是17.09，是稳定版本。
 <!--more-->
-
+[参考](https://iissy.com/course/100023)
 安装  yum-utils ,它可以提供 yum-config-manager 来管理repository及扩展包
 ```
 $ sudo yum install -y yum-utils
