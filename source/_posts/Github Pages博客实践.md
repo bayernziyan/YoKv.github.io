@@ -11,7 +11,7 @@ categories:
 <!--more-->
 
 ## git 项目
-首先在GitHub新建一个repository，名字以用户名加github.io，例如我的仓库YoKv.github.io。这个项目就能被github识别为Github Pages。在域名管理页面使用CNAME方式添加blog.aiyo.space域名指向```https://YoKv.github.io```,这样就可以通过自己域名访问自己的博客项目
+首先在GitHub新建一个repository，名字以用户名加github.io，例如我的仓库YoKv.github.io。这个项目就能被github识别为Github Pages。在域名管理页面使用CNAME方式添加blog.aiyo.space域名指向https://YoKv.github.io,这样就可以通过自己域名访问自己的博客项目
 
 ## hexo docker镜像
 Github Pages识别的是静态网站项目，本博客通过hexo项目生成静态网站文件，并且采用next主题。

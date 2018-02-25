@@ -13,7 +13,7 @@ categories:
 ## git 项目
 首先在GitHub新建一个repository，名字以用户名加github.io，例如我的仓库YoKv.github.io。这个项目就能被github识别为Github Pages。
 ### 域名
-在域名管理页面使用CNAME方式添加blog.aiyo.space域名指向```https://YoKv.github.io```,这样就可以通过自己域名访问自己的博客项目
+在域名管理页面使用CNAME方式添加blog.aiyo.space域名指向https://YoKv.github.io,这样就可以通过自己域名访问自己的博客项目
 
 ### 分支
 为了方便，将master作为Github Pages，代码主要是html代码（静态页面）
@@ -25,6 +25,7 @@ categories:
 
 如图：
 ![](/images/hexopj.jpg)
+
 ```
 .
 ├── _config.yml
