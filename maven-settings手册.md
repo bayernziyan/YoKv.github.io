@@ -2,7 +2,7 @@
 title: maven-settings手册
 date: 2017-11-03 17:30:27
 categories:
-- maven
+- 开发工具
 ---
 
 

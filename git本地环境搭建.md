@@ -2,7 +2,7 @@
 title: git本地环境搭建
 date: 2018-02-22 17:30:27
 categories:
-- git
+- 开发工具
 ---
 
 ## 前言

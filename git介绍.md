@@ -2,7 +2,7 @@
 title: git简单介绍
 date: 2018-02-22 17:30:27
 categories:
-- git
+- 开发工具
 ---
 
 ## 写在前面
