@@ -1,0 +1,28 @@
+language: node_js
+node_js: stable
+
+# S: Build Lifecycle
+install:
+  - npm install
+
+#before_script:
+ # - npm install -g gulp
+
+script:
+  - hexo g
+
+after_script:
+  - cd ./public
+  - git init
+  - git config user.name "YoKv"
+  - git config user.email "ez4tzl@hotmail.com"
+  - git add .
+  - git commit -m "update blog by travis"
+  - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
+
+branches:
+  only:
+    - sourceFile 
+env:
+ global:
+   - GH_REF: github.com:YoKv/YoKv.github.io.git
