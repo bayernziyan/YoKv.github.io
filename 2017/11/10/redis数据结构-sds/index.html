@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
@@ -10,6 +10,12 @@
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
 
 
 
@@ -100,7 +106,7 @@
 <meta property="og:site_name" content="技术杂记">
 <meta property="og:description" content="redis数据结构SDS结构">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-25T14:25:27.755Z">
+<meta property="og:updated_time" content="2018-02-25T02:16:56.865Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Redis数据结构-Sds">
 <meta name="twitter:description" content="redis数据结构SDS结构">
@@ -137,11 +143,7 @@
 
 
 
-  <title> Redis数据结构-Sds | 技术杂记 </title>
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
+  <title>Redis数据结构-Sds | 技术杂记</title>
   
 
 
@@ -156,6 +158,10 @@
 
 
 
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
@@ -273,14 +279,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">
-            
-            
-              
-                Redis数据结构-Sds
-              
-            
-          </h2>
+          <h2 class="post-title" itemprop="name headline">Redis数据结构-Sds</h2>
         
 
         <div class="post-meta">
@@ -292,7 +291,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-10T17:30:27+00:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-10T17:30:27+08:00">
                 2017-11-10
               </time>
             
@@ -343,7 +342,6 @@
       </header>
     
 
-
     <div class="post-body" itemprop="articleBody">
 
       
@@ -351,7 +349,7 @@
 
       
         <h2 id="redis数据结构"><a href="#redis数据结构" class="headerlink" title="redis数据结构"></a>redis数据结构</h2><h3 id="SDS结构"><a href="#SDS结构" class="headerlink" title="SDS结构"></a>SDS结构</h3><a id="more"></a>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">sdshdr</span>&#123;</span></span><br><span class="line"><span class="comment">//记录buf数组中已使用字节数量，等于SDS保存的字符串长度</span></span><br><span class="line"><span class="keyword">int</span> len;</span><br><span class="line"><span class="comment">//记录buf数组未使用字节的数量</span></span><br><span class="line"><span class="keyword">int</span> <span class="built_in">free</span></span><br><span class="line"><span class="comment">//字节数组，用于保存字符串</span></span><br><span class="line"><span class="keyword">char</span> buf[]</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">sdshdr</span>&#123;</span></div><div class="line"><span class="comment">//记录buf数组中已使用字节数量，等于SDS保存的字符串长度</span></div><div class="line"><span class="keyword">int</span> len;</div><div class="line"><span class="comment">//记录buf数组未使用字节的数量</span></div><div class="line"><span class="keyword">int</span> <span class="built_in">free</span></div><div class="line"><span class="comment">//字节数组，用于保存字符串</span></div><div class="line"><span class="keyword">char</span> buf[]</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>SDS最后一个字节保存了空字符’\0’</p>
 <h3 id="SDS-简单动态字符串"><a href="#SDS-简单动态字符串" class="headerlink" title="SDS 简单动态字符串"></a>SDS 简单动态字符串</h3><p>SDS是redis默认字符串，与C字符串略有不同。</p>
 <h4 id="常数复杂度获取字符串长度"><a href="#常数复杂度获取字符串长度" class="headerlink" title="常数复杂度获取字符串长度"></a>常数复杂度获取字符串长度</h4><p>由len可直接获取长度，复杂度为O(1),而C字符串需要遍历整合字符串，复杂度为O(N)。</p>
@@ -404,7 +402,7 @@
       
 
       
-        
+      
       
 
       
@@ -467,6 +465,7 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
       
@@ -508,7 +507,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -565,7 +564,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#redis数据结构"><span class="nav-number">1.</span> <span class="nav-text"><a href="#redis&#x6570;&#x636E;&#x7ED3;&#x6784;" class="headerlink" title="redis&#x6570;&#x636E;&#x7ED3;&#x6784;"></a>redis&#x6570;&#x636E;&#x7ED3;&#x6784;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SDS结构"><span class="nav-number">1.1.</span> <span class="nav-text"><a href="#SDS&#x7ED3;&#x6784;" class="headerlink" title="SDS&#x7ED3;&#x6784;"></a>SDS&#x7ED3;&#x6784;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SDS-简单动态字符串"><span class="nav-number">1.2.</span> <span class="nav-text"><a href="#SDS-&#x7B80;&#x5355;&#x52A8;&#x6001;&#x5B57;&#x7B26;&#x4E32;" class="headerlink" title="SDS &#x7B80;&#x5355;&#x52A8;&#x6001;&#x5B57;&#x7B26;&#x4E32;"></a>SDS &#x7B80;&#x5355;&#x52A8;&#x6001;&#x5B57;&#x7B26;&#x4E32;</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#常数复杂度获取字符串长度"><span class="nav-number">1.2.1.</span> <span class="nav-text"><a href="#&#x5E38;&#x6570;&#x590D;&#x6742;&#x5EA6;&#x83B7;&#x53D6;&#x5B57;&#x7B26;&#x4E32;&#x957F;&#x5EA6;" class="headerlink" title="&#x5E38;&#x6570;&#x590D;&#x6742;&#x5EA6;&#x83B7;&#x53D6;&#x5B57;&#x7B26;&#x4E32;&#x957F;&#x5EA6;"></a>&#x5E38;&#x6570;&#x590D;&#x6742;&#x5EA6;&#x83B7;&#x53D6;&#x5B57;&#x7B26;&#x4E32;&#x957F;&#x5EA6;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#杜绝缓冲区溢出"><span class="nav-number">1.2.2.</span> <span class="nav-text"><a href="#&#x675C;&#x7EDD;&#x7F13;&#x51B2;&#x533A;&#x6EA2;&#x51FA;" class="headerlink" title="&#x675C;&#x7EDD;&#x7F13;&#x51B2;&#x533A;&#x6EA2;&#x51FA;"></a>&#x675C;&#x7EDD;&#x7F13;&#x51B2;&#x533A;&#x6EA2;&#x51FA;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#减少修改字符串时带来的内存重新分配次数"><span class="nav-number">1.2.3.</span> <span class="nav-text"><a href="#&#x51CF;&#x5C11;&#x4FEE;&#x6539;&#x5B57;&#x7B26;&#x4E32;&#x65F6;&#x5E26;&#x6765;&#x7684;&#x5185;&#x5B58;&#x91CD;&#x65B0;&#x5206;&#x914D;&#x6B21;&#x6570;" class="headerlink" title="&#x51CF;&#x5C11;&#x4FEE;&#x6539;&#x5B57;&#x7B26;&#x4E32;&#x65F6;&#x5E26;&#x6765;&#x7684;&#x5185;&#x5B58;&#x91CD;&#x65B0;&#x5206;&#x914D;&#x6B21;&#x6570;"></a>&#x51CF;&#x5C11;&#x4FEE;&#x6539;&#x5B57;&#x7B26;&#x4E32;&#x65F6;&#x5E26;&#x6765;&#x7684;&#x5185;&#x5B58;&#x91CD;&#x65B0;&#x5206;&#x914D;&#x6B21;&#x6570;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二进制安全"><span class="nav-number">1.2.4.</span> <span class="nav-text"><a href="#&#x4E8C;&#x8FDB;&#x5236;&#x5B89;&#x5168;" class="headerlink" title="&#x4E8C;&#x8FDB;&#x5236;&#x5B89;&#x5168;"></a>&#x4E8C;&#x8FDB;&#x5236;&#x5B89;&#x5168;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#兼容部分C字符串函数"><span class="nav-number">1.2.5.</span> <span class="nav-text"><a href="#&#x517C;&#x5BB9;&#x90E8;&#x5206;C&#x5B57;&#x7B26;&#x4E32;&#x51FD;&#x6570;" class="headerlink" title="&#x517C;&#x5BB9;&#x90E8;&#x5206;C&#x5B57;&#x7B26;&#x4E32;&#x51FD;&#x6570;"></a>&#x517C;&#x5BB9;&#x90E8;&#x5206;C&#x5B57;&#x7B26;&#x4E32;&#x51FD;&#x6570;</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#redis数据结构"><span class="nav-number">1.</span> <span class="nav-text">redis数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SDS结构"><span class="nav-number">1.1.</span> <span class="nav-text">SDS结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SDS-简单动态字符串"><span class="nav-number">1.2.</span> <span class="nav-text">SDS 简单动态字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#常数复杂度获取字符串长度"><span class="nav-number">1.2.1.</span> <span class="nav-text">常数复杂度获取字符串长度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#杜绝缓冲区溢出"><span class="nav-number">1.2.2.</span> <span class="nav-text">杜绝缓冲区溢出</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#减少修改字符串时带来的内存重新分配次数"><span class="nav-number">1.2.3.</span> <span class="nav-text">减少修改字符串时带来的内存重新分配次数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二进制安全"><span class="nav-number">1.2.4.</span> <span class="nav-text">二进制安全</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#兼容部分C字符串函数"><span class="nav-number">1.2.5.</span> <span class="nav-text">兼容部分C字符串函数</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -646,6 +645,12 @@
 
 
 
+
+
+
+
+
+
   
   <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
 
@@ -711,12 +716,6 @@
 
 
   
-
-
-
-
-
-  
     <script type="text/javascript">
       (function(d, s) {
         var j, e = d.getElementsByTagName(s)[0];
@@ -739,6 +738,10 @@
 
 
 
+
+  
+
+  
 
   
 
