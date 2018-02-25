@@ -2,7 +2,7 @@
 title: 内存模型
 date: 2017-08-25 16:20:36
 categories: 
-- JavaSE
+- Java基础
 ---
 
 ## 内存模型

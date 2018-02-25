@@ -2,7 +2,7 @@
 title: 枚举
 date: 2017-08-23 15:30:16
 categories: 
-- JavaSE
+- Java基础
 ---
 
 ## 参考

@@ -2,7 +2,7 @@
 title: 类加载及初始化
 date: 2017-08-21 10:00:57
 categories: 
-- JavaSE
+- Java基础
 ---
 
 

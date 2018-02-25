@@ -2,7 +2,7 @@
 title: 异常
 date: 2017-08-20 15:30:56
 categories: 
-- JavaSE
+- Java基础
 ---
 
 ## 概念

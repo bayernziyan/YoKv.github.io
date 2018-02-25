@@ -2,7 +2,7 @@
 title: JDBC及数据库
 date: 2017-08-31 07:58:46
 categories: 
-- Java Web
+- Java基础
 ---
 
 

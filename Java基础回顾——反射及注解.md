@@ -2,7 +2,7 @@
 title: 反射及注解
 date: 2017-08-21 10:58:27
 categories: 
-- JavaSE
+- Java基础
 ---
 
 ## 反射机制

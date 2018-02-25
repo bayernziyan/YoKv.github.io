@@ -2,7 +2,7 @@
 title: docker-redis
 date: 2017-11-25 21:45:48
 categories: 
-- docker
+- DevOps
 ---
 
 ## 下载镜像

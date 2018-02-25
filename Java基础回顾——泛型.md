@@ -2,7 +2,7 @@
 title: 泛型
 date: 2017-08-22 15:30:16
 categories: 
-- JavaSE
+- Java基础
 ---
 
 ## 泛型

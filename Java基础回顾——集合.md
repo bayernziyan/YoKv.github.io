@@ -2,7 +2,7 @@
 title: 集合
 date: 2017-08-23 18:57:17
 categories: 
-- JavaSE
+- Java基础
 ---
 
 ## 集合综述
