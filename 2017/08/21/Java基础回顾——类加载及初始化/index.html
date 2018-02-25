@@ -106,7 +106,7 @@
 <meta property="og:site_name" content="技术杂记">
 <meta property="og:description" content="ClassLoader">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-25T02:16:56.832Z">
+<meta property="og:updated_time" content="2018-02-25T05:12:10.617Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="类加载及初始化">
 <meta name="twitter:description" content="ClassLoader">
@@ -291,7 +291,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-21T10:00:57+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-21T02:00:57+00:00">
                 2017-08-21
               </time>
             
@@ -349,7 +349,7 @@
 
       
         <h2 id="ClassLoader"><a href="#ClassLoader" class="headerlink" title="ClassLoader"></a>ClassLoader</h2><a id="more"></a>
-<p><a href="http://blog.csdn.net/xyang81/article/details/7292380" target="_blank" rel="external">来源</a></p>
+<p><a href="http://blog.csdn.net/xyang81/article/details/7292380" target="_blank" rel="noopener">来源</a></p>
 <h3 id="什么是ClassLoader"><a href="#什么是ClassLoader" class="headerlink" title="什么是ClassLoader?"></a>什么是ClassLoader?</h3><p>Java程序都是由若干个.class文件组织而成的一个完整的Java应用程序，当程序在运行时，即会调用该程序的一个入口函数来调用系统的相关功能，而这些功能都被封装在不同的class文件当中，所以经常要从这个class文件中要调用另外一个class文件中的方法，如果另外一个文件不存在的，则会引发系统异常。而程序在启动的时候，并不会一次性加载程序所要用的所有class文件，而是根据程序的需要，通过Java的类加载机制（ClassLoader）来动态加载某个class文件到内存当中的，从而只有class文件被载入到了内存之后，才能被其它class所引用。所以ClassLoader就是用来动态加载class文件到内存当中用的。</p>
 <h3 id="Java默认提供的三个ClassLoader"><a href="#Java默认提供的三个ClassLoader" class="headerlink" title="Java默认提供的三个ClassLoader"></a>Java默认提供的三个ClassLoader</h3><ul>
 <li>BootStrap ClassLoader：称为启动类加载器，是Java类加载层次中最顶层的类加载器，负责加载JDK中的核心类库，如：rt.jar、resources.jar、charsets.jar等，可通过如下程序获得该类加载器从哪些地方加载了相关的jar或class文件</li>

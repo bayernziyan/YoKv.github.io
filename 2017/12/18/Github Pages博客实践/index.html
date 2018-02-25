@@ -106,7 +106,7 @@
 <meta property="og:site_name" content="技术杂记">
 <meta property="og:description" content="介绍本文介绍搭建本套博客系统的过程。博客原始文档git push后能直接发布修改。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-25T02:16:56.815Z">
+<meta property="og:updated_time" content="2018-02-25T05:12:10.613Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Github Pages博客实践">
 <meta name="twitter:description" content="介绍本文介绍搭建本套博客系统的过程。博客原始文档git push后能直接发布修改。">
@@ -291,7 +291,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-18T17:30:27+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-18T09:30:27+00:00">
                 2017-12-18
               </time>
             
@@ -349,13 +349,17 @@
 
       
         <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>本文介绍搭建本套博客系统的过程。博客原始文档git push后能直接发布修改。<br><a id="more"></a></p>
-<h2 id="git-项目"><a href="#git-项目" class="headerlink" title="git 项目"></a>git 项目</h2><p>首先在GitHub新建一个repository，名字以用户名加github.io，例如我的仓库YoKv.github.io。这个项目就能被github识别为Github Pages。在域名管理页面使用CNAME方式添加blog.aiyo.space域名指向<a href="https://YoKv.github.io,这样就可以通过自己域名访问自己的博客。项目" target="_blank" rel="external">https://YoKv.github.io,这样就可以通过自己域名访问自己的博客。项目</a></p>
-<h2 id="hexo-docker镜像"><a href="#hexo-docker镜像" class="headerlink" title="hexo docker镜像"></a>hexo docker镜像</h2><p>Github Pages识别的是静态网站项目，本博客通过hexo项目生成静态网站文件，并且采用next主题。<br>使用Dockerfile定制hexo镜像：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">FROM node:slim</div><div class="line">MAINTAINER yokv &quot;ez4tzl@hotmail.com&quot;</div><div class="line"></div><div class="line"># install hexo</div><div class="line"> RUN npm install hexo-cli -g</div><div class="line"></div><div class="line"># hexo init</div><div class="line"> RUN mkdir hexo \</div><div class="line"> &amp;&amp; cd hexo \</div><div class="line"> &amp;&amp; hexo init blog </div><div class="line"></div><div class="line"># download next </div><div class="line">RUN wget -c https://codeload.github.com/iissnan/hexo-theme-next/tar.gz/v5.1.1 -O - |  tar -xz -C /hexo/blog/themes/ \</div><div class="line">&amp;&amp; mv /hexo/blog/themes/hexo-theme-next-5.1.1 /hexo/blog/themes/next</div><div class="line"> </div><div class="line"># config</div><div class="line">RUN wget -P /hexo/blog http://p0vlap8z6.bkt.clouddn.com/hexo_config.yml \</div><div class="line">&amp;&amp; mv /hexo/blog/hexo_config.yml  /hexo/blog/_config.yml \</div><div class="line">&amp;&amp; wget -P /hexo/blog/themes/next http://p0vlap8z6.bkt.clouddn.com/themesnext_config.yml \</div><div class="line">&amp;&amp; mv /hexo/blog/themes/next/themesnext_config.yml   /hexo/blog/themes/next/_config.yml </div><div class="line"></div><div class="line">#application&apos;s port</div><div class="line">EXPOSE 4000</div><div class="line"></div><div class="line">WORKDIR /hexo/blog</div><div class="line"># run hexo server</div><div class="line">CMD [&quot;hexo&quot;,&quot;server&quot;]</div></pre></td></tr></table></figure></p>
-<p>其中hexo的配置文件和主题的配置文件从七牛云下载(已删除)，便于保存和使用。<br>通过以下命令就能够生成静态网站页面:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run -d -v /docker/volumes/blog/source:/hexo/blog/source -v /docker/volumes/blog/public:/hexo/blog/public -p 6700:4000 --name hexo-server hexo:app sh -c &apos;hexo g &amp;&amp; hexo s&apos;</div></pre></td></tr></table></figure></p>
-<p>在挂载的public目录下就是生成的静态网站资源文件。docker run 命令也可以只使用hexo g，使用docker s启动了服务可以通过aiyo.space:6700访问到，做了反向代理后可通过b.aiyo.space访问备用,毕竟github国外的问题有可能访问速度慢。将public下的文件push到什么新建的repository，blog.aiyo.space就能看到博客部署完成。</p>
-<h2 id="webhook-实现自动部署"><a href="#webhook-实现自动部署" class="headerlink" title="webhook 实现自动部署"></a>webhook 实现自动部署</h2><p>为方便使用，使用github的webhook功能实现自动部署，实现push了原始的markdown文件，其余的事情交给服务器处理，原本需要的操作是：本地编写markdown-&gt;push到github-&gt;服务器pull-&gt;hexo g-&gt;服务器push资源文件。</p>
-<p>编写部署脚本blogDeploy.sh:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line">cd /docker/volumes/blog/source/_posts</div><div class="line">git pull origin</div><div class="line">docker restart 1c</div><div class="line">sleep 30</div><div class="line">cd /docker/volumes/blog/public</div><div class="line">git add -A</div><div class="line">git commit -m &quot;blog update&quot;</div><div class="line">git push origin master</div></pre></td></tr></table></figure>
+<h2 id="git-项目"><a href="#git-项目" class="headerlink" title="git 项目"></a>git 项目</h2><p>首先在GitHub新建一个repository，名字以用户名加github.io，例如我的仓库YoKv.github.io。这个项目就能被github识别为Github Pages。在域名管理页面使用CNAME方式添加blog.aiyo.space域名指向<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## hexo docker镜像</span><br><span class="line">Github Pages识别的是静态网站项目，本博客通过hexo项目生成静态网站文件，并且采用next主题。</span><br><span class="line">使用Dockerfile定制hexo镜像：</span><br></pre></td></tr></table></figure></p>
+<p>FROM node:slim<br>MAINTAINER yokv “<a href="mailto:ez4tzl@hotmail.com" target="_blank" rel="noopener">ez4tzl@hotmail.com</a>“</p>
+<h1 id="install-hexo"><a href="#install-hexo" class="headerlink" title="install hexo"></a>install hexo</h1><p> RUN npm install hexo-cli -g</p>
+<h1 id="hexo-init"><a href="#hexo-init" class="headerlink" title="hexo init"></a>hexo init</h1><p> RUN mkdir hexo \<br> &amp;&amp; cd hexo \<br> &amp;&amp; hexo init blog </p>
+<h1 id="download-next"><a href="#download-next" class="headerlink" title="download next"></a>download next</h1><p>RUN wget -c <a href="https://codeload.github.com/iissnan/hexo-theme-next/tar.gz/v5.1.1" target="_blank" rel="noopener">https://codeload.github.com/iissnan/hexo-theme-next/tar.gz/v5.1.1</a> -O - |  tar -xz -C /hexo/blog/themes/ \<br>&amp;&amp; mv /hexo/blog/themes/hexo-theme-next-5.1.1 /hexo/blog/themes/next</p>
+<h1 id="config"><a href="#config" class="headerlink" title="config"></a>config</h1><p>RUN wget -P /hexo/blog <a href="http://p0vlap8z6.bkt.clouddn.com/hexo_config.yml" target="_blank" rel="noopener">http://p0vlap8z6.bkt.clouddn.com/hexo_config.yml</a> \<br>&amp;&amp; mv /hexo/blog/hexo_config.yml  /hexo/blog/_config.yml \<br>&amp;&amp; wget -P /hexo/blog/themes/next <a href="http://p0vlap8z6.bkt.clouddn.com/themesnext_config.yml" target="_blank" rel="noopener">http://p0vlap8z6.bkt.clouddn.com/themesnext_config.yml</a> \<br>&amp;&amp; mv /hexo/blog/themes/next/themesnext_config.yml   /hexo/blog/themes/next/_config.yml </p>
+<p>#application’s port<br>EXPOSE 4000</p>
+<p>WORKDIR /hexo/blog</p>
+<h1 id="run-hexo-server"><a href="#run-hexo-server" class="headerlink" title="run hexo server"></a>run hexo server</h1><p>CMD [“hexo”,”server”]<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">其中hexo的配置文件和主题的配置文件从七牛云下载(已删除)，便于保存和使用。</span><br><span class="line">通过以下命令就能够生成静态网站页面:</span><br></pre></td></tr></table></figure></p>
+<p>docker run -d -v /docker/volumes/blog/source:/hexo/blog/source -v /docker/volumes/blog/public:/hexo/blog/public -p 6700:4000 –name hexo-server hexo:app sh -c ‘hexo g &amp;&amp; hexo s’<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">在挂载的public目录下就是生成的静态网站资源文件。docker run 命令也可以只使用hexo g，使用docker s启动了服务可以通过aiyo.space:6700访问到，做了反向代理后可通过b.aiyo.space访问备用,毕竟github国外的问题有可能访问速度慢。将public下的文件push到什么新建的repository，blog.aiyo.space就能看到博客部署完成。</span><br><span class="line"></span><br><span class="line">## webhook 实现自动部署</span><br><span class="line">为方便使用，使用github的webhook功能实现自动部署，实现push了原始的markdown文件，其余的事情交给服务器处理，原本需要的操作是：本地编写markdown-&gt;push到github-&gt;服务器pull-&gt;hexo g-&gt;服务器push资源文件。</span><br><span class="line"></span><br><span class="line">编写部署脚本blogDeploy.sh:</span><br></pre></td></tr></table></figure></p>
+<p>#!/bin/bash<br>cd /docker/volumes/blog/source/_posts<br>git pull origin<br>docker restart 1c<br>sleep 30<br>cd /docker/volumes/blog/public<br>git add -A<br>git commit -m “blog update”<br>git push origin master<br><code>`</code></p>
 <p>webhook服务器：<br>见webHook项目</p>
 <p>github配置webhook服务器链接,serect。</p>
 
@@ -410,8 +414,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/12/17/redis数据结构-跳跃表/" rel="next" title="Redis数据结构-跳跃表">
-                <i class="fa fa-chevron-left"></i> Redis数据结构-跳跃表
+              <a href="/2017/12/17/redis数据结构-集合/" rel="next" title="Redis数据结构-集合">
+                <i class="fa fa-chevron-left"></i> Redis数据结构-集合
               </a>
             
           </div>
@@ -565,7 +569,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#介绍"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-项目"><span class="nav-number">2.</span> <span class="nav-text">git 项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo-docker镜像"><span class="nav-number">3.</span> <span class="nav-text">hexo docker镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#webhook-实现自动部署"><span class="nav-number">4.</span> <span class="nav-text">webhook 实现自动部署</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#介绍"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-项目"><span class="nav-number">2.</span> <span class="nav-text">git 项目</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#install-hexo"><span class="nav-number"></span> <span class="nav-text">install hexo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hexo-init"><span class="nav-number"></span> <span class="nav-text">hexo init</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#download-next"><span class="nav-number"></span> <span class="nav-text">download next</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#config"><span class="nav-number"></span> <span class="nav-text">config</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#run-hexo-server"><span class="nav-number"></span> <span class="nav-text">run hexo server</span></a></div>
             
 
           </div>
