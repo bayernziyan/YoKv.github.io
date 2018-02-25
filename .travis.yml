@@ -9,9 +9,6 @@ install:
  # - npm install -g gulp
 
 script:
-  - cd ./public
-  - git clone --depth=50 --branch=master https://github.com/YoKv/YoKv.github.io.git YoKv/YoKv.github.io
-  - cd ..
   - hexo g
 
 after_script:
