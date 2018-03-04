@@ -48,3 +48,13 @@ package 是一个关键字，定义一个包，和Java里的package一样，也�
 main包是一个特殊的包名，它表示当前是一个可执行程序，而不是一个库。
 
 点击run可以看到控制台输出,第一个程序就完成了。
+
+## 构建一个exe
+```
+C:\COLD\workspaceGo\webHook\src
+set GOPATH=C:\COLD\workspaceGo\webHook
+set GOOS=linux
+set GOARCH=amd64
+go build
+
+```
