@@ -20,4 +20,4 @@ docker rmi $(docker images -q)
 ## docker官方提供的练习服务器
 登陆docker账号即可使用
 [play-with-docker.com](https://labs.play-with-docker.com)
-[教程](https://training.play-with-docker.com)
+[docker官方练习与教程](https://training.play-with-docker.com)
