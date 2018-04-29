@@ -6,7 +6,8 @@ categories:
 ---
 
 
-# 容器引擎
+# 容器引擎技术
+## 概览
 ### 操作系统：
 * CoreOS
 
@@ -44,6 +45,7 @@ docker意义:
 * 变革现有paas平台
 * 容器即服务（caas）
 
+
 # docker 基础概念
 
 ## 核心组件
@@ -70,4 +72,4 @@ docker意义:
 
 # docker编排
  
-
+## Docker Swarm集群管理
