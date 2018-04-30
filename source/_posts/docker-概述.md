@@ -132,5 +132,5 @@ Docker 镜像是一个特殊的文件系统，除了提供容器运行时所需�
 
 [概念参考资料](https://yeasy.gitbooks.io/docker_practice/content/basic_concept/image.html)
 
-### 实战
+# 实战
 [Play with Docker Classroom](https://training.play-with-docker.com)
