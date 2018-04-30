@@ -33,7 +33,8 @@ categories:
 Docker是Docker公司开源的一个基于轻量级虚拟化技术的容器引擎项目,整个项目基于 Go语言开发，并遵从Apache 2.0协议。
 Docker 的核心理念是 Build, Ship, and Run Any App, Anywhere。
 
-历经5年发展，Docker公司揭露了今年最新的Docker年度数据报告，从2013年3月PyCon大会上，Docker首度亮相之后，至今在Docker上的容器镜像下载次数已经超过了370亿次，容器化的应用有高达350万个，目前在LinkedIn网站上的Docker相关职缺也有15,000个。全球活跃的Docker使用者社群已有200多个，包括台湾也有。全球使用企业版Docker EE的企业顾客目前则约有450家。
+历经5年发展，Docker公司揭露了今年最新的Docker年度数据报告，从2013年3月PyCon大会上，Docker首度亮相之后，至今在Docker上的容器镜像下载次数已经超过了370亿次，容器化的应用有高达350万个。
+![](/images/docker-m.jpg)
 [链接](https://www.kubernetes.org.cn/3816.html)
 
 
