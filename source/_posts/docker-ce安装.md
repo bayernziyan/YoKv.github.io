@@ -59,19 +59,32 @@ $ docker pull registry.cn-hangzhou.aliyuncs.com/mykernel/test1:[镜像版本号]
 ## 汇总
 ```
 yum -y install net-tools wget
+
 yum install -y yum-utils device-mapper-persistent-data lvm2
+
 yum-config-manager --add-repo  https://download.docker.com/linux/centos/docker-ce.repo
+
 yum -y install docker-ce
+
 systemctl start docker
+
 chkconfig docker on
-curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+
+curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-`uname -s`-`uname -m` -o /usr/local/
+
+bin/docker-compose
+
 chmod +x /usr/local/bin/docker-compose
 
 vi /etc/docker/daemon.json
+
 {
   "registry-mirrors": ["https://7yyhdik3.mirror.aliyuncs.com"]
 }
 
+systemctl daemon-reload
+
+systemctl restart docker
 
 ```
 https://github.com/docker/compose/releases
