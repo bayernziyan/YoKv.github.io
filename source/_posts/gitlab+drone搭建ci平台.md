@@ -6,6 +6,8 @@ categories:
 --- 
  
 # gitlab安装 
+<!--more-->
+
 ``` 
  docker run --detach \ 
     --hostname localhost \ 
@@ -16,6 +18,7 @@ categories:
     --volume /srv/gitlab/logs:/var/log/gitlab \ 
     --volume /srv/gitlab/data:/var/opt/gitlab \ 
     gitlab/gitlab-ce:latest 
+
 ``` 
 # gitlab 配置 
 在gitlabuser setting 或者 管理界面的applications 添加application 
@@ -25,6 +28,7 @@ categories:
 
 # drone安装
 使用docker compose安装
+
 ```
 version: '2'
 
