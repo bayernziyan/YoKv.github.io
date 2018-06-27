@@ -15,8 +15,7 @@ categories:
 
 ## gitlab 配置 
 在gitlabuser setting 或者 管理界面的applications 添加application 
-**Redirect URI**为drone的地址 
-	http://hostname:port/authorize
+**Redirect URI**为drone的地址`http://hostname:port/authorize`
 
 **重要配置**：在管理界面的settings的最下面有个**Outbound requests**设置，勾上`Allow requests to the local network from hooks and services`，意思就是识别本地的webhook地址，不勾选在以192.168的内网地址的drone的webhook会出现uri识别失败的情况，现象就是gitlab代码提交就不触发drone构建
 
