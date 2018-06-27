@@ -7,21 +7,14 @@ categories:
 
 ## gitlab安装 
 <!--more-->
+使用docker安装
+``` 
+ docker run -d --hostname localhost  -p 80:80 --name gitlab \ 
+    --restart always  --volume /srv/gitlab/config:/etc/gitlab --volume /srv/gitlab/logs:/var/log/gitlab --volume /srv/gitlab/data:/var/opt/gitlab gitlab/gitlab-ce:latest 
 
-``` 
- docker run --detach \ 
-    --hostname localhost \ 
-    --publish 80:80 \ 
-    --name gitlab \ 
-    --restart always \ 
-    --volume /srv/gitlab/config:/etc/gitlab \ 
-    --volume /srv/gitlab/logs:/var/log/gitlab \ 
-    --volume /srv/gitlab/data:/var/opt/gitlab \ 
-    gitlab/gitlab-ce:latest 
-``` 
+```
 
 ## gitlab 配置 
-
 在gitlabuser setting 或者 管理界面的applications 添加application 
 ```Redirect URI```为drone的地址 
 	http://hostname:port/authorize
@@ -33,7 +26,6 @@ categories:
 
 ```
 version: '2'
-
 services:
   drone-server:
     image: drone/drone:0.8
