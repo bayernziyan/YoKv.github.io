@@ -20,6 +20,7 @@ categories:
     gitlab/gitlab-ce:latest 
 
 ``` 
+
 # gitlab 配置 
 在gitlabuser setting 或者 管理界面的applications 添加application 
 ```Redirect URI 为drone的地址 http://hostname:port/authorize```
