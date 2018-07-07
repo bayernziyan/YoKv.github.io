@@ -79,3 +79,10 @@ update-ca-trust
 portainer/portainer
 暂时没有registry好的仓库
 konradkleine/docker-registry-frontend:v2
+
+## harbor
+[官网](https://github.com/vmware/harbor)
+1. 下载installer
+2. 配置harbor.cfg
+3. 执行install.sh
+
