@@ -22,3 +22,8 @@ branches:
 env:
  global:
    - GH_REF: github.com/YoKv/YoKv.github.io.git
+notifications:
+  slack:
+    on_success: never
+    on_failure: never
+  webhooks: https://oapi.dingtalk.com/robot/send?access_token=9929a6d0c2cb679961a98b76a01afa249ef2a4b6c1a7fdec8f6647f559672e9f
