@@ -11,12 +11,11 @@ categories:
 ## Nexus
 
 ```
-docker run -d -p 8081:8081 -p 5000:5000 --name nexus -v /data/nexus-data:/nexus-data sonatype/nexus3
+docker run -d -p 8081:8081 -p 5000:5000 --name nexus sonatype/nexus3
 ```
 在nexus管理界面新建docker仓库（hosted），端口填5000，会生成一个doker-registry私服
 
 ## Portus
-太麻烦，略过
 ## Shipyard
 
 ## 官方
@@ -75,9 +74,8 @@ update-ca-trust
 /bin/systemctl restart docker.service
 
 ```
-## 界面
+## 管理界面
 portainer/portainer
-暂时没有registry好的仓库
 konradkleine/docker-registry-frontend:v2
 
 ## harbor
