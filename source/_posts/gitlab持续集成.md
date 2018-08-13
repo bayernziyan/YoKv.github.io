@@ -12,7 +12,7 @@ categories:
 通过定义runner来执行集成环境
 最终产出的是镜像
 ## 安装runner
-
+<!--more-->
 ### 方式一(未采用)
 先将runner注册到girlab,配置数据保留在宿主机 /srv/gitlab-runner/config
 ```
