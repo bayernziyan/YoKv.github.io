@@ -44,7 +44,10 @@ CMD ["/bin/sh", "-c", "java -jar app.jar"]
 ```
 docker network create -d overlay --subnet 10.0.1.0/24 cloud-net
 ```
-
+同时要在项目中制定优先使用的网段：
+```
+spring.cloud.inetutils.preferred-networks=10.0.1.
+```
 在master节点就能部署应用了,命令：
 
 ```
