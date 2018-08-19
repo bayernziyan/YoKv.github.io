@@ -10,7 +10,6 @@ categories:
 ## spring cloud项目
 [项目github](https://github.com/YoKv/microservices-practise)
 项目部署结构:
-
 * app-a
 * app-b
 * eureka
@@ -22,7 +21,7 @@ categories:
 
 **注意**：不同的系统在定义系统环境变量时可能不同，比如slim是使用alpha镜像只能通过`SPRING_PROFILES_ACTIVE`来定义，而比如基于`centos`的`java:8`镜像可以直接使用与`application.yml`相同的变量名。Dockerfile样例：
 
-`
+```
 FROM openjdk:jre-slim
 
 MAINTAINER yokv ez4tzl@hotmail.com
@@ -33,7 +32,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 ADD ./target/app.jar  app.jar
 
 CMD ["/bin/sh", "-c", "java -jar app.jar"]
-`
+```
 
 项目代码与镜像构建完成后就是部署啦。
 
