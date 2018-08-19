@@ -18,10 +18,11 @@ categories:
 最简化的spring cloud项目结构，注册中心eureka（非HA），两个应用分别注册，app-a通过定时任务和RestTemplate（负载均衡）调用app-b服务。
 
 ## 制作镜像
-每个应用都有对应的Dockerfile，在travis.com自动发布镜像，基础镜像是```openjdk:jre-slim```，jre版本是10.0.2
+每个应用都有对应的Dockerfile，在travis.com自动发布镜像，基础镜像是 `openjdk:jre-slim` ，jre版本是10.0.2
 
-**注意**：不同的系统在定义系统环境变量时可能不同，比如slim是使用alpha镜像只能通过```SPRING_PROFILES_ACTIVE```来定义，而比如基于```centos```的```java:8```镜像可以直接使用与```application.yml```相同的变量名。Dockerfile样例：
-```
+**注意**：不同的系统在定义系统环境变量时可能不同，比如slim是使用alpha镜像只能通过`SPRING_PROFILES_ACTIVE`来定义，而比如基于`centos`的`java:8`镜像可以直接使用与`application.yml`相同的变量名。Dockerfile样例：
+
+`
 FROM openjdk:jre-slim
 
 MAINTAINER yokv ez4tzl@hotmail.com
@@ -32,17 +33,21 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 ADD ./target/app.jar  app.jar
 
 CMD ["/bin/sh", "-c", "java -jar app.jar"]
-```
+`
+
 项目代码与镜像构建完成后就是部署啦。
 
 # 原生swarm
-原生swarm安装非常简单，安装完```docker-ce```后，只需要使用```docker swarm init```命令就能初始化一个集群。
+原生swarm安装非常简单，安装完`docker-ce`后，只需要使用`docker swarm init`命令就能初始化一个集群。
 为了确保所有应用能通信，需要应用在同一个子网段
 创建一个overlay网络
+
 ```
 docker network create -d overlay --subnet 10.0.1.0/24 cloud-net
 ```
+
 在master节点就能部署应用了,命令：
+
 ```
 docker stack deploy app -c docker-stack.yml
 ```
