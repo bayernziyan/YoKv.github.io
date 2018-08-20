@@ -16,31 +16,62 @@ services:
   gitlab:
     image: gitlab/gitlab-ce
     restart: always
-    hostname: localhost
-#    environment:
-#      GITLAB_OMNIBUS_CONFIG: |
-#        external_url http://localhost:8080
-#        gitlab_rails['gitlab_shell_ssh_port'] = 2224
     ports:
-    - 80:80
-    - 222:22
+      - 80:80
+    volumes:
+      - gitlab:/etc/gitlab
+      - gitlab:/var/log/gitlab
+      - gitlab:/var/opt/gitlab
     networks:
-    - gitlab-net
-   
+      - gitlab-net
+    
+  gitlab-runner:
+    image: gitlab/gitlab-runner
+    container_name: gitlab-runner
+    restart: always
+    volumes:
+      - gitlab:/etc/gitlab-runner
+      - /var/run/docker.sock:/var/run/docker.sock  
+    networks:
+      - gitlab-net
+      
   sonarqube:
     image: sonarqube
     restart: always
+    environment:
+      - SONARQUBE_JDBC_USERNAME=postgres
+      - SONARQUBE_JDBC_PASSWORD=f4ef54b039dc6794
+      - SONARQUBE_JDBC_URL=jdbc:postgresql://postgres:5432/sonarqube
     ports:
-    - 9000:9000
-    - 9092:9092
+      - 9000:9000
+      - 9092:9092
+    volumes:
+      - sonarqube:/opt/sonarqube/conf
+      - sonarqube:/opt/sonarqube/data
+      - sonarqube:/opt/sonarqube/extensions
+      - sonarqube:/opt/sonarqube/lib/bundled-plugins
     networks:
-    - gitlab-net
-
+      - gitlab-net
+    
+  postgres:
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=f4ef54b039dc6794
+      - POSTGRES_DB=sonarqube
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    networks:
+      - gitlab-net
+      
 networks:
   gitlab-net:
-
-# 外部共用db
-
+  
+volumes:
+  gitlab:
+  sonarqube:
+  postgres:
 ```
 
 
