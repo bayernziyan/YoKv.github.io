@@ -16,12 +16,21 @@ services:
   gitlab:
     image: gitlab/gitlab-ce
     restart: always
+    environment:
+      - DB_ADAPTER=postgresql
+      - DB_HOST=postgresql
+      - DB_PORT=5432
+      - DB_USER=postgres
+      - DB_PASS=f4ef54b039dc6794
+      - DB_NAME=db
+      - GITLAB_TIMEZONE=Asia/Shanghai
+      - TZ=Asia/Shanghai
     ports:
       - 80:80
     volumes:
-      - gitlab:/etc/gitlab
-      - gitlab:/var/log/gitlab
-      - gitlab:/var/opt/gitlab
+      - '/srv/gitlab/config:/etc/gitlab'
+      - '/srv/gitlab/logs:/var/log/gitlab'
+      - '/srv/gitlab/data:/var/opt/gitlab'
     networks:
       - gitlab-net
     
@@ -30,8 +39,8 @@ services:
     container_name: gitlab-runner
     restart: always
     volumes:
-      - gitlab:/etc/gitlab-runner
-      - /var/run/docker.sock:/var/run/docker.sock  
+      - '/srv/gitlab-runner:/etc/gitlab-runner'
+      - '/var/run/docker.sock:/var/run/docker.sock'
     networks:
       - gitlab-net
       
@@ -41,15 +50,15 @@ services:
     environment:
       - SONARQUBE_JDBC_USERNAME=postgres
       - SONARQUBE_JDBC_PASSWORD=f4ef54b039dc6794
-      - SONARQUBE_JDBC_URL=jdbc:postgresql://postgres:5432/sonarqube
+      - SONARQUBE_JDBC_URL=jdbc:postgresql://postgres:5432/db
     ports:
       - 9000:9000
       - 9092:9092
     volumes:
-      - sonarqube:/opt/sonarqube/conf
-      - sonarqube:/opt/sonarqube/data
-      - sonarqube:/opt/sonarqube/extensions
-      - sonarqube:/opt/sonarqube/lib/bundled-plugins
+      - 'sonarqube:/opt/sonarqube/conf'
+      - 'sonarqube:/opt/sonarqube/data'
+      - 'sonarqube:/opt/sonarqube/extensions'
+      - 'sonarqube:/opt/sonarqube/lib/bundled-plugins'
     networks:
       - gitlab-net
     
@@ -59,9 +68,9 @@ services:
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=f4ef54b039dc6794
-      - POSTGRES_DB=sonarqube
+      - POSTGRES_DB=db
     volumes:
-      - postgres:/var/lib/postgresql/data
+      - 'postgres:/var/lib/postgresql/data'
     networks:
       - gitlab-net
       
@@ -69,7 +78,6 @@ networks:
   gitlab-net:
   
 volumes:
-  gitlab:
   sonarqube:
   postgres:
 ```
