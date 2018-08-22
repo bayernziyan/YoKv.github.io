@@ -17,12 +17,6 @@ services:
     image: gitlab/gitlab-ce
     restart: always
     environment:
-      - DB_ADAPTER=postgresql
-      - DB_HOST=postgresql
-      - DB_PORT=5432
-      - DB_USER=postgres
-      - DB_PASS=f4ef54b039dc6794
-      - DB_NAME=db
       - GITLAB_TIMEZONE=Asia/Shanghai
       - TZ=Asia/Shanghai
     ports:
@@ -47,10 +41,6 @@ services:
   sonarqube:
     image: sonarqube
     restart: always
-    environment:
-      - SONARQUBE_JDBC_USERNAME=postgres
-      - SONARQUBE_JDBC_PASSWORD=f4ef54b039dc6794
-      - SONARQUBE_JDBC_URL=jdbc:postgresql://postgres:5432/db
     ports:
       - 9000:9000
       - 9092:9092
@@ -61,25 +51,12 @@ services:
       - 'sonarqube:/opt/sonarqube/lib/bundled-plugins'
     networks:
       - gitlab-net
-    
-  postgres:
-    image: postgres
-    restart: always
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=f4ef54b039dc6794
-      - POSTGRES_DB=db
-    volumes:
-      - 'postgres:/var/lib/postgresql/data'
-    networks:
-      - gitlab-net
-      
+
 networks:
   gitlab-net:
   
 volumes:
   sonarqube:
-  postgres:
 ```
 
 
